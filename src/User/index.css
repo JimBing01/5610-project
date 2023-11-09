@@ -1,0 +1,77 @@
+/* Resets some basic elements for cross-browser consistency */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  font-family: Arial, sans-serif;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+/* Application styles */
+.App {
+  display: flex;
+  min-height: 100vh;
+}
+
+.Sidebar {
+  background-color: #f4f4f4;
+  padding: 20px;
+  width: 250px;
+}
+
+.Sidebar ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.Sidebar li {
+  margin-bottom: 10px;
+}
+
+.Sidebar a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.Sidebar a:hover {
+  text-decoration: underline;
+}
+
+.MainContent {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #fff;
+}
+
+/* Styles for the active link */
+.Sidebar .active {
+  color: #0275d8;
+}
