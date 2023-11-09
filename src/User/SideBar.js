@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { IoMdInformationCircleOutline } from 'react-icons/io';
-import { MdPayment, MdOutlineLocationOn, MdOutlineHistory } from 'react-icons/md';
+import { MdPayment, MdOutlineLocationOn, MdOutlineHistory, MdShoppingCart } from 'react-icons/md';
 import './SideBar.css';
 
 function SideBar() {
@@ -26,6 +26,11 @@ function SideBar() {
         <li>
           <NavLink to="orders" className={({ isActive }) => isActive ? 'active' : ''}>
             <MdOutlineHistory /> Orders
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="shopping-cart" className={({ isActive }) => (isActive ? 'active' : '')}>
+            <MdShoppingCart /> Shopping Cart
           </NavLink>
         </li>
       </ul>

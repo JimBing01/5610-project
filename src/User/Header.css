@@ -1,0 +1,36 @@
+.Header {
+    width: 100%;
+    background-color: #ffffff; /* or any color you prefer */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for depth */
+    position: fixed; /* Keep it fixed at the top */
+    top: 0;
+    left: 0;
+    z-index: 100; /* Ensure it's above other content */
+  }
+  
+  .HeaderContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* or the max-width of your content area */
+    margin: 0 auto; /* center the header content */
+    padding: 0 20px; /* Add some padding on the sides */
+    height: 50px; /* Set a fixed height */
+  }
+  
+  .HeaderTitle {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0; /* Remove default margins */
+    font-size: 1.5rem; /* Adjust size as needed */
+    font-weight: normal; /* Optional: change font-weight */
+  }
+  
+  .ShoppingCartLink {
+    color: #333; /* Icon color */
+    text-decoration: none; /* Remove underline */
+    font-size: 1.5rem; /* Match icon size to the title */
+    display: flex;
+    align-items: center;
+  }
+  

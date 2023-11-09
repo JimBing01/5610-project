@@ -5,18 +5,20 @@ import PaymentMethods from './PaymentMethods';
 import Addresses from './Addresses';
 import Orders from './Orders';
 import SideBar from './SideBar';
+import ShoppingCart from './ShoppingCart';
 import './index.css';
 
 function User() {
     return (
       <div className="App">
-        <SideBar /> {/* Directly use SideBar component without wrapping ul */}
+        <SideBar />
         <div className="MainContent">
           <Routes>
             <Route path="account-info" element={<AccountInfo />} />
             <Route path="payment-methods" element={<PaymentMethods />} />
             <Route path="addresses" element={<Addresses />} />
             <Route path="orders" element={<Orders />} />
+            <Route path="shopping-cart" element={<ShoppingCart />} />
           </Routes>
         </div>
       </div>
