@@ -35,4 +35,28 @@
     color: #4CAF50; /* Green color to highlight the default address */
     font-weight: bold;
   }
+
+  .Addresses input {
+    display: block;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Add styles for buttons */
+.Addresses button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    color: white;
+    background-color: #5cb85c; /* Green background for the save button */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.Addresses button:last-child {
+    background-color: #d9534f; /* Red background for the cancel button */
+}
   

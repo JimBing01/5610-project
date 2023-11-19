@@ -1,5 +1,4 @@
 .Orders {
-    background-color: #fff; /* white background */
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
@@ -13,7 +12,6 @@
   }
   
   .order {
-    background-color: #f9f9f9; /* Lighter grey background for each order */
     border: 1px solid #e7e7e7; /* Light grey border */
     border-radius: 4px;
     padding: 15px;
@@ -39,7 +37,6 @@
   }
   
   .order li {
-    background-color: #fff; /* White background for order items */
     border: 1px solid #ddd; /* Light grey border */
     border-radius: 4px;
     padding: 10px;

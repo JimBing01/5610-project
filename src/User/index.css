@@ -19,6 +19,7 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
@@ -41,7 +42,6 @@ ol, ul {
 }
 
 .Sidebar {
-  background-color: #f4f4f4;
   padding: 20px;
   width: 250px;
 }
@@ -68,10 +68,19 @@ ol, ul {
 .MainContent {
   flex-grow: 1;
   padding: 20px;
-  background-color: #fff;
+}
+
+.MainContent a {
+  color: none;
+  background-color: none !important;
 }
 
 /* Styles for the active link */
 .Sidebar .active {
   color: #0275d8;
 }
+
+ /* define background color using rgb */
+  .App {
+    background-color: rgb(244, 243, 231) !important;
+  }
