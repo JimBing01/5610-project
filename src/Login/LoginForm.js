@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './LoginForm.css'; // Import the CSS file
 
 const LoginForm = ({ onLogin }) => {
     const [email, setEmail] = useState('');
@@ -10,29 +11,31 @@ const LoginForm = ({ onLogin }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                />
-            </div>
-            <div>
-                <label htmlFor="password">Password:</label>
-                <input
-                    type="password"
-                    id="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                />
-            </div>
-            <button type="submit">Login</button>
-        </form>
+        <div className="form-container"> {/* Apply the container class */}
+            <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="email">Email:</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="password">Password:</label>
+                    <input
+                        type="password"
+                        id="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
     );
 };
 

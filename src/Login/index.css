@@ -1,0 +1,80 @@
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f6f6f6; /* Adjusted background color */
+    color: #333;
+}
+
+.App {
+    /*text-align: center;*/
+    /*!* Remove padding-top if it's causing unwanted spacing *!*/
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    height: 150vh; /* Use the full height of the viewport */
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 10%;
+    background-color: #fff; /* White background for the nav bar */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: fixed; /* Fixed at the top */
+    width: 100%; /* Full width */
+    top: 0; /* Stick to the top */
+    left: 0; /* Align to the left */
+}
+
+nav span {
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.main-content {
+    padding-top: 150px; /* Add padding to account for fixed navbar */
+    padding-bottom: 50px; /* Additional padding at the bottom */
+}
+
+.main-content h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 2.5em; /* Larger font size for the main heading */
+}
+
+.button-sign-in {
+    background-color: #4CAF50; /* Green background for the sign-in button */
+    color: white;
+    border: none;
+    padding: 15px 30px; /* Adjust padding to suit your design */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px; /* Adjust font size as needed */
+    margin: 20px 0; /* Spacing above and below the button */
+    cursor: pointer;
+    border-radius: 25px; /* Adjust border-radius to match design */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Optional: add shadow for depth */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.button-sign-in:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+}
+
+/* Additional styles for links and positioning */
+.link-sign-up {
+    color: #4CAF50;
+    font-size: 1em;
+    text-decoration: none;
+    display: block; /* Make the sign-up link a block element for easier clicking */
+    margin-bottom: 20px; /* Spacing after the link */
+}
+
+.link-sign-up:hover {
+    text-decoration: underline;
+}
+
+
