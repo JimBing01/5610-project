@@ -7,14 +7,14 @@ import "./index.css";
 function HorizontalNavigation() {
 	const leftLinks = [
 		{ name: "Home", icon: <BiHome className="nav-icon" />, to: "/home" },
-		{ name: "Menu", icon: <BiMenu className="nav-icon" />, to: "/menu" },
+		//{ name: "Menu", icon: <BiMenu className="nav-icon" />, to: "/menu" },
 	];
 
 	const rightLinks = [
 		{
 			name: "Account",
 			icon: <BiUserCircle className="nav-icon" />,
-			to: "/account",
+			to: "/user/*",
 		},
 		{
 			name: "Cart",
@@ -37,6 +37,12 @@ function HorizontalNavigation() {
 						{link.name}
 					</Link>
 				))}
+				<a
+					href="#menu-section-on-home-page"
+					className="nav-item">
+					<BiMenu className="nav-icon" />
+					Menu
+				</a>
 			</div>
 			<div className="logo">
 				{/* In a typical React application created using Create React App, the public folder is set up as the web root. This means you don't need to include /public in the path when referencing files from there. 
