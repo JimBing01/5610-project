@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f1e7;
+  background-color: rgb(244, 243, 231);
 }
 .slide-container {
   max-width: 1120px;
@@ -92,7 +92,7 @@
   font-size: 16px;
   color: #707070;
   padding: 8px 16px;
-  background-color: #f8f1e7; /*The main theme color*/
+  background-color: rgb(244, 243, 231); /*The main theme color*/
   border-radius: 6px;
   margin: 14px;
   cursor: pointer;

@@ -2,7 +2,7 @@
   display: flex; /* Displays flex-items (children) inline */
   align-items: center; /* Keeps items vertically centered */
   justify-content: space-between; /* Distributes items evenly across the horizontal axis */
-  background-color: #f8f1e7;
+  background-color: rgb(244, 243, 231) ;
   padding: 5px; /* Adds padding around the navigation bar */
   border-bottom: 3px solid #adc79a; /* Adds a 3-pixel border to the bottom of the navigation bar */
 }
