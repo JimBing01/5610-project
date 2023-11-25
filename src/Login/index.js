@@ -27,6 +27,7 @@ function Login() {
             <Routes>
                 <Route path="/signup" element={<SignupForm onSignup={handleSignup} />} />
                 <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+                //rendering:  JSX that represents the LoginForm component
             </Routes>
         </div>
     );
