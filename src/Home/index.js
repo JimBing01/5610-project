@@ -1,14 +1,24 @@
 import React from 'react';
+import NavigationBar from "./NavigationBar";
+import SandwichSlider from "./Slider/SandwichSlider";
+import Menu from "./Menu";
+import "./index.css";    
+import { BrowserRouter as Router, Routes, Route, } from 'react-router-dom';
+import User from "../User";
+
+
 function Home() {
     return (
-        <div>
-            <h1>Hello World in Home page</h1>
-            <h2>Hi 5610 project</h2>
-            <h2>is it working</h2>
-            <p>friday</p>
+			<div className="home">
+				<NavigationBar />
+      	<SandwichSlider />
+				<div id="menu-section-on-home-page">
+        	<Menu />
+      	</div>
 
-        </div>
-    );
+				
+			</div>
+		);
 }
 
 export default Home;

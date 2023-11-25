@@ -1,0 +1,20 @@
+[
+	{
+		"name": "Sausage, Egg & Cheese",
+		"description": "",
+		"price": "$4.99",
+		"image": "/images/sandwiches/Phi_Gamma_Melta.jpg"
+	},
+  {
+    "name": "Double Egg and Cheese",
+    "description": "",
+    "price": "$4.99",
+    "image": "/images/sandwiches/Phi_Gamma_Melta.jpg"
+  },
+  {
+    "name": "Ham, Egg, and Cheese",
+    "description": "",
+    "price": "$4.99",
+    "image": "/images/sandwiches/Phi_Gamma_Melta.jpg"
+  }
+]

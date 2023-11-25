@@ -1,0 +1,19 @@
+[
+  {
+    "name": "The Huskie",
+    "reviews": [
+      {
+        "rating": 5,
+        "body": "Absolutely loved The Huskie sandwich! The flavors were on point and the portion size was perfect. Definitely coming back for more.",
+        "author": "Jane Smith",
+        "date": "2021-07-15T14:23:31.647Z"
+      },
+      {
+        "rating": 4,
+        "body": "The Huskie sandwich was really tasty, especially the sauce they use. It's a bit pricey but worth it for the quality you get.",
+        "author": "Mike Johnson",
+        "date": "2021-08-11T09:33:20.123Z"
+      }
+    ]
+  }
+]

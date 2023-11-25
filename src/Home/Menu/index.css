@@ -1,0 +1,90 @@
+.menu {
+  margin: auto; /* Centers the menu horizontally */
+  padding: 0 10px; /* Adds padding on the left and right */
+  max-width: 1200px; /* Sets a maximum width for the menu */
+  background-color: rgb(244, 243, 231); /* Set the background color */
+}
+.menu-list ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  justify-content: left;
+  margin-bottom: 20px;
+}
+
+.menu-list ul li {
+  margin: 0 20px;
+  cursor: pointer;
+  padding: 10px;
+  background-color: #4CAF50;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  color: white;
+  border-radius: 10px;
+}
+
+.menu-list ul li:hover {
+  background-color: #45a049;
+}
+
+.menu-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates three columns, each taking up one fraction of the available space */
+  gap: 20px; /* Space between rows and columns */
+  padding: 20px;
+  justify-content: space-around; /* This will space out the grid items evenly in the container */
+}
+
+.sandwich-card {
+  position: relative;
+  width: 300px; /* Set the width of the card */
+  height: auto; /* Height can be auto to adjust based on content */
+  border-radius: 25px; /* Rounds the corners of the card */
+  background-color: white; /* Sets the background color of the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a shadow for depth */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+.add-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 24px; /* Adjust icon size as needed */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  background-color: rgb(244, 243, 231);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.sandwich-card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Larger shadow on hover */
+  transform: translateY(-5px); /* Slightly raise the card on hover */
+}
+
+.sandwich-card img {
+  height: 150px; /* Adjust image height */
+  width: 150px; /* Adjust image width */
+  object-fit: cover; /* Ensures the image covers the area */
+  border-radius: 50%; /* Makes the image round */
+  margin-bottom: 10px; /* Space below the image */
+}
+
+.sandwich-card h3 {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 10px; /* Spacing below the title */
+}
+
+.sandwich-card p {
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+  margin-bottom: 10px; /* Spacing below the description */
+}
+
