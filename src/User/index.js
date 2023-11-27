@@ -14,7 +14,7 @@ function User() {
         <SideBar />
         <div className="MainContent">
           <Routes>
-            <Route path="account-info" element={<AccountInfo />} />
+            <Route path="account-info/users/:userId" element={<AccountInfo />} />
             <Route path="payment-methods" element={<PaymentMethods />} />
             <Route path="addresses" element={<Addresses />} />
             <Route path="orders" element={<Orders />} />

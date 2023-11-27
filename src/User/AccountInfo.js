@@ -1,81 +1,119 @@
-// Importing React hooks
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './accountInfo.css';
+import * as client from './client';
 
 function AccountInfo() {
-  // Initial state for user information
-  const [userInfo, setUserInfo] = useState({
-    firstName: 'Tom',
-    lastName: 'Brady',
-    email: 'tom@hotmail.com',
-    phoneNumber: '121-232-1987',
-  });
+  // Get the userId from the URL parameters
+  const { userId } = useParams();
 
-  // State to manage edit mode
+  // States for user information and edit mode
+  const [userInfo, setUserInfo] = useState(null);
   const [isEditMode, setIsEditMode] = useState(false);
-  
-  // State to manage temporary form values
-  const [tempUserInfo, setTempUserInfo] = useState({ ...userInfo });
+  const [tempUserInfo, setTempUserInfo] = useState(null);
 
-  // Function to handle edit mode change
-  const toggleEditMode = () => {
-    setIsEditMode(!isEditMode);
-    setTempUserInfo({ ...userInfo });
-  };
-
-  // Function to handle form field changes
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setTempUserInfo({ ...tempUserInfo, [name]: value });
-  };
-
-  // Function to handle the save button
-  const handleSave = () => {
-    setUserInfo({ ...tempUserInfo });
-    setIsEditMode(false);
-    // TODO: Save the updated data to the server
-  };
-
+  // Fetch user information by ID
   useEffect(() => {
-    // Replace with actual API call
     async function fetchUserInfo() {
       try {
-        const response = await fetch('/api/user');
-        const data = await response.json();
-        setUserInfo({
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          phoneNumber: data.phoneNumber,
-        });
+        client.getUserById(userId).then((data) => {
+          setUserInfo(data);
+          setTempUserInfo(data);
+        }
+        );
       } catch (error) {
         console.error('Failed to fetch user info:', error);
       }
     }
 
-    fetchUserInfo();
-  }, []);
+    if (userId) {
+      fetchUserInfo();
+    }
+  }, [userId]);
+
+  // Handle input change
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setTempUserInfo({ ...tempUserInfo, [name]: value });
+  };
+
+  // Handle save
+  const handleSave = async () => {
+    try {
+      const response = await fetch(`/api/users/${userId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(tempUserInfo),
+      });
+      if (response.ok) {
+        setUserInfo({ ...tempUserInfo });
+        setIsEditMode(false);
+      }
+    } catch (error) {
+      console.error('Failed to save user info:', error);
+    }
+  };
+
+  // Toggle edit mode
+  const toggleEditMode = () => {
+    setIsEditMode(!isEditMode);
+    setTempUserInfo({ ...userInfo });
+  };
+
+  if (!userInfo) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="AccountInfo">
       <h2>Account Information</h2>
       {isEditMode ? (
-        <>
-          <input type="text" name="firstName" value={tempUserInfo.firstName} onChange={handleInputChange} />
-          <input type="text" name="lastName" value={tempUserInfo.lastName} onChange={handleInputChange} />
-          <input type="email" name="email" value={tempUserInfo.email} onChange={handleInputChange} />
-          <input type="tel" name="phoneNumber" value={tempUserInfo.phoneNumber} onChange={handleInputChange} />
-          <button onClick={handleSave}>Save</button>
-          <button onClick={toggleEditMode}>Cancel</button>
-        </>
+        // Edit mode inputs
+<>
+  <input
+    type="text"
+    name="firstName"
+    value={tempUserInfo.firstName}
+    onChange={handleInputChange}
+    placeholder="First Name"
+  />
+  <input
+    type="text"
+    name="lastName"
+    value={tempUserInfo.lastName}
+    onChange={handleInputChange}
+    placeholder="Last Name"
+  />
+  <input
+    type="email"
+    name="email"
+    value={tempUserInfo.email}
+    onChange={handleInputChange}
+    placeholder="Email"
+  />
+  <input
+    type="tel"
+    name="phoneNumber"
+    value={tempUserInfo.phoneNumber}
+    onChange={handleInputChange}
+    placeholder="Phone Number"
+  />
+  <button onClick={handleSave}>Save</button>
+  <button onClick={toggleEditMode}>Cancel</button>
+</>
+
       ) : (
-        <>
-          <p><strong>First Name:</strong> {userInfo.firstName}</p>
-          <p><strong>Last Name:</strong> {userInfo.lastName}</p>
-          <p><strong>Email:</strong> {userInfo.email}</p>
-          <p><strong>Phone Number:</strong> {userInfo.phoneNumber}</p>
-          <button onClick={toggleEditMode}>Edit</button>
-        </>
+        // Display user info
+<>
+  <p><strong>First Name:</strong> {userInfo.firstName}</p>
+  <p><strong>Last Name:</strong> {userInfo.lastName}</p>
+  <p><strong>Email:</strong> {userInfo.email}</p>
+  <p><strong>Phone Number:</strong> {userInfo.phoneNumber}</p>
+  <button onClick={toggleEditMode}>Edit</button>
+</>
+
       )}
     </div>
   );
