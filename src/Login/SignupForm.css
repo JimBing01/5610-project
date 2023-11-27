@@ -42,20 +42,47 @@
     background-color: #45a049;
 }
 
-/* Add to SignupForm.css */
-.role-selection {
-    display: flex; /* Aligns children inline */
-    justify-content: start; /* Aligns children at the start of the container */
-    align-items: center; /* Aligns children vertically */
-}
+/*!* Add to SignupForm.css *!*/
+/*.role-selection {*/
+/*    display: flex; !* Aligns children inline *!*/
+/*    justify-content: start; !* Aligns children at the start of the container *!*/
+/*    align-items: center; !* Aligns children vertically *!*/
+/*}*/
 
-.role-selection label {
-    margin-right: 20px; /* Spacing between radio buttons */
-}
+/*.role-selection label {*/
+/*    margin-right: 20px; !* Spacing between radio buttons *!*/
+/*}*/
 
 /* Modify the .form-container div for radio buttons if necessary */
 .form-container div {
     /* Other styles... */
     justify-content: flex-start; /* Align content to the left */
+}
+
+/* Add to SignupForm.css */
+.role-selection {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center-align vertically */
+    width: 100%;
+}
+
+.role-selection label {
+    margin-bottom: 10px; /* Spacing below the label */
+}
+
+.role-options {
+    display: flex;
+    justify-content: space-around; /* Space out the radio options equally */
+    width: 100%; /* Full width to spread out the child elements */
+}
+
+/* If you want more control over the spacing, you could use 'justify-content: space-between' and set fixed margins on the radio button labels as shown below: */
+.role-options label {
+    margin-right: 20px; /* Or any other spacing you prefer */
+}
+
+.role-options label:last-child {
+    margin-right: 0; /* No margin for the last element to avoid extra spacing on the right */
 }
 

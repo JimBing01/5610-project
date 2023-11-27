@@ -1,4 +1,3 @@
-
 body, html {
     margin: 0;
     padding: 0;
@@ -12,36 +11,36 @@ body, html {
     /*!* Remove padding-top if it's causing unwanted spacing *!*/
     display: flex;
     flex-direction: column; /* Stack children vertically */
-    height: 150vh; /* Use the full height of the viewport */
+    height: 130vh; /* Use the full height of the viewport */
 
 }
 
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 10%;
-    background-color: #fff; /* White background for the nav bar */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    position: fixed; /* Fixed at the top */
-    width: 100%; /* Full width */
-    top: 0; /* Stick to the top */
-    left: 0; /* Align to the left */
-}
+/*nav {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*    align-items: center;*/
+/*    padding: 20px 10%;*/
+/*    background-color: #fff; !* White background for the nav bar *!*/
+/*    box-shadow: 0 2px 4px rgba(0,0,0,0.1);*/
+/*    position: fixed; !* Fixed at the top *!*/
+/*    width: 100%; !* Full width *!*/
+/*    top: 0; !* Stick to the top *!*/
+/*    left: 0; !* Align to the left *!*/
+/*}*/
 
-nav span {
-    font-weight: bold;
-    cursor: pointer;
-}
+/*nav span {*/
+/*    font-weight: bold;*/
+/*    cursor: pointer;*/
+/*}*/
 
 .main-content {
-    padding-top: 150px; /* Add padding to account for fixed navbar */
-    padding-bottom: 50px; /* Additional padding at the bottom */
+    padding-top: 80px; /* Add padding to account for fixed navbar */
+    padding-bottom: 1px; /* Additional padding at the bottom */
 }
 
 .main-content h1 {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     font-size: 2.5em; /* Larger font size for the main heading */
 }
 
@@ -70,7 +69,7 @@ nav span {
     font-size: 1em;
     text-decoration: none;
     display: block; /* Make the sign-up link a block element for easier clicking */
-    margin-bottom: 20px; /* Spacing after the link */
+    margin-bottom: 1px; /* Spacing after the link */
 }
 
 .link-sign-up:hover {

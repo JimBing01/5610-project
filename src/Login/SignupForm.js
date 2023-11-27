@@ -51,27 +51,13 @@ const SignupForm = ({ onSignup }) => {
                 </div>
                 <div className="role-selection">
                     <label>Role:</label>
-                    {/*<div onChange={(e) => setRole(e.target.value)}>*/}
-                    {/*    <input type="radio" value="customer" name="role" required /> Customer*/}
-                    {/*    <input type="radio" value="merchant" name="role" required /> Merchant*/}
-                    {/*    <input type="radio" value="delivery" name="role" required /> Delivery Person*/}
-                    {/*</div>*/}
-                    <div onChange={(e) => setRole(e.target.value)}>
-                        <label>
-                            <input type="radio" value="customer" name="role" required />
-                            Customer
-                        </label>
-                        <label>
-                            <input type="radio" value="merchant" name="role" required />
-                            Merchant
-                        </label>
-                        <label>
-                            <input type="radio" value="delivery" name="role" required />
-                            Delivery Person
-                        </label>
+                    <div className="role-options" onChange={(e) => setRole(e.target.value)}>
+                        <input type="radio" value="customer" name="role" required /> Customer
+                        <input type="radio" value="merchant" name="role" required /> Merchant
+                        <input type="radio" value="delivery" name="role" required /> Delivery Person
                     </div>
                 </div>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Sign up</button>
             </form>
         </div>
     );
