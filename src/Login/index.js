@@ -6,25 +6,25 @@ import './index.css';
 import HorizontalNavigation from '../Home/NavigationBar/index.js';
 
 
-if (localStorage.getItem('users') === null) {
-    localStorage.setItem('users', JSON.stringify([
-                                                     {
-                                                         "email": "yiming@163.com",
-                                                         "password": "123456789",
-                                                         "role": "customer"
-                                                     },
-                                                     {
-                                                         "email": "johnnydepp@gmail.com",
-                                                         "password": "bequickman",
-                                                         "role": "delivery person"
-                                                     },
-                                                     {
-                                                         "email": "bestsandwich@outlook.com",
-                                                         "password": "iwanttoeat",
-                                                         "role": "merchant"
-                                                     }
-                                                 ]));
-}
+// if (localStorage.getItem('users') === null) {
+//     localStorage.setItem('users', JSON.stringify([
+//                                                      {
+//                                                          "email": "yiming@163.com",
+//                                                          "password": "123456789",
+//                                                          "role": "customer"
+//                                                      },
+//                                                      {
+//                                                          "email": "johnnydepp@gmail.com",
+//                                                          "password": "bequickman",
+//                                                          "role": "delivery person"
+//                                                      },
+//                                                      {
+//                                                          "email": "bestsandwich@outlook.com",
+//                                                          "password": "iwanttoeat",
+//                                                          "role": "merchant"
+//                                                      }
+//                                                  ]));
+// }
 
 function Login() {
     // const handleSignup = (email, password, role) => {
@@ -51,30 +51,86 @@ function Login() {
         localStorage.setItem('users', JSON.stringify(users));
     };
 
-    const handleSignup = (email, password, confirmPassword, role) => {
+    // const handleSignup = (email, password, confirmPassword, role) => {
+    //     if (!isValidEmail(email)) {
+    //         alert("Please enter a valid email address.");
+    //         return;
+    //     }
+    //     if (doesEmailExist(email)) {
+    //         alert("An account with this email already exists. Please log in.");
+    //         return;
+    //     }
+    //     if (password !== confirmPassword) {
+    //         alert("Passwords don't match.");
+    //         return;
+    //     }
+    //     addUserToDatabase(email, password, role);
+    //     alert("Signup successful!");
+    // };
+
+    const handleSignup = async (email, password, confirmPassword, role) => {
         if (!isValidEmail(email)) {
             alert("Please enter a valid email address.");
             return;
         }
-        if (doesEmailExist(email)) {
+
+        // Check if email already exists (this will now be a request to your server)
+        const response = await fetch(`http://localhost:4000/api/users?email=${email}`);
+        const usersWithSameEmail = await response.json();
+
+        if (usersWithSameEmail.length > 0) {
             alert("An account with this email already exists. Please log in.");
             return;
         }
+
         if (password !== confirmPassword) {
             alert("Passwords don't match.");
             return;
         }
-        addUserToDatabase(email, password, role);
-        alert("Signup successful!");
+
+        // Send a request to the server to create a new user
+        const createUserResponse = await fetch('http://localhost:4000/api/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email, password, role })
+        });
+
+        if (createUserResponse.ok) {
+            alert("Signup successful!");
+        } else {
+            alert("Signup failed. Please try again.");
+        }
     };
 
-    const handleLogin = (email, password) => {
-        // const users = JSON.parse(localStorage.getItem('users')) || [];
-        // const user = users.find(user => user.email === email && user.password === password);
-        // Trim and normalize email input for consistent matching
 
+    // const handleLogin = (email, password) => {
+    //     // const users = JSON.parse(localStorage.getItem('users')) || [];
+    //     // const user = users.find(user => user.email === email && user.password === password);
+    //     // Trim and normalize email input for consistent matching
+    //
+    //     const normalizedEmail = email.trim().toLowerCase();
+    //     const users = JSON.parse(localStorage.getItem('users')) || [];
+    //
+    //     // Find a user where the email and password match
+    //     const user = users.find(user =>
+    //                                 user.email.toLowerCase() === normalizedEmail && user.password === password
+    //     );
+    //
+    //     if (user) {
+    //         alert("Login successful!");
+    //     } else {
+    //         alert("Incorrect email or password. Please try again.");
+    //     }
+    // };
+
+    const handleLogin = async (email, password) => {
         const normalizedEmail = email.trim().toLowerCase();
-        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Fetch all users from the server (ideally, you would have a more secure endpoint for login)
+        const response = await fetch('http://localhost:4000/api/users');
+        const users = await response.json();
 
         // Find a user where the email and password match
         const user = users.find(user =>
@@ -88,12 +144,9 @@ function Login() {
         }
     };
 
+
     return (
         <div className="App">
-            {/*<nav>*/}
-            {/*    <span>HOME</span>*/}
-            {/*    <span>ACCOUNT</span>*/}
-            {/*</nav>*/}
             <HorizontalNavigation />
             <div className="main-content">
                 <h1>Welcome to Wollaston's!</h1>
