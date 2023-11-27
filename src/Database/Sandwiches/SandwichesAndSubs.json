@@ -1,0 +1,115 @@
+[
+  {
+    "name": "Phi Gamma Melta",
+    "description": "Chicken tenders, bacon, mozzarella cheese, chipotle mayo, banana peppers on a french roll",
+    "price": "$9.99",
+    "image": "/images/sandwiches/Phi_Gamma_Melta.jpg"
+  },{
+    "name": "Game of Thrones",
+    "description": "Grilled chicken, grilled onion and peppers, garlic powder, black pepper, pesto, BBQ sauce, sriracha sauce and pepperjack cheese",
+    "price": "9.99",
+    "image": "/images/sandwiches/Game_of_Thrones.jpg"
+  },
+  {
+    "name": "Steak and Cheese",
+    "description": "",
+    "price": "$9.99",
+    "image": "/images/sandwiches/The_Boston_Connection.jpg"
+  },
+  {
+    "name": "Gobbler",
+    "description": "Turkey, stuffing, cranberry sauce and mayo on a French roll",
+    "price": "$9.99",
+    "image": "/images/sandwiches/The_Boston_Connection.jpg"
+  },
+  {
+    "name": "Buffalo Chicken Tender Sub",
+    "description": "Buffalo tenders with pepperjack cheeses and blue cheese dressing on a French roll.",
+    "price": "8.99",
+    "image": "/images/sandwiches/The_Huntington.jpg"
+  },
+  {
+    "name": "The Huskie",
+    "description": "Roasted turkey breast, ham, swiss cheese, pickles, lettuce, tomatoes, onions, mayonnaise.",
+    "price": "$9.49",
+    "image": "/images/sandwiches/The_Huskies.jpg"
+  },
+  {
+    "name": "The Symphony",
+    "description": "Chicken Tenders, honey mustard, bacon, grilled onions, muenster cheese, banana peppers and lettuce on a French roll",
+    "price": "$9.99",
+    "image": "/images/sandwiches/The_Boston_Connection.jpg"
+  },
+  {
+    "name": "George Likes his Chicken Spicy",
+    "description": "Fried chicken, bacon and cheddar cheese with Mike Hot Honey on a square ciabatta roll",
+    "price": "9.99",
+    "image": "/images/sandwiches/George_Likes_his_Chicken_Spicy.jpg"
+  },
+  {
+    "name": "The Hemenway",
+    "description": "Hot ham, salami, mortadella, provolone cheese with lettuce, tomatoes, onion and hot peppers, seasoned with oregano, olive oil and wine vinegar.",
+    "price": "9.49",
+    "image": "/images/sandwiches/The_Hemenway.jpg"
+  },
+  {
+    "name": "The Huntington",
+    "description": "Roast turkey, honey mustard, brie cheese, lettuce, tomatoes.",
+    "price": "9.49",
+    "image": "/images/sandwiches/The_Huntington.jpg"
+  },
+  {
+    "name": "The Fenway",
+    "description": "Smoked turkey breast with mayo, cucumber, tomato and alfalfa sprouts.",
+    "price": "9.49",
+    "image": "/images/sandwiches/The_Fenway.jpg"
+  },
+  {
+    "name": "Lighten Up Francis",
+    "description": "Grilled Chicken, avocado, spinach, pepperjack cheese and chipotle mayo.",
+    "price": "9.99",
+    "image": "/images/sandwiches/Lighten_Up_Francis.jpg"
+  }, 
+  {
+    "name": "Tuna Salad",
+    "description": "Tuna salad with lettuce, tomatoes, onions, pickles, mayo and mustard.",
+    "price": "9.99",
+    "image": "/images/sandwiches/Tuna_Salad.jpg"
+  }, 
+  {
+    "name": "Meataball Sub",
+    "description": "Meatballs, marinara sauce, mozzarella cheese on a French roll.",
+    "price": "9.99",
+    "image": "/images/sandwiches/Meatball_Sub.jpg"
+  },
+  {
+    "name": "Marino Fitness",
+    "description": "Monterey jack cheese, alfalfa sprouts, sun-dried tomatoes, lettuce, olive oil and guacamole spread.",
+    "price": "8.49",
+    "image": "/images/sandwiches/Marino_Fitness.jpg"
+  },
+  {
+    "name": "Chicken Salad",
+    "description": "Chicken salad with lettuce, tomatoes, onions, pickles, mayo and mustard.",
+    "price": "9.99",
+    "image": "/images/sandwiches/Chicken_Salad.jpg"
+  },
+  {
+    "name": "Notorious DTD",
+    "description": "Shaved steak, eggs and pepperjack cheese with chipotle mayo.",
+    "price": "9.49",
+    "image": "/images/sandwiches/Notorious_DTD.jpg"
+  },
+  {
+    "name": "The Northeastern",
+    "description": "Roast beef, burcin cream cheese, lettuce and tomatoes.",
+    "price": "9.49",
+    "image": "/images/sandwiches/The_Northeastern.jpg"
+  },
+  {
+    "name": "The Boston Connection",
+    "description": "Roast beef, 1000 island dressing, cheddar cheese, lettuce and tomatoes.",
+    "price": "9.99",
+    "image": "/images/sandwiches/The_Boston_Connection.jpg"
+  }
+]

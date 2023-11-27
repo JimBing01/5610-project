@@ -1,0 +1,53 @@
+.horizontal-navigation {
+  position: fixed; /* or use 'sticky' */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100; /* Ensure it's above other content */
+  display: flex; /* Displays flex-items (children) inline */
+  align-items: center; /* Keeps items vertically centered */
+  justify-content: space-between; /* Distributes items evenly across the horizontal axis */
+  background-color: rgb(244, 243, 231) ;
+  padding: 5px; /* Adds padding around the navigation bar */
+  border-bottom: 3px solid #adc79a; /* Adds a 3-pixel border to the bottom of the navigation bar */
+}
+
+.logo {
+  margin-right: 20px; /* This adds a margin of 20 pixels to the right of the .logo element. Margins create extra space around an element. In this case, it ensures there's a 20-pixel space between the logo and whatever element comes next to it on the right. */
+   /* font-size: 20px; This sets the font size of the text inside the .logo element to 20 pixels. This is useful if your logo also includes text or if the logo is purely textual. It determines how large the text appears. */
+  /* font-weight: bold; This makes the font within the .logo element bold. If there's text inside this element, this property will make it thicker and more pronounced. It's commonly used to make certain text stand out more. */
+}
+
+.logo-image {
+  max-width: 150px; /*This sets the maximum width of the image to 150 pixels. The image will not stretch beyond 100 pixels in width, but it can be smaller if the actual image width is less than 150 pixels. This is particularly useful for responsive design, as it allows the image to shrink on smaller screens.*/
+  height: auto; /*This sets the height of the image to scale automatically in proportion to its width. By setting the height to auto, you maintain the aspect ratio of the image. As the width changes (due to max-width or other factors), the height adjusts proportionally, preventing the image from becoming distorted.*/
+}
+
+.nav-group.left {
+  justify-content: flex-start;
+}
+
+.nav-group.right {
+  justify-content: flex-end;
+}
+.nav-group {
+  display: flex;
+}
+.nav-item {
+  margin: 0 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.nav-item:hover {
+  background-color: lightgrey;
+  border-radius: 5px;
+}
+
+.nav-icon {
+  margin-right: 5px;
+}
+
+.active {
+  color: blue;
+}
