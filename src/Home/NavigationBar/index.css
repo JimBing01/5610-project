@@ -1,4 +1,9 @@
 .horizontal-navigation {
+  position: fixed; /* or use 'sticky' */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100; /* Ensure it's above other content */
   display: flex; /* Displays flex-items (children) inline */
   align-items: center; /* Keeps items vertically centered */
   justify-content: space-between; /* Distributes items evenly across the horizontal axis */

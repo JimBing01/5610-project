@@ -12,7 +12,7 @@ function Home() {
 			<div className="home">
 				<NavigationBar />
       	<SandwichSlider />
-				<div id="menu-section-on-home-page">
+				<div id="menu-section-on-home-page" className="menu-section">
         	<Menu />
       	</div>
 

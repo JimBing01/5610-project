@@ -1,44 +1,47 @@
-import React, { useState } from "react";
+import React from 'react';
 import "./index.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import reviewsDatabase from "../../../Database/Reviews.json";
 
-function sandwichModal({ sandwich, onClose }) {
-	if (!sandwich) return null;
+function SandwichModal({ sandwich, onClose }) {
+    if (!sandwich) return null;
 
-	const handleOverlayClick = (e) => {
-		if (e.target.classList.contains("modal-overlay")) {
-			onClose();
-		}
-	};
+    const sandwichData = reviewsDatabase.find(s => s.name === sandwich.name) || { reviews: [] };
 
-  const reviews = sandwich.reviews || []; 
-	return (
-		<div
-			className="modal-overlay"
-			onClick={handleOverlayClick}>
-			<div className="modal-content">
-				<img
-					src={sandwich.image}
-					alt={sandwich.name}
-				/>
-				<h2>{sandwich.name}</h2>
-				<p>{sandwich.description || "Delicious sandwich"}</p>
-				<p>Price: {sandwich.price}</p>
-				{/* Add Icon and other details */} <AiOutlineShoppingCart className="cart-icon"/>
-				<div className="reviews-section">
-					{/* Map through sandwich reviews and display them */}
-          {reviews.map((review, index) => (
-            <div key={index} className="review">
-              <p>{review.text}</p>
-              {/* Add more details like rating, author, etc. */}
+    const handleOverlayClick = (e) => {
+        if (e.target.classList.contains("modal-overlay")) {
+            onClose();
+        }
+    };
+
+    return (
+        <div className="modal-overlay" onClick={handleOverlayClick}>
+            <div className="modal-content">
+                <div className="sandwich-details">
+                    <img src={sandwich.image} alt={sandwich.name} />
+                    <div className="sandwich-info">
+                        <h2>{sandwich.name}</h2>
+                        <p>{sandwich.description || "Delicious sandwich"}</p>
+                        <p>Price: {sandwich.price}</p>
+                        <button onClick={onClose}>Close</button>
+                        <AiOutlineShoppingCart className="cart-icon" />
+                    </div>
+                </div>
+               
+                <div className="reviews-section">
+                    {sandwichData.reviews.map((review, index) => (
+                        <div key={index} className="review">
+                            <p>Rating: {review.rating}</p>
+                            <p>{review.body}</p>
+                            <p>Author: {review.author}</p>
+                            <p>Date: {new Date(review.date).toLocaleDateString()}</p>
+                        </div>
+                    ))}
+                </div>
+                
             </div>
-          ))}
-				</div>
-				<button onClick={onClose}>Close</button>
-			</div>
-		</div>
-	);
+        </div>
+    );
 }
 
-export default sandwichModal;
+export default SandwichModal;

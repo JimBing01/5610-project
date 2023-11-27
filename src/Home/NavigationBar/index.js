@@ -7,7 +7,7 @@ import "./index.css";
 function HorizontalNavigation() {
 	const leftLinks = [
 		{ name: "Home", icon: <BiHome className="nav-icon" />, to: "/home" },
-		//{ name: "Menu", icon: <BiMenu className="nav-icon" />, to: "/menu" },
+		// { name: "Menu", icon: <BiMenu className="nav-icon" />, to: "/menu" },
 	];
 
 	const rightLinks = [
@@ -44,17 +44,21 @@ function HorizontalNavigation() {
 					Menu
 				</a>
 			</div>
+
 			<div className="logo">
 				{/* In a typical React application created using Create React App, the public folder is set up as the web root. This means you don't need to include /public in the path when referencing files from there. 
         The correct path to use in your src attribute for an image stored in public/images would start directly from /images. The leading / in the path is important, as it ensures that the path is treated as an absolute path relative to the web root, not relative to the current URL.
         Remember, this approach works for projects set up with Create React App. If you have a custom setup or are using a different build tool, the path might need to be adjusted accordingly.*/}
 				`
-				<img
-					src="/images/wollastons-logo.png"
-					alt="Logo"
-					className="logo-image"
-				/>
+				<Link to="/home">
+					<img
+						src="/images/wollastons-logo.png"
+						alt="Logo"
+						className="logo-image"
+					/>
+				</Link>
 			</div>
+
 			<div className="nav-group right">
 				{rightLinks.map((link, index) => (
 					<Link

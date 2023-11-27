@@ -12,11 +12,15 @@
 }
 
 .modal-content {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  /* Other styling as needed */
+  max-width: 80%; /* Adjust this value as needed */
+  width: auto; /* Adjust this value as needed */
+  margin: auto; /* This centers the modal horizontally */
 }
 
 .modal-content h2 {
@@ -34,7 +38,7 @@
 }
 
 .cart-icon {
-  position: absolute;
+  /* position: absolute; */
   bottom: 10px;
   right: 10px;
   font-size: 24px;
@@ -44,8 +48,21 @@
   transition: all 0.3s ease;
 }
 
+.sandwich-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sandwich-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .reviews-section {
-  max-height: 150px; /* Set a fixed maximum height */
-  overflow-y: auto; /* Add a vertical scrollbar */
-  /* Add padding, margins, and other styles as needed */
+  flex: 1; /* This section takes 2 parts of the space, making it twice as wide as the sandwich details */
+  overflow-y: auto;
+  max-height: 500px;
 }
