@@ -1,9 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./index.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import reviewsDatabase from "../../../Database/Reviews.json";
+import db from "../../../Database";
+import {useParams} from "react-router-dom";
 
 function SandwichModal({ sandwich, onClose }) {
+    const {userId} = useParams();
+    const [shoppingCarts, setShoppingCarts] = useState(
+        db.shoppingCart.filter((user) => user.userId == userId));
+
+    const [currentItem, setCurrentItem] = useState({
+        "_id":new Date(),
+        "userId": userId,
+        "name": sandwich.name,
+        "description": sandwich.description,
+        "price": sandwich.price,
+        "image": sandwich.image,
+        "quantity": 0
+    },);
+
     if (!sandwich) return null;
 
     const sandwichData = reviewsDatabase.find(s => s.name === sandwich.name) || { reviews: [] };
@@ -13,6 +29,13 @@ function SandwichModal({ sandwich, onClose }) {
             onClose();
         }
     };
+
+
+    const addCart = () =>{
+        setCurrentItem({...currentItem,quantity: currentItem.quantity + 1})
+        setShoppingCarts({...shoppingCarts,currentItem})
+        console.log(shoppingCarts)
+    }
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
@@ -24,7 +47,7 @@ function SandwichModal({ sandwich, onClose }) {
                         <p>{sandwich.description || "Delicious sandwich"}</p>
                         <p>Price: {sandwich.price}</p>
                         <button onClick={onClose}>Close</button>
-                        <AiOutlineShoppingCart className="cart-icon" />
+                        <AiOutlineShoppingCart className="cart-icon" onClick={()=>addCart()}/>
                     </div>
                 </div>
                

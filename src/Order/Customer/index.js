@@ -6,27 +6,43 @@ import sandwich1 from "../../images/sandwich1.jpg"
 import {useState} from "react";
 
 function Customer() {
-    const [customerOrders, setCustomerOrders] = useState(db.customerOrder);
-    const [customerOrder, setCustomerOrder] = useState({
-        "date": "2023-01-10 8:39",
-        "price": "134.56",
-        "food": [
-            [2,"Onion Rings"],[1,"Family Bundle"],[2,"Soft Drink"]
-        ],
-        "status": "completed",
-        "star1": true,
-        "star2": true,
-        "star3": true,
-        "star4": true,
+    const {userId} = useParams()
+    const [customerOrders, setCustomerOrders] = useState(
+        db.customerOrder.filter((user) => user.userId == userId));
+
+    const [customerOrder, setCustomerOrder] = useState({});
+
+    const [orderDetails, setOrderDetails] = useState({});
+    const [orderDetail, setOrderDetail] = useState({
+        "name": "Onion Rings",
+        "star1": false,
+        "star2": false,
+        "star3": false,
+        "star4": false,
         "star5": false,
-        "comment": ""
+        "comment": "hello2"
     });
+
+    const updateOrderDetail = (m) => {
+        setOrderDetails(
+            orderDetails.map((o) => {
+                if (o[1]._id === orderDetail._id) {
+                    o[1] = orderDetail
+                    return o;
+                } else {
+                    return o;
+                }
+            })
+        );
+        m.food = orderDetails;
+        return m;
+    }
 
     const updateCustomerOrder = () => {
         setCustomerOrders(
             customerOrders.map((m) => {
                 if (m._id === customerOrder._id) {
-                    return customerOrder;
+                    return updateOrderDetail(m);
                 } else {
                     return m;
                 }
@@ -48,114 +64,120 @@ function Customer() {
                                     <img src={sandwich1} style={{width:"300px",height:"150px"}}></img>
                                 </div>
                                 <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"60px"}}>
-                                    <b>Order Date</b>: <span className="font-color">{order.date}</span><br/>
+                                    <b>Order Date</b>: <span className="font-color">{order.date}</span><br/><br/>
                                     <b>Total price</b>:<span className="font-color">{order.price}</span>$<br/>
 
                                     {order.food.map((food) =>(
-                                        <li>
+                                        <li style={{marginTop:"10px"}}>
                                             <div className="numberSquare">
                                                 <span className="number">{food[0]}</span>
+
                                             </div>
 
-                                            <span style={{marginLeft:"10px"}}>{food[1]}</span>
+                                            <div style={{display:"inline-block",width:"250px"}}>
+                                                <span style={{marginLeft:"10px"}}>{food[1].name}</span>
+                                            </div>
 
+
+                                            <button type="button" className="btn btn-warning"
+                                                    data-bs-toggle="modal" data-bs-target={'#order'+order._id + food.name} data-whatever="@mdo"
+                                                    style={{fontSize:"small"}} onClick={(event) => {
+                                                        setOrderDetail(food[1]);
+                                                        setCustomerOrder(order);
+                                                        setOrderDetails(order.food)
+                                                    }}>
+                                                Rate and Comment
+                                            </button>
+
+
+
+
+                                            <div className="modal fade" id={'order' + order._id + food.name} tabIndex="-1" role="dialog"
+                                                 aria-labelledby="false" aria-hidden="true">
+                                                <div className="modal-dialog" role="document">
+                                                    <div className="modal-content backgroundColor">
+                                                        <div className="modal-header">
+                                                            <h5 className="modal-title">Rate and Comment for your order</h5>
+                                                            <button type="button" className="close" data-bs-dismiss="modal"
+                                                                    aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div className="modal-body">
+                                                            <span className="give_star">Give your stars!</span>
+                                                            <form>
+                                                                <div className="form-group rate">
+                                                                    <input type="radio" name="rate" id="rate-5"
+                                                                           checked={orderDetail.star5}
+                                                                           onChange={(e) => setOrderDetail({
+                                                                               ...orderDetail,star1: false,star2: false,
+                                                                               star3: false,star4: false,star5: true })}/>
+                                                                    <label htmlFor="rate-5" className="fas fa-star"></label>
+
+                                                                    <input type="radio" name="rate" id="rate-4"
+                                                                           checked={orderDetail.star4}
+                                                                           onChange={(e) => setOrderDetail({
+                                                                               ...orderDetail,star1: false,star2: false,
+                                                                               star3: false,star4: true,star5: false })}/>
+                                                                    <label htmlFor="rate-4" className="fas fa-star"></label>
+
+                                                                    <input type="radio" name="rate" id="rate-3"
+                                                                           checked={orderDetail.star3}
+                                                                           onChange={(e) => setOrderDetail({
+                                                                               ...orderDetail,
+                                                                               star1: false,star2: false,
+                                                                               star3: true,star4: false,star5: false })}/>
+                                                                    <label htmlFor="rate-3" className="fas fa-star"></label>
+
+                                                                    <input type="radio" name="rate" id="rate-2"
+                                                                           checked={orderDetail.star2}
+                                                                           onChange={(e) => setOrderDetail({
+                                                                               ...orderDetail,
+                                                                               star1: false,star2: true,
+                                                                               star3: false,star4: false,star5: false })}/>
+                                                                    <label htmlFor="rate-2" className="fas fa-star"></label>
+
+                                                                    <input type="radio" name="rate" id="rate-1"
+                                                                           checked={orderDetail.star1}
+                                                                           onChange={(e) => setOrderDetail({
+                                                                               ...orderDetail,
+                                                                               star1: true,star2: false,
+                                                                               star3: false,star4: false,star5:false })}/>
+                                                                    <label htmlFor="rate-1" className="fas fa-star"></label>
+
+                                                                    <br/>
+                                                                    <span></span>
+                                                                </div>
+                                                                <div className="form-group">
+                                                                    <label htmlFor="message-text"
+                                                                           className="col-form-label">Comment:</label>
+                                                                    <textarea value={orderDetail.comment} className="form-control" id={"message-text"}
+                                                                              onChange={(e) => setOrderDetail({
+                                                                                  ...orderDetail,
+                                                                                  comment: e.target.value })}></textarea>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <div className="modal-footer">
+                                                            <button type="button" className="btn btn-secondary"
+                                                                    data-bs-dismiss="modal">Close
+                                                            </button>
+                                                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
+                                                                    onClick={()=>updateCustomerOrder()}>
+                                                                Save
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </li>
 
                                     ))}
                                 </div>
 
-                                <div style={{display:"inline-block",verticalAlign:"middle"}}>
+                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"150px"}}>
                                     Order Status:<span style={{marginLeft:"5px"}}>{order.status}</span>
                                 </div>
-
-                                <button type="button" className="btn btn-warning float-end"
-                                        data-bs-toggle="modal" data-bs-target={'#order'+order._id} data-whatever="@mdo"
-                                        style={{marginTop:"50px"}} onClick={(event) => setCustomerOrder(order)}>
-                                    Rate and Comment for your order
-                                </button>
-
-
-
-
-                                <div className="modal fade" id={'order' + order._id} tabIndex="-1" role="dialog"
-                                     aria-labelledby="false" aria-hidden="true">
-                                    <div className="modal-dialog" role="document">
-                                        <div className="modal-content backgroundColor">
-                                            <div className="modal-header">
-                                                <h5 className="modal-title">Rate and Comment for your order</h5>
-                                                <button type="button" className="close" data-bs-dismiss="modal"
-                                                        aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <div className="modal-body">
-                                                <span className="give_star">Give your stars!</span>
-                                                <form>
-                                                    <div className="form-group rate">
-                                                        <input type="radio" name="rate" id="rate-5"
-                                                               checked={customerOrder.star5}
-                                                               onChange={(e) => setCustomerOrder({
-                                                                   ...customerOrder,star1: false,star2: false,
-                                                                   star3: false,star4: false,star5: true })}/>
-                                                        <label htmlFor="rate-5" className="fas fa-star"></label>
-
-                                                        <input type="radio" name="rate" id="rate-4"
-                                                               checked={customerOrder.star4}
-                                                               onChange={(e) => setCustomerOrder({
-                                                                   ...customerOrder,star1: false,star2: false,
-                                                                   star3: false,star4: true,star5: false })}/>
-                                                        <label htmlFor="rate-4" className="fas fa-star"></label>
-
-                                                        <input type="radio" name="rate" id="rate-3"
-                                                               checked={customerOrder.star3}
-                                                               onChange={(e) => setCustomerOrder({
-                                                                   ...customerOrder,
-                                                                   star1: false,star2: false,
-                                                                   star3: true,star4: false,star5: false })}/>
-                                                        <label htmlFor="rate-3" className="fas fa-star"></label>
-
-                                                        <input type="radio" name="rate" id="rate-2"
-                                                               checked={customerOrder.star2}
-                                                               onChange={(e) => setCustomerOrder({
-                                                                   ...customerOrder,
-                                                                   star1: false,star2: true,
-                                                                   star3: false,star4: false,star5: false })}/>
-                                                        <label htmlFor="rate-2" className="fas fa-star"></label>
-
-                                                        <input type="radio" name="rate" id="rate-1"
-                                                               checked={customerOrder.star1}
-                                                               onChange={(e) => setCustomerOrder({
-                                                                   ...customerOrder,
-                                                                   star1: true,star2: false,
-                                                                   star3: false,star4: false,star5:false })}/>
-                                                        <label htmlFor="rate-1" className="fas fa-star"></label>
-
-                                                        <br/>
-                                                        <span></span>
-                                                    </div>
-                                                    <div className="form-group">
-                                                        <label htmlFor="message-text"
-                                                               className="col-form-label">Comment:</label>
-                                                        <textarea value={customerOrder.comment} className="form-control" id={"message-text"}
-                                                                  onChange={(e) => setCustomerOrder({
-                                                                      ...customerOrder,
-                                                                      comment: e.target.value })}></textarea>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div className="modal-footer">
-                                                <button type="button" className="btn btn-secondary"
-                                                        data-bs-dismiss="modal">Close
-                                                </button>
-                                                <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                                                onClick={()=>updateCustomerOrder()}>
-                                                    Save
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
 
                                 <hr className="hr-style"></hr>
 
