@@ -1,35 +1,35 @@
 import React, {useEffect, useState} from 'react';
-import db from "../Database";
+import db from "../../Database";
 import './ShoppingCart.css';
 import {useParams} from "react-router-dom";
+import * as client from "./client";
 
 function ShoppingCart() {
   const {userId} = useParams();
-  const [items, setItems] = useState(db.shoppingCart.filter(a => a.userId === userId));
-  const [pastOrders,setPastOrders] = useState(db.customerOrder)
+  const [items, setItems] = useState([]);
+
+  const [pastOrders,setPastOrders] = useState([])
   const [pastOrder,setPastOrder] = useState({})
-  const user = db.users.find(a => a._id === userId)
 
   const removeItem = (itemId) => {
-    setItems(items.filter(item => item.id !== itemId));
+    setItems(items.filter(item => item._id !== itemId));
   };
 
   const updateQuantity = (itemId, quantity) => {
-    setItems(items.map(item => item.id === itemId ? { ...item, quantity } : item));
+    setItems(items.map(item => item._id === itemId ? { ...item, quantity } : item));
   };
 
   const calculateTotal = () => {
     return items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
   };
 
-
   const handleCheck = () => {
       setPastOrder(
         { "_id": new Date().getTime().toString(),
-        "userName": user.userName,
+        "userId":userId,
         "date": getTime(),
         "price": calculateTotal(),
-        "food": [
+        "food":
             items.map(item => (
                     [item.quantity, {"_id": new Date().getTime(),
                         "name": item.name,
@@ -39,14 +39,19 @@ function ShoppingCart() {
                         "star4": false,
                         "star5": false,
                         "comment": ""}]
-                ))
-        ],
+                )),
         "status": "completed",
         "image": items[0].image
     })
-
-    setPastOrders([...pastOrders,pastOrder])
   };
+
+    const createPastOrders = () => {
+
+        client.addPastOrders(userId, pastOrder).then((pastOrders) => {
+            setPastOrders([...pastOrders]);
+            console.log(pastOrders)
+        });
+    };
 
 
     const getTime = () =>{
@@ -60,14 +65,25 @@ function ShoppingCart() {
         return year+'-'+(month<10?'0'+month:month)+'-'+(day<10?'0'+day:day)+' '+(hour<10?'0'+hour:hour)+':'+(minute<10?'0'+minute:minute)+':'+(second<10?'0'+second:second)
     }
 
+    useEffect(() => {
+        client.findShoppingCart(userId)
+            .then((items) =>
+                setItems(items)
+            );
+
+        client.findPastOrders(userId)
+            .then((items) =>
+                setPastOrders(items)
+            );
+    }, [userId]);
 
 
-  return (
+    return (
     <div className="ShoppingCart">
       <h2>Your Shopping Cart</h2>
       <div className="cart-items">
         {items.map(item => (
-          <div className="cart-item" key={item.id}>
+          <div className="cart-item" key={item._id}>
             <div className="item-info">
               <h3>{item.name}</h3>
               <p>${item.price}</p>
@@ -76,11 +92,11 @@ function ShoppingCart() {
               <input
                 type="number"
                 value={item.quantity}
-                onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                onChange={(e) => updateQuantity(item._id, parseInt(e.target.value))}
                 min="1"
               />
             </div>
-            <button className="remove-item" onClick={() => removeItem(item.id)}>
+            <button className="remove-item" onClick={() => removeItem(item._id)}>
               Remove
             </button>
           </div>
@@ -88,7 +104,10 @@ function ShoppingCart() {
       </div>
       <div className="cart-summary">
         <h3>Total: ${calculateTotal()}</h3>
-        <button className="checkout-button" onClick={()=>handleCheck()}>Proceed to Checkout</button>
+        <button className="checkout-button" onClick={()=> {
+            handleCheck();
+            createPastOrders();
+        }}>Proceed to Checkout</button>
       </div>
     </div>
   );

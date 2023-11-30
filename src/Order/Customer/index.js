@@ -3,16 +3,16 @@ import {Link, useParams} from "react-router-dom";
 import "./index.css";
 import sandwich1 from "../../images/sandwich1.jpg"
 
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import * as client from "../../User/ShoppingCart/client";
 
 function Customer() {
     const {userId} = useParams()
-    const [customerOrders, setCustomerOrders] = useState(
-        db.customerOrder.filter((user) => user.userId == userId));
+    const [customerOrders, setCustomerOrders] = useState([]);
 
     const [customerOrder, setCustomerOrder] = useState({});
 
-    const [orderDetails, setOrderDetails] = useState({});
+    const [orderDetails, setOrderDetails] = useState([]);
     const [orderDetail, setOrderDetail] = useState({
         "name": "Onion Rings",
         "star1": false,
@@ -49,6 +49,13 @@ function Customer() {
             })
         );
     }
+
+    useEffect(() => {
+        client.findPastOrders(userId)
+            .then((items) =>
+                setCustomerOrders(items)
+            );
+    }, [userId]);
 
 
     return (

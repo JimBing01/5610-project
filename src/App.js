@@ -9,21 +9,24 @@ import Customer from "./Order/Customer";
 import Delivery from "./Order/Delivery";
 import Restaurant from "./Order/Restaurant";
 
+
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/home/:userId" element={<Home />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/user/:userId/*" element={<User />} />
-        <Route path="/login/*" element={<Login />} />
-        <Route path="/customer"         element={<Customer/>}/>
-        <Route path="/delivery"         element={<Delivery/>}/>
-        <Route path="/restaurant"         element={<Restaurant/>}/>
-      </Routes>
-    </Router>
+
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/home/:userId" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/user/:userId/*" element={<User />} />
+          <Route path="/login/*" element={<Login />} />
+          <Route path="/customer"         element={<Customer/>}/>
+          <Route path="/delivery"         element={<Delivery/>}/>
+          <Route path="/restaurant"         element={<Restaurant/>}/>
+        </Routes>
+      </Router>
+
   );
 }
 

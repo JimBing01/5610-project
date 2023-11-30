@@ -5,7 +5,7 @@ import PaymentMethods from './PaymentMethods';
 import Addresses from './Addresses';
 
 import SideBar from './SideBar';
-import ShoppingCart from './ShoppingCart';
+import ShoppingCart from './ShoppingCart/ShoppingCart';
 import './index.css';
 import Customer from "../Order/Customer";
 
