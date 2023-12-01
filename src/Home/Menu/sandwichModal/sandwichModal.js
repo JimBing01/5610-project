@@ -4,6 +4,8 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import reviewsDatabase from "../../../Database/Reviews.json";
 import db from "../../../Database";
 import {useParams} from "react-router-dom";
+import * as client from "./client";
+
 
 
 function SandwichModal({ sandwich, onClose }) {
@@ -12,7 +14,7 @@ function SandwichModal({ sandwich, onClose }) {
         db.shoppingCart.filter((user) => user.userId == userId));
 
     const [currentItem, setCurrentItem] = useState({
-        "_id":new Date(),
+        "_id":new Date() + sandwich.name,
         "userId": userId,
         "name": sandwich.name,
         "description": sandwich.description,
@@ -31,13 +33,14 @@ function SandwichModal({ sandwich, onClose }) {
         }
     };
 
-    const addCart = () =>{
+    const addCart = () => {
         setCurrentItem({...currentItem,quantity: currentItem.quantity + 1})
-        setShoppingCarts({...shoppingCarts,currentItem})
 
-    }
-
-
+        client.addShoppingCart(userId, currentItem).then((wholeShoppingCarts) => {
+            setShoppingCarts(wholeShoppingCarts)
+            console.log(shoppingCarts)
+        });
+    };
 
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>

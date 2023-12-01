@@ -9,3 +9,10 @@ export const findPastOrders = async (userId) => {
 
     return response.data;
 };
+
+export const updatePastOrders = async (userId,customerOrder) => {
+    const response = await axios
+        .put(`${USER_URL}/${userId}/pastOrders`,customerOrder);
+
+    return response.data;
+};

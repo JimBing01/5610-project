@@ -31,7 +31,7 @@ function ShoppingCart() {
         "price": calculateTotal(),
         "food":
             items.map(item => (
-                    [item.quantity, {"_id": new Date().getTime(),
+                    [item.quantity, {"_id": new Date().getTime() + item.name,
                         "name": item.name,
                         "star1": false,
                         "star2": false,

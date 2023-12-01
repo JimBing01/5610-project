@@ -4,7 +4,8 @@ import "./index.css";
 import sandwich1 from "../../images/sandwich1.jpg"
 
 import {useEffect, useState} from "react";
-import * as client from "../../User/ShoppingCart/client";
+import * as client from "./client";
+
 
 function Customer() {
     const {userId} = useParams()
@@ -49,12 +50,17 @@ function Customer() {
             })
         );
     }
+    const updateOrder = async (order) => {
+        await client.updatePastOrders(userId,order);
+        updateCustomerOrder();
+    };
 
     useEffect(() => {
         client.findPastOrders(userId)
             .then((items) =>
                 setCustomerOrders(items)
             );
+
     }, [userId]);
 
 
@@ -170,7 +176,8 @@ function Customer() {
                                                                     data-bs-dismiss="modal">Close
                                                             </button>
                                                             <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
-                                                                    onClick={()=>updateCustomerOrder()}>
+                                                                    onClick={()=>{
+                                                                        updateOrder(updateOrderDetail(order))}}>
                                                                 Save
                                                             </button>
                                                         </div>
