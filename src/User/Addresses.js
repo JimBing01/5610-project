@@ -1,26 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './Addresses.css';
+import * as client from './client';
 
 function Addresses() {
+  const { userId } = useParams();
   // Initial state for address information
-  const [addresses, setAddresses] = useState([
-    {
-      street: '123 Maple Street',
-      city: 'Anytown',
-      state: 'NY',
-      zipCode: '12345',
-      country: 'USA',
-      isDefault: true,
-    },
-    // ... more addresses
-  ]);
+  const [addresses, setAddresses] = useState([]);
 
   // State to manage edit mode for each address
   const [editModeIndex, setEditModeIndex] = useState(null);
 
   // State to manage temporary form values
   const [tempAddress, setTempAddress] = useState({});
+  // Fetch user addresses
+  useEffect(() => {
+    async function fetchUserAddresses() {
+      try {
+        client.getUserAddresses(userId).then((data) => {
+          setAddresses(data);
+        });
+      } catch (error) {
+        console.error('Failed to fetch user addresses:', error);
+      }
+    }
 
+    fetchUserAddresses();
+  }, []);
   // Function to toggle edit mode on and off
   const toggleEditMode = (index) => {
     setEditModeIndex(index);
