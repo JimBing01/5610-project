@@ -10,7 +10,7 @@ import * as client from "./client";
 
 function SandwichModal({ sandwich, onClose }) {
 
-     const {userId} = useParams();
+    const { userId } = useParams();
     const [shoppingCarts, setShoppingCarts] = useState(
         db.shoppingCart.filter((user) => user.userId == userId));
 
@@ -23,6 +23,18 @@ function SandwichModal({ sandwich, onClose }) {
         "image": sandwich.image,
         "quantity": 0
     });
+    useEffect(() => {
+        setCurrentItem({
+            "_id": new Date() + sandwich.name,
+            "userId": userId,
+            "name": sandwich.name,
+            "description": sandwich.description,
+            "price": sandwich.price,
+            "image": sandwich.image,
+            "quantity": 0
+        });
+    }, [sandwich]);
+    
 
     if (!sandwich) return null;
 

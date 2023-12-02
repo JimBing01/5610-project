@@ -1,11 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link, useLocation, useParams} from "react-router-dom";
 import { BiUserCircle, BiHome, BiMenu } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./index.css";
 import SearchBar from "../Menu/SearchBar"
 
-function HorizontalNavigation({userId}) {
+function HorizontalNavigation({userId, onSelectSandwich}) {
 
 	const leftLinks = [
 		{ name: "Home", icon: <BiHome className="nav-icon" />, to: "/home" },
@@ -65,7 +65,7 @@ Remember, this approach works for projects set up with Create React App. If you 
 
 			<div className="nav-group right">
 				<div className="search-bar">
-					<SearchBar />
+					<SearchBar onSelectSandwich={onSelectSandwich} />
 				</div>
 				{rightLinks.map((link, index) => (
 					<Link

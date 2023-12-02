@@ -1,7 +1,10 @@
 import axios from "axios";
-const SANDWICHES_URL = 'http://localhost:4000/api/sandwiches';
+
+const API_BASE = "http://localhost:4000/api";
+const SANDWICHES_URL = `${API_BASE}/sandwiches`;
 
 export const getSandwichByName = async (name) => {
-    const { data } = await axios.get(`${SANDWICHES_URL}/${name}`);
+    const { data } = await axios.get(`${SANDWICHES_URL}/search`, { params: { name } });
     return data;
-}
+  };
+  
