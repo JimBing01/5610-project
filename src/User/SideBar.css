@@ -2,7 +2,10 @@
     padding: 20px;
     width: 250px; /* Adjust the width as necessary */
     height: 100vh; /* Full height of the viewport */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow to lift off the page */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+    vertical-align: top;
+    /* Slight shadow to lift off the page */
   }
   
   .Sidebar ul {

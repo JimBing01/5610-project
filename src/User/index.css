@@ -36,7 +36,7 @@ ol, ul {
 }
 
 /* Application styles */
-.App {
+.user {
   display: flex;
   min-height: 100vh;
 }
@@ -68,6 +68,8 @@ ol, ul {
 .MainContent {
   flex-grow: 1;
   padding: 20px;
+  display: inline-block;
+  width: 80%;
 }
 
 .MainContent a {
@@ -81,6 +83,8 @@ ol, ul {
 }
 
  /* define background color using rgb */
-  .App {
-    background-color: rgb(244, 243, 231) !important;
-  }
+.user {
+  background-color: rgb(244, 243, 231) !important;
+  display: inline-block;
+  width: 100%;
+}

@@ -41,10 +41,14 @@ function Menu() {
 				<h3>{sandwich.name}</h3>
 				<p>{sandwich.description || "Delicious sandwich"}</p>
 				<span>{sandwich.price}</span>
-				<IoAddOutline className="add-icon" />
+
+				<IoAddOutline className="add-icon"/>
+
+
 			</div>
 		));
 	};
+
 	useEffect(() => {
 		if (isModalOpen) {
 			document.body.classList.add("no-scroll");

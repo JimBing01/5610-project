@@ -57,7 +57,7 @@ const SignupForm = ({ onSignup }) => {
                         <input type="radio" value="delivery" name="role" required /> Delivery Person
                     </div>
                 </div>
-                <button type="submit">Sign up</button>
+                <button type="submit">Register me</button>
             </form>
         </div>
     );

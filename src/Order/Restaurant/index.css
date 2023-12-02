@@ -1,0 +1,33 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.backgroundColor{
+    background-color: rgb(244, 243, 231);
+}
+
+.hr-style{
+    align:left;
+    width:100%;
+    color:#2F4F4F;
+}
+
+.numberSquare {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
+    border: 1px solid #545454;
+}
+
+.numberSquare .number {
+    text-align: center;
+    line-height: 20px;
+    display: block;
+}
+
+.font-color{
+    color: #545454;
+}

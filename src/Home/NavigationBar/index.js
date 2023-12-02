@@ -1,11 +1,12 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import {Link, useLocation, useParams} from "react-router-dom";
 import { BiUserCircle, BiHome, BiMenu } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./index.css";
 import SearchBar from "../Menu/SearchBar"
 
-function HorizontalNavigation() {
+function HorizontalNavigation({userId}) {
+
 	const leftLinks = [
 		{ name: "Home", icon: <BiHome className="nav-icon" />, to: "/home" },
 		// { name: "Menu", icon: <BiMenu className="nav-icon" />, to: "/menu" },
@@ -15,12 +16,12 @@ function HorizontalNavigation() {
 		{
 			name: "Account",
 			icon: <BiUserCircle className="nav-icon" />,
-			to: "/user/*",
+			to: userId == undefined ? '/login' : '/user/'+userId,
 		},
 		{
 			name: "Cart",
 			icon: <AiOutlineShoppingCart className="nav-icon" />,
-			to: "/cart",
+			to: userId == undefined ? '/login' : "/user/"+userId + "/shopping-cart",
 		},
 	];
 
@@ -28,6 +29,7 @@ function HorizontalNavigation() {
 
 	return (
 		<div className="horizontal-navigation">
+
 			<div className="nav-group left">
 				{leftLinks.map((link, index) => (
 					<Link
