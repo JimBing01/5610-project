@@ -10,3 +10,8 @@ export const getUserAddresses = async (id) => {
     const { data } = await axios.get(`${ACCOUNT_URL}/${id}/addresses`);
     return data;
 }
+
+export const getUserPaymentMethods = async (id) => {
+    const { data } = await axios.get(`${ACCOUNT_URL}/${id}/payments`);
+    return data;
+}
