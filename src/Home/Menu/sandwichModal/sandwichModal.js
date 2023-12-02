@@ -4,8 +4,6 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import reviewsDatabase from "../../../Database/Reviews.json";
 
 function SandwichModal({ sandwich, onClose }) {
-    if (!sandwich) return null;
-
     const sandwichData = reviewsDatabase.find(s => s.name === sandwich.name) || { reviews: [] };
 
     const handleOverlayClick = (e) => {

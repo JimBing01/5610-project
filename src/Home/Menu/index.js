@@ -12,6 +12,7 @@ function Menu() {
 	const [selectedSandwich, setSelectedSandwich] = useState(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
+
 	const handleMenuClick = (menu) => {
 		setActiveMenu(menu);
 	};
@@ -26,6 +27,7 @@ function Menu() {
 		setSelectedSandwich(null);
 	};
 
+	
 	const renderSandwiches = (sandwiches) => {
 		return sandwiches.map((sandwich, index) => (
 			<div
@@ -43,7 +45,6 @@ function Menu() {
 			</div>
 		));
 	};
-
 	useEffect(() => {
 		if (isModalOpen) {
 			document.body.classList.add("no-scroll");
@@ -54,6 +55,7 @@ function Menu() {
 		// Cleanup function
 		return () => document.body.classList.remove("no-scroll");
 	}, [isModalOpen]);
+
 
 	return (
 		<div className="menu">
