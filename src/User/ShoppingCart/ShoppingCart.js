@@ -12,11 +12,15 @@ function ShoppingCart() {
   const [pastOrder,setPastOrder] = useState({})
 
   const removeItem = (itemId) => {
-    setItems(items.filter(item => item._id !== itemId));
+       client.deleteShoppingCart(userId,itemId).then((status) => {
+           setItems(items.filter(item => item._id !== itemId));
+       });
   };
 
   const updateQuantity = (itemId, quantity) => {
-    setItems(items.map(item => item._id === itemId ? { ...item, quantity } : item));
+      client.updateShoppingCart(userId,itemId,quantity).then((status) => {
+          setItems(items.map(item => item._id === itemId ? { ...item, quantity } : item));
+      });
   };
 
   const calculateTotal = () => {
@@ -49,7 +53,7 @@ function ShoppingCart() {
 
         client.addPastOrders(userId, pastOrder).then((pastOrders) => {
             setPastOrders([...pastOrders]);
-            console.log(pastOrders)
+            setItems([]);
         });
     };
 
@@ -92,7 +96,11 @@ function ShoppingCart() {
               <input
                 type="number"
                 value={item.quantity}
-                onChange={(e) => updateQuantity(item._id, parseInt(e.target.value))}
+                onChange={
+                  (e) => {
+                      updateQuantity(item._id, parseInt(e.target.value));
+                  }
+              }
                 min="1"
               />
             </div>
@@ -104,10 +112,40 @@ function ShoppingCart() {
       </div>
       <div className="cart-summary">
         <h3>Total: ${calculateTotal()}</h3>
-        <button className="checkout-button" onClick={()=> {
-            handleCheck();
-            createPastOrders();
-        }}>Proceed to Checkout</button>
+
+
+          <button type="button" className="checkout-button"
+                  data-bs-toggle="modal" data-bs-target={'#checkout'+new Date().getTime().toString()}
+                  style={{marginTop:"0px"}}
+                  onClick = {()=>handleCheck()}
+
+          >
+              Proceed to Checkout
+          </button>
+
+          <div className="modal fade" id={'checkout'+new Date().getTime().toString()} data-bs-backdrop="false"
+               data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel"
+               aria-hidden="true">
+              <div className="modal-dialog">
+                  <div className="modal-content">
+                      <div className="modal-header">
+                          <h5 className="modal-title" id="staticBackdropLabel">Check Out</h5>
+                          <button type="button" className="btn-close" data-bs-dismiss="modal"
+                                  aria-label="Close"></button>
+                      </div>
+                      <div className="modal-body">
+                          Please make sure you are ready to check out
+                      </div>
+                      <div className="modal-footer">
+                          <button type="button" className="btn btn-secondary"
+                                  data-bs-dismiss="modal">No
+                          </button>
+                          <button type="button" className="btn btn-primary" data-bs-dismiss="modal"
+                                  onClick={() => createPastOrders()}>Yes</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
     </div>
   );

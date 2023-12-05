@@ -8,11 +8,13 @@ import SideBar from './SideBar';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
 import './index.css';
 import Customer from "../Order/Customer";
+import NavigationBar from "../Home/NavigationBar";
 
 function User() {
     const {userId} = useParams();
     return (
       <div className="user">
+        <NavigationBar/>
         <SideBar userId = {userId}/>
 
         <div className="MainContent">

@@ -5,10 +5,12 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./index.css";
 import SearchBar from "../Menu/SearchBar"
 
-function HorizontalNavigation({userId, onSelectSandwich}) {
-
+function HorizontalNavigation({onSelectSandwich}) {
+	const {userId} = useParams();
+	const {role} = useParams();
 	const leftLinks = [
-		{ name: "Home", icon: <BiHome className="nav-icon" />, to: "/home" },
+		{ name: "Home", icon: <BiHome className="nav-icon" />,
+			to: userId == undefined ? '/home' : '/home/'+ role +'/'+userId},
 		// { name: "Menu", icon: <BiMenu className="nav-icon" />, to: "/menu" },
 	];
 

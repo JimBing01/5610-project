@@ -23,7 +23,11 @@
     padding: 15px 0;
     border-bottom: 1px solid #ececec;
   }
-  
+
+  .item-info{
+    width: 300px;
+  }
+
   .item-info h3 {
     font-size: 1.2em;
     color: #333;
@@ -33,7 +37,11 @@
     font-size: 1em;
     color: #666;
   }
-  
+
+  .item-quantity  {
+    margin-left: 10px;
+  }
+
   .item-quantity input {
     width: 50px;
     padding: 5px;

@@ -21,20 +21,9 @@ function SandwichModal({ sandwich, onClose }) {
         "description": sandwich.description,
         "price": sandwich.price,
         "image": sandwich.image,
-        "quantity": 0
+        "quantity": 1
     });
-    useEffect(() => {
-        setCurrentItem({
-            "_id": new Date() + sandwich.name,
-            "userId": userId,
-            "name": sandwich.name,
-            "description": sandwich.description,
-            "price": sandwich.price,
-            "image": sandwich.image,
-            "quantity": 0
-        });
-    }, [sandwich]);
-    
+
 
     if (!sandwich) return null;
 
@@ -47,11 +36,8 @@ function SandwichModal({ sandwich, onClose }) {
     };
 
     const addCart = () => {
-        setCurrentItem({...currentItem,quantity: currentItem.quantity + 1})
-
         client.addShoppingCart(userId, currentItem).then((wholeShoppingCarts) => {
             setShoppingCarts(wholeShoppingCarts)
-            console.log(shoppingCarts)
         });
     };
 
