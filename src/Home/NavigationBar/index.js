@@ -7,10 +7,22 @@ import SearchBar from "../Menu/SearchBar"
 
 function HorizontalNavigation({onSelectSandwich}) {
 	const {userId} = useParams();
-	const {role} = useParams();
+	const { pathname } = useLocation();
+
+	let temp = null;
+	if(pathname.includes('user')) {
+		temp = 'user/' + userId
+	} else if(pathname.includes('restaurant')) {
+		temp = 'restaurant/'+ userId
+	} else if(pathname.includes('delivery')) {
+		temp = 'delivery/'+ userId
+	}
+
 	const leftLinks = [
 		{ name: "Home", icon: <BiHome className="nav-icon" />,
-			to: userId == undefined ? '/home' : '/home/'+ role +'/'+userId},
+			to: temp == null ? '/home' : '/home/'+ temp
+
+		},
 		// { name: "Menu", icon: <BiMenu className="nav-icon" />, to: "/menu" },
 	];
 
@@ -18,16 +30,15 @@ function HorizontalNavigation({onSelectSandwich}) {
 		{
 			name: "Account",
 			icon: <BiUserCircle className="nav-icon" />,
-			to: userId == undefined ? '/login' : '/user/'+userId,
+			to: temp == null ? '/login' : '/'+temp,
 		},
 		{
 			name: "Cart",
 			icon: <AiOutlineShoppingCart className="nav-icon" />,
-			to: userId == undefined ? '/login' : "/user/"+userId + "/shopping-cart",
+			to: temp == null ? '/login' : "/" + temp + "/shopping-cart",
 		},
 	];
 
-	const { pathname } = useLocation();
 
 	return (
 		<div className="horizontal-navigation">

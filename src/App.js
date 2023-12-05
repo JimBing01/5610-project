@@ -7,7 +7,8 @@ import Login from "./Login";
 import Menu from "./Home/Menu";
 import Customer from "./Order/Customer";
 import Delivery from "./Order/Delivery";
-import Restaurant from "./Order/Restaurant";
+import Restaurant from "./Restaurant";
+
 
 
 function App() {
@@ -18,12 +19,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
           <Route path="/home/:role/:userId" element={<Home />} />
+          <Route path="/home/:role" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
-          <Route path="/:role/:userId/*" element={<User />} />
+          <Route path="/user/:userId/*" element={<User />} />
+          <Route path="/restaurant/:userId/*" element={<Restaurant />} />
           <Route path="/login/*" element={<Login />} />
-          <Route path="/customer"         element={<Customer/>}/>
-          <Route path="/delivery"         element={<Delivery/>}/>
-          <Route path="/restaurant"         element={<Restaurant/>}/>
         </Routes>
       </Router>
 
