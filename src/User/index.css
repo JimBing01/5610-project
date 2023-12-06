@@ -72,6 +72,10 @@ ol, ul {
   width: 80%;
 }
 
+user-main {
+  margin-top: 50px !important;
+}
+
 .MainContent a {
   color: none;
   background-color: none !important;

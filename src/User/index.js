@@ -3,7 +3,7 @@ import {Routes, Route, useParams} from 'react-router-dom';
 import AccountInfo from './AccountInfo';
 import PaymentMethods from './PaymentMethods';
 import Addresses from './Addresses';
-
+import Header from './Header';
 import SideBar from './SideBar';
 import ShoppingCart from './ShoppingCart/ShoppingCart';
 import './index.css';
@@ -14,11 +14,12 @@ import Restaurant from "../Order/Restaurant";
 function User() {
     const {userId} = useParams();
     return (
+      
       <div className="user">
         <NavigationBar/>
         <SideBar userId = {userId}/>
 
-        <div className="MainContent">
+        <div className="MainContent user-main">
           <Routes>
             <Route path="account-info" element={<AccountInfo />} />
             <Route path="payment-methods" element={<PaymentMethods />} />

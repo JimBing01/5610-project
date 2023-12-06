@@ -1,77 +1,92 @@
-import React, { useEffect, useState } from 'react';
-import './PaymentMethods.css';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import './PaymentMethods.css';
 import * as client from './client';
 
 function PaymentMethods() {
   const { userId } = useParams();
-  // Updated initial state for payment methods
-  const [paymentMethods, setPaymentMethods] = useState([
+  const [paymentMethods, setPaymentMethods] = useState([]);
+  const [editModeIndex, setEditModeIndex] = useState(null);
+  const [tempCard, setTempCard] = useState({});
+  const [newCard, setNewCard] = useState({ type: '', cardNumber: '', expirationDate: '', securityCode: '', isDefault: false });
 
-  ]);
+  const fetchUserPaymentMethods = async () => {
+    const data = await client.getUserPaymentMethods(userId);
+    setPaymentMethods(data);
+  };
 
-  // State to manage new card form
-  const [newCard, setNewCard] = useState({
-    type: '',
-    cardNumber: '',
-    expirationDate: '',
-    securityCode: '',
-    isDefault: false,
-  });
-
-useEffect(() => {
-    async function fetchUserPaymentMethods() {
-      try {
-        client.getUserPaymentMethods(userId).then((data) => {
-          setPaymentMethods(data);
-        });
-      } catch (error) {
-        console.error('Failed to fetch user payment methods:', error);
-      }
-    }
-
+  useEffect(() => {
     fetchUserPaymentMethods();
-  }, []);
+  }, [userId]);
 
-  // Function to handle form field changes
-  const handleInputChange = (e, index) => {
+  const toggleEditMode = (index) => {
+    setEditModeIndex(index);
+    setTempCard({ ...paymentMethods[index] });
+  };
+
+  const handleInputChange = (e) => {
     const { name, value } = e.target;
-    const newPaymentMethods = [...paymentMethods];
-    newPaymentMethods[index][name] = value;
-    setPaymentMethods(newPaymentMethods);
+    setTempCard({ ...tempCard, [name]: value });
   };
 
-  // Function to add a new card
-  const handleAddCard = () => {
-    if (newCard.type && newCard.cardNumber && newCard.expirationDate && newCard.securityCode) {
-      setPaymentMethods([...paymentMethods, { ...newCard, isDefault: false }]);
-      setNewCard({ type: '', cardNumber: '', expirationDate: '', securityCode: '', isDefault: false }); // Reset the new card form
-    }
+  const handleSave = async (index) => {
+    await client.updateUserPaymentMethod(paymentMethods[index].pid, tempCard);
+    fetchUserPaymentMethods();
+    setEditModeIndex(null);
   };
 
-  // Function to handle saving the edited card
-  const handleSave = (index) => {
-    // TODO: Save the updated card information to the server
+  const handleCancel = () => {
+    setEditModeIndex(null);
+  };
+
+  const handleDelete = async (pid) => {
+    await client.deleteUserPaymentMethod(pid);
+    fetchUserPaymentMethods();
+  };
+
+  const handleAddCard = async () => {
+    await client.addUserPaymentMethod(userId, newCard);
+    fetchUserPaymentMethods();
+    setNewCard({ type: '', cardNumber: '', expirationDate: '', securityCode: '', isDefault: false });
+  };
+
+  const handleNewCardChange = (e) => {
+    const { name, value } = e.target;
+    setNewCard({ ...newCard, [name]: value });
   };
 
   return (
     <div className="PaymentMethods">
       <h2>Payment Methods</h2>
       {paymentMethods.map((method, index) => (
-        <div key={index} className="PaymentMethod">
-          <input type="text" name="type" value={method.type} onChange={(e) => handleInputChange(e, index)} />
-          <input type="text" name="cardNumber" value={method.cardNumber} placeholder="Card Number" onChange={(e) => handleInputChange(e, index)} />
-          <input type="text" name="expirationDate" value={method.expirationDate} placeholder="Expiration Date (MM/YY)" onChange={(e) => handleInputChange(e, index)} />
-          <input type="password" name="securityCode" value={method.securityCode} placeholder="Security Code" onChange={(e) => handleInputChange(e, index)} />
-          {method.isDefault && <p className="default">(Default)</p>}
-          <button onClick={() => handleSave(index)}>Save</button>
+        <div key={index}>
+          {editModeIndex === index ? (
+            <div>
+              <input type="text" name="type" value={tempCard.type || ''} onChange={handleInputChange} />
+              <input type="text" name="cardNumber" value={tempCard.cardNumber || ''} onChange={handleInputChange} />
+              <input type="text" name="expirationDate" value={tempCard.expirationDate || ''} onChange={handleInputChange} />
+              <input type="password" name="securityCode" value={tempCard.securityCode || ''} onChange={handleInputChange} />
+              <button onClick={() => handleSave(index)}>Save</button>
+              <button onClick={handleCancel}>Cancel</button>
+              <button onClick={() => handleDelete(method.pid)}>Delete</button>
+            </div>
+          ) : (
+            <div>
+              <p>{method.type}</p>
+              <p>{method.cardNumber}</p>
+              <p>{method.expirationDate}</p>
+              {method.isDefault && <strong>Default Payment Method</strong>}
+              <button onClick={() => toggleEditMode(index)}>Edit</button>
+            </div>
+          )}
         </div>
       ))}
-      <div className="AddPaymentMethod">
-        <input type="text" name="type" placeholder="Card Type" value={newCard.type} onChange={(e) => setNewCard({ ...newCard, type: e.target.value })} />
-        <input type="text" name="cardNumber" placeholder="Card Number" value={newCard.cardNumber} onChange={(e) => setNewCard({ ...newCard, cardNumber: e.target.value })} />
-        <input type="text" name="expirationDate" placeholder="Expiration Date (MM/YY)" value={newCard.expirationDate} onChange={(e) => setNewCard({ ...newCard, expirationDate: e.target.value })} />
-        <input type="password" name="securityCode" placeholder="Security Code" value={newCard.securityCode} onChange={(e) => setNewCard({ ...newCard, securityCode: e.target.value })} />
+      <div className="new-card">
+        <h3>Add New Card</h3>
+        <input type="text" name="type" value={newCard.type} placeholder="Card Type" onChange={handleNewCardChange} />
+        <input type="text" name="cardNumber" value={newCard.cardNumber} placeholder="Card Number" onChange={handleNewCardChange} />
+        <input type="text" name="expirationDate" value={newCard.expirationDate} placeholder="Expiration Date (MM/YY)" onChange={handleNewCardChange} />
+        <input type="password" name="securityCode" value={newCard.securityCode} placeholder="Security Code" onChange={handleNewCardChange} />
         <button onClick={handleAddCard}>Add Card</button>
       </div>
     </div>
