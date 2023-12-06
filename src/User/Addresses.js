@@ -5,15 +5,10 @@ import * as client from './client';
 
 function Addresses() {
   const { userId } = useParams();
-  // Initial state for address information
   const [addresses, setAddresses] = useState([]);
-
-  // State to manage edit mode for each address
   const [editModeIndex, setEditModeIndex] = useState(null);
-
-  // State to manage temporary form values
   const [tempAddress, setTempAddress] = useState({});
-  // Fetch user addresses
+
   useEffect(() => {
     async function fetchUserAddresses() {
       try {
@@ -26,31 +21,41 @@ function Addresses() {
     }
 
     fetchUserAddresses();
-  }, []);
-  // Function to toggle edit mode on and off
+  }, [userId]);
+
   const toggleEditMode = (index) => {
     setEditModeIndex(index);
     setTempAddress({ ...addresses[index] });
   };
 
-  // Function to handle form field changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setTempAddress({ ...tempAddress, [name]: value });
   };
 
-  // Function to handle the save button
-  const handleSave = (index) => {
-    const updatedAddresses = [...addresses];
-    updatedAddresses[index] = { ...tempAddress };
-    setAddresses(updatedAddresses);
+  const handleSave = async (index) => {
+    try {
+      const updatedAddress = await client.updateUserAddress(userId, addresses[index].id, tempAddress);
+      const updatedAddresses = [...addresses];
+      updatedAddresses[index] = updatedAddress;
+      setAddresses(updatedAddresses);
+    } catch (error) {
+      console.error('Failed to update address:', error);
+    }
     setEditModeIndex(null);
-    // TODO: Save the updated address to the server
   };
 
-  // Function to cancel editing
   const handleCancel = () => {
     setEditModeIndex(null);
+  };
+
+  const handleDelete = async (addressId) => {
+    try {
+      await client.deleteUserAddress(userId, addressId);
+      setAddresses(addresses.filter(address => address.id !== addressId));
+    } catch (error) {
+      console.error('Failed to delete address:', error);
+    }
   };
 
   return (
@@ -67,6 +72,7 @@ function Addresses() {
               <input type="text" name="country" value={tempAddress.country} onChange={handleInputChange} />
               <button onClick={() => handleSave(index)}>Save</button>
               <button onClick={handleCancel}>Cancel</button>
+              <button onClick={() => handleDelete(address.id)}>Delete</button>
             </div>
           ) : (
             <div>

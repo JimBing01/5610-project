@@ -71,48 +71,48 @@ function AccountInfo() {
       <h2>Account Information</h2>
       {isEditMode ? (
         // Edit mode inputs
-<>
-  <input
-    type="text"
-    name="firstName"
-    value={tempUserInfo.firstName}
-    onChange={handleInputChange}
-    placeholder="First Name"
-  />
-  <input
-    type="text"
-    name="lastName"
-    value={tempUserInfo.lastName}
-    onChange={handleInputChange}
-    placeholder="Last Name"
-  />
-  <input
-    type="email"
-    name="email"
-    value={tempUserInfo.email}
-    onChange={handleInputChange}
-    placeholder="Email"
-  />
-  <input
-    type="tel"
-    name="phoneNumber"
-    value={tempUserInfo.phoneNumber}
-    onChange={handleInputChange}
-    placeholder="Phone Number"
-  />
-  <button onClick={handleSave}>Save</button>
-  <button onClick={toggleEditMode}>Cancel</button>
-</>
+        <>
+          <input
+            type="text"
+            name="firstName"
+            value={tempUserInfo.firstName}
+            onChange={handleInputChange}
+            placeholder="First Name"
+          />
+          <input
+            type="text"
+            name="lastName"
+            value={tempUserInfo.lastName}
+            onChange={handleInputChange}
+            placeholder="Last Name"
+          />
+          <input
+            type="email"
+            name="email"
+            value={tempUserInfo.email}
+            onChange={handleInputChange}
+            placeholder="Email"
+          />
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={tempUserInfo.phoneNumber}
+            onChange={handleInputChange}
+            placeholder="Phone Number"
+          />
+          <button onClick={handleSave}>Save</button>
+          <button onClick={toggleEditMode}>Cancel</button>
+        </>
 
       ) : (
         // Display user info
-<>
-  <p><strong>First Name:</strong> {userInfo.firstName}</p>
-  <p><strong>Last Name:</strong> {userInfo.lastName}</p>
-  <p><strong>Email:</strong> {userInfo.email}</p>
-  <p><strong>Phone Number:</strong> {userInfo.phoneNumber}</p>
-  <button onClick={toggleEditMode}>Edit</button>
-</>
+        <>
+          <p><strong>First Name:</strong> {userInfo.firstName}</p>
+          <p><strong>Last Name:</strong> {userInfo.lastName}</p>
+          <p><strong>Email:</strong> {userInfo.email}</p>
+          <p><strong>Phone Number:</strong> {userInfo.phoneNumber}</p>
+          <button onClick={toggleEditMode}>Edit</button>
+        </>
 
       )}
     </div>
