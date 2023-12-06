@@ -55,6 +55,8 @@ function PaymentMethods() {
     setNewCard({ ...newCard, [name]: value });
   };
 
+  const CARD_TYPES = ["Visa", "MasterCard", "American Express", "Discover"];
+
   return (
     <div className="PaymentMethods">
       <h2>Payment Methods</h2>
@@ -62,7 +64,11 @@ function PaymentMethods() {
         <div key={index}>
           {editModeIndex === index ? (
             <div>
-              <input type="text" name="type" value={tempCard.type || ''} onChange={handleInputChange} />
+                            <select name="type" value={tempCard.type || ''} onChange={handleInputChange}>
+                {CARD_TYPES.map((type, idx) => (
+                  <option key={idx} value={type}>{type}</option>
+                ))}
+              </select>
               <input type="text" name="cardNumber" value={tempCard.cardNumber || ''} onChange={handleInputChange} />
               <input type="text" name="expirationDate" value={tempCard.expirationDate || ''} onChange={handleInputChange} />
               <input type="password" name="securityCode" value={tempCard.securityCode || ''} onChange={handleInputChange} />
@@ -83,7 +89,11 @@ function PaymentMethods() {
       ))}
       <div className="new-card">
         <h3>Add New Card</h3>
-        <input type="text" name="type" value={newCard.type} placeholder="Card Type" onChange={handleNewCardChange} />
+        <select name="type" value={newCard.type} onChange={handleNewCardChange}>
+          {CARD_TYPES.map((type, idx) => (
+            <option key={idx} value={type}>{type}</option>
+          ))}
+        </select>
         <input type="text" name="cardNumber" value={newCard.cardNumber} placeholder="Card Number" onChange={handleNewCardChange} />
         <input type="text" name="expirationDate" value={newCard.expirationDate} placeholder="Expiration Date (MM/YY)" onChange={handleNewCardChange} />
         <input type="password" name="securityCode" value={newCard.securityCode} placeholder="Security Code" onChange={handleNewCardChange} />
