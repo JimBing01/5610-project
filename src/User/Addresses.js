@@ -8,18 +8,14 @@ function Addresses() {
   const [addresses, setAddresses] = useState([]);
   const [editModeIndex, setEditModeIndex] = useState(null);
   const [tempAddress, setTempAddress] = useState({});
+  const [newAddress, setNewAddress] = useState({ street: '', city: '', state: '', zipCode: '', country: '' });
+
+  const fetchUserAddresses = async () => {
+    const data = await client.getUserAddresses(userId);
+    setAddresses(data);
+  };
 
   useEffect(() => {
-    async function fetchUserAddresses() {
-      try {
-        client.getUserAddresses(userId).then((data) => {
-          setAddresses(data);
-        });
-      } catch (error) {
-        console.error('Failed to fetch user addresses:', error);
-      }
-    }
-
     fetchUserAddresses();
   }, [userId]);
 
@@ -34,14 +30,8 @@ function Addresses() {
   };
 
   const handleSave = async (index) => {
-    try {
-      const updatedAddress = await client.updateUserAddress(userId, addresses[index].id, tempAddress);
-      const updatedAddresses = [...addresses];
-      updatedAddresses[index] = updatedAddress;
-      setAddresses(updatedAddresses);
-    } catch (error) {
-      console.error('Failed to update address:', error);
-    }
+    await client.updateUserAddress(addresses[index].addressId, tempAddress);
+    fetchUserAddresses(); // Refetch addresses to update the list
     setEditModeIndex(null);
   };
 
@@ -50,12 +40,19 @@ function Addresses() {
   };
 
   const handleDelete = async (addressId) => {
-    try {
-      await client.deleteUserAddress(userId, addressId);
-      setAddresses(addresses.filter(address => address.id !== addressId));
-    } catch (error) {
-      console.error('Failed to delete address:', error);
-    }
+    await client.deleteUserAddress(addressId);
+    fetchUserAddresses(); // Refetch addresses to update the list
+  };
+
+  const handleAddAddress = async () => {
+    await client.addUserAddress(userId, newAddress);
+    fetchUserAddresses(); // Refetch addresses to update the list
+    setNewAddress({ street: '', city: '', state: '', zipCode: '', country: '' }); // Reset new address fields
+  };
+
+  const handleNewAddressChange = (e) => {
+    const { name, value } = e.target;
+    setNewAddress({ ...newAddress, [name]: value });
   };
 
   return (
@@ -65,14 +62,14 @@ function Addresses() {
         <div key={index}>
           {editModeIndex === index ? (
             <div>
-              <input type="text" name="street" value={tempAddress.street} onChange={handleInputChange} />
-              <input type="text" name="city" value={tempAddress.city} onChange={handleInputChange} />
-              <input type="text" name="state" value={tempAddress.state} onChange={handleInputChange} />
-              <input type="text" name="zipCode" value={tempAddress.zipCode} onChange={handleInputChange} />
-              <input type="text" name="country" value={tempAddress.country} onChange={handleInputChange} />
+              <input type="text" name="street" value={tempAddress.street || ''} onChange={handleInputChange} />
+              <input type="text" name="city" value={tempAddress.city || ''} onChange={handleInputChange} />
+              <input type="text" name="state" value={tempAddress.state || ''} onChange={handleInputChange} />
+              <input type="text" name="zipCode" value={tempAddress.zipCode || ''} onChange={handleInputChange} />
+              <input type="text" name="country" value={tempAddress.country || ''} onChange={handleInputChange} />
               <button onClick={() => handleSave(index)}>Save</button>
               <button onClick={handleCancel}>Cancel</button>
-              <button onClick={() => handleDelete(address.id)}>Delete</button>
+              <button onClick={() => handleDelete(address.addressId)}>Delete</button>
             </div>
           ) : (
             <div>
@@ -85,6 +82,15 @@ function Addresses() {
           )}
         </div>
       ))}
+            <div className="new-address">
+        <h3>Add New Address</h3>
+        <input type="text" name="street" value={newAddress.street} placeholder="Street" onChange={handleNewAddressChange} />
+        <input type="text" name="city" value={newAddress.city} placeholder="City" onChange={handleNewAddressChange} />
+        <input type="text" name="state" value={newAddress.state} placeholder="State" onChange={handleNewAddressChange} />
+        <input type="text" name="zipCode" value={newAddress.zipCode} placeholder="Zip Code" onChange={handleNewAddressChange} />
+        <input type="text" name="country" value={newAddress.country} placeholder="Country" onChange={handleNewAddressChange} />
+        <button onClick={handleAddAddress}>Add Address</button>
+      </div>
     </div>
   );
 }
