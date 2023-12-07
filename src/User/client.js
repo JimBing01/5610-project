@@ -10,6 +10,11 @@ export const getUserById = async (id) => {
     return data;
 }
 
+export const updateUser = async (id, user) => {
+    await axios.put(`${ACCOUNT_URL}/${id}`, user);
+}
+
+
 export const getUserAddresses = async (userId) => {
     const { data } = await axios.get(`${ACCOUNT_URL}/${userId}/addresses`);
     return data;
