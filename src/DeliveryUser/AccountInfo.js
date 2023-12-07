@@ -39,22 +39,10 @@ function AccountInfo() {
 
   // Handle save
   const handleSave = async () => {
-    try {
-      const response = await fetch(`/api/users/${userId}`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(tempUserInfo),
-      });
-      if (response.ok) {
-        setUserInfo({ ...tempUserInfo });
-        setIsEditMode(false);
-      }
-    } catch (error) {
-      console.error('Failed to save user info:', error);
-    }
-  };
+    await client.updateUser(userId, tempUserInfo);
+    setUserInfo(tempUserInfo);
+    setIsEditMode(false);
+  }
 
   // Toggle edit mode
   const toggleEditMode = () => {
