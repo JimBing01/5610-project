@@ -6,8 +6,9 @@ import User from "./User";
 import Login from "./Login";
 import Menu from "./Home/Menu";
 import Customer from "./Order/Customer";
-import Delivery from "./Order/Delivery";
+
 import Restaurant from "./RestaurantUser";
+import Delivery from "./DeliveryUser";
 
 import RestaurantHome from "./RestaurantHome";
 
@@ -22,10 +23,12 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/home/user/:userId" element={<Home />} />
           <Route path="/home/restaurant/:userId" element={<RestaurantHome />} />
+          <Route path="/home/delivery/:userId" element={<Home />} />
           <Route path="/home/:role" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/user/:userId/*" element={<User />} />
           <Route path="/restaurant/:userId/*" element={<Restaurant />} />
+          <Route path="/delivery/:userId/*" element={<Delivery />} />
           <Route path="/login/*" element={<Login />} />
         </Routes>
       </Router>
