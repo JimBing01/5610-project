@@ -11,6 +11,10 @@ function ShoppingCart() {
   const [pastOrders,setPastOrders] = useState([])
   const [pastOrder,setPastOrder] = useState({})
 
+  const[addresses,setAddresses] = useState([])
+  const[address,setAddress] = useState({})
+
+
   const removeItem = (itemId) => {
        client.deleteShoppingCart(userId,itemId).then((status) => {
            setItems(items.filter(item => item._id !== itemId));
@@ -45,6 +49,7 @@ function ShoppingCart() {
                         "comment": ""}]
                 )),
         "status": "Notify restaurant",
+        "address":address,
         "image": items[0].image
     })
   };
@@ -78,6 +83,11 @@ function ShoppingCart() {
         client.findPastOrders(userId)
             .then((items) =>
                 setPastOrders(items)
+            );
+
+        client.findAddresses(userId)
+            .then((items) =>
+                setAddresses(items)
             );
     }, [userId]);
 
@@ -114,6 +124,7 @@ function ShoppingCart() {
         <h3>Total: ${calculateTotal()}</h3>
 
 
+
           <button type="button" className="checkout-button"
                   data-bs-toggle="modal" data-bs-target={'#checkout'+new Date().getTime().toString()}
                   style={{marginTop:"0px"}}
@@ -127,7 +138,7 @@ function ShoppingCart() {
                data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel"
                aria-hidden="true">
               <div className="modal-dialog">
-                  <div className="modal-content">
+                  <div className="modal-content backgroundColor">
                       <div className="modal-header">
                           <h5 className="modal-title" id="staticBackdropLabel">Check Out</h5>
                           <button type="button" className="btn-close" data-bs-dismiss="modal"
@@ -147,6 +158,22 @@ function ShoppingCart() {
               </div>
           </div>
       </div>
+        <div>
+            <span>Please select your address:</span>
+            {addresses.map(item => (
+                <div  key={item.addressId}>
+                    <input type="radio" value= {item.street+ " " + item.city+ " "
+                        + item.state + " " + item.zipCode}
+                           name="radio" id={"radio" + item.addressId}
+                    onClick={()=>setAddress(item.street+ " " + item.city+ " "
+                            + item.state + " " + item.zipCode)}/>
+
+                    <label htmlFor={"radio" + item.addressId}>{item.street+ " " + item.city+ " "
+                        + item.state + " " + item.zipCode}</label>
+                </div>
+            ))}
+
+        </div>
     </div>
   );
 }

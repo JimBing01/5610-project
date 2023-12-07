@@ -71,7 +71,8 @@ function RestaurantOrder() {
                                 </div>
 
                                 <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"50px",width:"250px"}}>
-                                    Order Status:<span style={{marginLeft:"5px"}}>{order.status}</span>
+                                    <span >Order Status:  {order.status}</span><br/><br/>
+                                    <span style={{marginTop:"5px"}}>Order Address:<br/>{order.address}</span>
                                 </div>
 
                                 <button type="button" className="btn btn-warning"

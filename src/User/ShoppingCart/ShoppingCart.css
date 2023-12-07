@@ -1,3 +1,7 @@
+.backgroundColor{
+  background-color: rgb(244, 243, 231) !important;
+}
+
 .ShoppingCart {
     max-width: 800px;
     margin: 40px auto;

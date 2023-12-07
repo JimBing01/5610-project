@@ -87,7 +87,7 @@ function Customer() {
 
                                             </div>
 
-                                            <div style={{display:"inline-block",width:"250px"}}>
+                                            <div style={{display:"inline-block",width:"270px"}}>
                                                 <span style={{marginLeft:"10px"}}>{food[1].name}</span>
                                             </div>
 
@@ -108,7 +108,7 @@ function Customer() {
                                             <div className="modal fade" id={'order' + order._id + food.name} tabIndex="-1" role="dialog"
                                                  aria-labelledby="false" aria-hidden="true">
                                                 <div className="modal-dialog" role="document">
-                                                    <div className="modal-content backgroundColor">
+                                                    <div className="modal-content backgroundColor" >
                                                         <div className="modal-header">
                                                             <h5 className="modal-title">Rate and Comment for your order</h5>
                                                             <button type="button" className="close" data-bs-dismiss="modal"
@@ -189,7 +189,7 @@ function Customer() {
                                     ))}
                                 </div>
 
-                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"150px"}}>
+                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"100px"}}>
                                     Order Status:<span style={{marginLeft:"5px"}}>{order.status}</span>
                                 </div>
 
