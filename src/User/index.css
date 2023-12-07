@@ -76,7 +76,7 @@ ol, ul {
 
 .MainContent a {
   color: none;
-  background-color: none !important;
+  background-color: rgb(244, 243, 231) !important;
 }
 
 /* Styles for the active link */
