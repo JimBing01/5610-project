@@ -7,7 +7,9 @@ import Login from "./Login";
 import Menu from "./Home/Menu";
 import Customer from "./Order/Customer";
 import Delivery from "./Order/Delivery";
-import Restaurant from "./Restaurant";
+import Restaurant from "./RestaurantUser";
+
+import RestaurantHome from "./RestaurantHome";
 
 
 
@@ -18,7 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
-          <Route path="/home/:role/:userId" element={<Home />} />
+          <Route path="/home/user/:userId" element={<Home />} />
+          <Route path="/home/restaurant/:userId" element={<RestaurantHome />} />
           <Route path="/home/:role" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/user/:userId/*" element={<User />} />
