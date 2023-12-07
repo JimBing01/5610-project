@@ -19,7 +19,7 @@ function User() {
         <NavigationBar/>
         <SideBar userId = {userId}/>
 
-        <div className="MainContent user-main">
+        <div className="MainContent">
           <Routes>
             <Route path="account-info" element={<AccountInfo />} />
             <Route path="payment-methods" element={<PaymentMethods />} />
