@@ -5,7 +5,7 @@ ul {
 }
 
 .backgroundColor{
-    background-color: rgb(244, 243, 231);
+    background-color: rgb(244, 243, 231) !important;
 }
 
 .hr-style{
