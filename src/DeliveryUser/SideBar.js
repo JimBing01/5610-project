@@ -31,11 +31,6 @@ function SideBar() {
           </NavLink>
         </li>
         <li>
-          <NavLink to={"/delivery/"+ userId +"/shopping-cart"} className={({ isActive }) => (isActive ? 'active' : '')}>
-            <MdShoppingCart /> Shopping Cart
-          </NavLink>
-        </li>
-        <li>
           <NavLink to={"/delivery/"+ userId +"/sign-out"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoIosLogOut /> Sign Out
           </NavLink>
