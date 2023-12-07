@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
 /* Resets some basic elements for cross-browser consistency */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -89,4 +91,25 @@ ol, ul {
   background-color: rgb(244, 243, 231) !important;
   display: inline-block;
   width: 100%;
+}
+
+.welcomeSlogan {
+  color: #2a71d0; /* Vibrant color for the slogan */
+  font-size: 2.5rem; /* Larger font size */
+  text-align: center; /* Center alignment */
+  font-weight: bold; /* Bold font */
+  margin-top: 20px; /* Space above the slogan */
+  margin-bottom: 20px; /* Space below the slogan */
+  font-family: 'Dancing Script', cursive;
+  text-transform: uppercase; /* Uppercase letters */
+  letter-spacing: 2px; /* Space between letters for emphasis */
+}
+
+/* Responsive styling for smaller screens */
+@media (max-width: 600px) {
+  .welcomeSlogan {
+      font-size: 1.8rem; /* Smaller font size on small screens */
+      margin-top: 10px; /* Less space above */
+      margin-bottom: 10px; /* Less space below */
+  }
 }

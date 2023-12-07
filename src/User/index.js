@@ -20,6 +20,7 @@ function User() {
         <SideBar userId = {userId}/>
 
         <div className="MainContent">
+        <h1 className="welcomeSlogan">Welcome! Dear Customer</h1> 
           <Routes>
             <Route path="account-info" element={<AccountInfo />} />
             <Route path="payment-methods" element={<PaymentMethods />} />
