@@ -15,23 +15,6 @@ body, html {
 
 }
 
-/*nav {*/
-/*    display: flex;*/
-/*    justify-content: space-between;*/
-/*    align-items: center;*/
-/*    padding: 20px 10%;*/
-/*    background-color: #fff; !* White background for the nav bar *!*/
-/*    box-shadow: 0 2px 4px rgba(0,0,0,0.1);*/
-/*    position: fixed; !* Fixed at the top *!*/
-/*    width: 100%; !* Full width *!*/
-/*    top: 0; !* Stick to the top *!*/
-/*    left: 0; !* Align to the left *!*/
-/*}*/
-
-/*nav span {*/
-/*    font-weight: bold;*/
-/*    cursor: pointer;*/
-/*}*/
 
 .main-content {
     padding-top: 80px; /* Add padding to account for fixed navbar */

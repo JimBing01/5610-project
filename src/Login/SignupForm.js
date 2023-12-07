@@ -7,13 +7,17 @@ const SignupForm = ({ onSignup }) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('');
 
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     if (password !== confirmPassword) {
+    //         alert("Passwords don't match");
+    //         return;
+    //     }
+    //     onSignup(email, password, role);
+    // };
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (password !== confirmPassword) {
-            alert("Passwords don't match");
-            return;
-        }
-        onSignup(email, password, role);
+        onSignup(email, password, confirmPassword, role);
     };
 
     return (

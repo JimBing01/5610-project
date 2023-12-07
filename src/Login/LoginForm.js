@@ -1,13 +1,31 @@
+// import React, { useState } from 'react';
+// import './LoginForm.css'; // Import the CSS file
+//
+// const LoginForm = ({ onLogin }) => {
+//     const [email, setEmail] = useState('');
+//     const [password, setPassword] = useState('');
+//
+//     const handleSubmit = (event) => {
+//         event.preventDefault();
+//         onLogin(email, password);
+//     };
 import React, { useState } from 'react';
 import './LoginForm.css'; // Import the CSS file
+import { loginUser } from './client'; // Import loginUser function
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        onLogin(email, password);
+        try {
+            const user = await loginUser(email, password);
+            alert("Login successful!");
+            // Redirect to account page or set state as logged in
+        } catch (error) {
+            alert("Login failed: " + error.message);
+        }
     };
 
     return (
