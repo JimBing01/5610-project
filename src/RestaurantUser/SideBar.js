@@ -10,6 +10,7 @@ function SideBar() {
   return (
     <div className="Sidebar">
       <ul>
+        <li>Manager Portal</li>
         <li>
           <NavLink to={"/restaurant/"+ userId +"/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoMdInformationCircleOutline /> Account Info
@@ -28,11 +29,6 @@ function SideBar() {
         <li>
           <NavLink to={"/restaurant/"+ userId +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
             <MdOutlineHistory /> Orders
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to={"/restaurant/"+ userId +"/shopping-cart"} className={({ isActive }) => (isActive ? 'active' : '')}>
-            <MdShoppingCart /> Shopping Cart
           </NavLink>
         </li>
         <li>

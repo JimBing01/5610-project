@@ -45,4 +45,14 @@
     width: 20px; 
     height: 20px; 
   }
+
+  .Sidebar ul li:first-child {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bold font */
+    color: #333; /* Dark color for text */
+    margin-bottom: 20px; /* Spacing below the title */
+    padding: 10px 0; /* Padding for the title */
+    border-bottom: 2px solid #ccc; /* Bottom border for an underlined effect */
+  }
+  
   

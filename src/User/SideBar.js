@@ -1,14 +1,37 @@
-import React from 'react';
+
 import { NavLink } from 'react-router-dom';
 import { IoMdInformationCircleOutline, IoIosLogOut } from 'react-icons/io';
 import { MdPayment, MdOutlineLocationOn, MdOutlineHistory, MdShoppingCart } from 'react-icons/md';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import './SideBar.css';
+import * as client from './client';
 
 function SideBar({userId}) {
+  const [userInfo, setUserInfo] = useState({});
+  const {userId: id} = useParams();
+  useEffect(() => {
+    async function fetchUserInfo() {
+      try {
+        client.getUserById(id).then((data) => {
+          setUserInfo(data);
+        }
+        );
+      } catch (error) {
+        console.error('Failed to fetch user info:', error);
+      }
+    }
+
+    if (id) {
+      fetchUserInfo();
+    }
+  }, [id]);
 
   return (
     <div className="Sidebar">
       <ul>
+        {/* get user first name */}
+        <li>Welcome {userInfo.firstName}!</li>
         <li>
           <NavLink to={"/user/"+ userId +"/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoMdInformationCircleOutline /> Account Info
