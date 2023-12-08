@@ -13,14 +13,15 @@
 
 .modal-content {
   display: flex;
-  justify-content: space-between;
   position: relative;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
-  max-width: 80%; /* Adjust this value as needed */
-  width: auto; /* Adjust this value as needed */
-  margin: auto; /* This centers the modal horizontally */
+  max-width: 80%;
+  width: auto;
+  height: auto;
+  max-height: 90vh; /* Limit the height to 90% of the viewport */
+  overflow-y: auto; /* Add scroll for overflowing content */
 }
 
 .modal-content h2 {
@@ -62,10 +63,12 @@
 }
 
 .reviews-section {
-  flex: 1; /* This section takes 2 parts of the space, making it twice as wide as the sandwich details */
+  flex: 1;
   overflow-y: auto;
-  max-height: 500px;
+  max-height: calc(90vh - 100px); /* Adjust the height to account for other modal content */
+  padding-right: 15px; /* Add padding to allow space for the scrollbar */
 }
+
 .review {
   border-bottom: 1px solid #ccc; /* Light grey line */
   padding-bottom: 10px; /* Space between the text and the line */

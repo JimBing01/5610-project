@@ -1,0 +1,25 @@
+.search-bar-container {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%; /* Position right below the input */
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: adds a shadow for better visibility */
+    z-index: 10; /* Ensures the dropdown is above other content */
+    max-height: 200px; /* Set a maximum height */
+    overflow-y: auto; /* Allows scrolling within the dropdown */
+}
+
+.dropdown-item {
+    padding: 10px;
+    border-bottom: 1px solid #ddd; /* Optional: adds a separator between items */
+    cursor: pointer;
+}
+
+.dropdown-item:hover {
+    background-color: #f5f5f5; /* Optional: change background on hover for better interactivity */
+}

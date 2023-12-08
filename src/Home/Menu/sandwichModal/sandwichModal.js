@@ -99,27 +99,29 @@ function SandwichModal({ sandwich, onClose }) {
 						))}
 					</div> */}
 				<div className="reviews-section">
-					{reviews.map((review, index) => (
-						<div
-							key={index}
-							className="review">
-							<div className="review-header">
-                                <img
-                                    src={`/images/customerIcon/${review.username}.png`}
-                                    alt={`${review.username}'s Profile Pic`}
-                                    className="reviewer-pic"
-                                />
-                                <div className="reviewer-info">
-                                    <span className="reviewer-name">{review.username}</span>
-                                    <div className="rating">{renderStars(review.rating)}</div>
-                                    <p className="review-date">
-                                        Reviewed on {new Date(review.date).toLocaleDateString()}
-                                    </p>
-                                </div>
+					{reviews
+						.sort((a, b) => new Date(b.date) - new Date(a.date)) // Sort reviews by date, newest first
+						.map((review, index) => (
+							<div
+								key={index}
+								className="review">
+								<div className="review-header">
+									<img
+										src={`/images/customerIcon/${review.username}.png`}
+										alt={`${review.username}'s Profile Pic`}
+										className="reviewer-pic"
+									/>
+									<div className="reviewer-info">
+										<span className="reviewer-name">{review.username}</span>
+										<div className="rating">{renderStars(review.rating)}</div>
+										<p className="review-date">
+											Reviewed on {new Date(review.date).toLocaleDateString()}
+										</p>
+									</div>
+								</div>
+								<p className="review-body">{review.body}</p>
 							</div>
-							<p className="review-body">{review.body}</p>
-						</div>
-					))}
+						))}
 				</div>
 			</div>
 		</div>
