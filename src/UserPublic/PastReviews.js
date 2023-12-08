@@ -1,10 +1,11 @@
-import { useHistory, useEffect, useState } from "react-router-dom";
+import { useEffect, useState } from "react"; 
+import { useNavigate } from "react-router-dom";
 import { renderStars } from '../utils';
 import * as client from "./client";
 
 function PastReviews({ userId }) {
     const [reviews, setReviews] = useState([]);
-    const history = useHistory();
+    const navigate = useNavigate(); // useNavigate instead of useHistory
 
     useEffect(() => {
         client.fetchUserReviews(userId)
@@ -13,12 +14,11 @@ function PastReviews({ userId }) {
             })
             .catch(error => {
                 console.error('Failed to fetch reviews:', error);
-                // Handle errors as needed
             });
     }, [userId]);
 
     const navigateToUserPublicProfile = (userId) => {
-        history.push(`/user/public/${userId}`);
+        navigate(`/user/public/${userId}`);
     };
 
     return (
