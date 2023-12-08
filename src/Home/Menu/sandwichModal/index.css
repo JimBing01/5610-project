@@ -66,3 +66,37 @@
   overflow-y: auto;
   max-height: 500px;
 }
+.review {
+  border-bottom: 1px solid #ccc; /* Light grey line */
+  padding-bottom: 10px; /* Space between the text and the line */
+  margin-bottom: 10px; /* Space between reviews */
+}
+.reviewer-pic {
+  width: 40px; /* Adjust the size as needed */
+  height: 40px; /* Make height and width the same for a circle */
+  border-radius: 50%; /* This creates the circle shape */
+  object-fit: cover; /* Ensures the image covers the area without stretching */
+  margin-right: 10px; /* Optional: Adds some space between the image and the text */
+}
+
+.review-header {
+  display: flex;
+  align-items: center;
+}
+
+.reviewer-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .rating {
+  
+}
+
+.review-date {
+  
+} */
+
+.review-body {
+  margin-top: 10px; /* Adds space between the header and the review body */
+}
