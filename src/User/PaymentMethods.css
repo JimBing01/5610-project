@@ -1,70 +1,59 @@
 /* Styles for the PaymentMethods component */
 .PaymentMethods {
+  background-color: rgb(244, 243, 231) !important;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 20px;
-  max-width: 800px; /* Increased width for better layout */
-  margin: 20px auto;
-  background-color: rgb(244, 243, 231) !important;
+  max-width: 600px; /* Adjust the width as necessary */
+  margin: 20px auto; /* Centering the card */
 }
 
 .PaymentMethods h2 {
-  color: #333;
+  color: #333; /* Dark grey color for the title */
   margin-bottom: 20px;
-  text-align: center; /* Center aligning the title */
 }
 
-/* Styling for each payment method */
-.PaymentMethods > div {
+.PaymentMethods div {
   background-color: rgb(244, 243, 231) !important;
-  border: 1px solid #ddd;
+  border: 1px solid #e7e7e7; /* Light grey border */
   border-radius: 4px;
-  padding: 15px;
-  margin-bottom: 15px;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
-/* Styling for input fields */
-.PaymentMethods input {
+.PaymentMethods p {
+  color: #666; /* Lighter grey color for the text */
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.PaymentMethods strong {
+  color: #4CAF50; /* Green color to highlight the default payment method */
+  font-weight: bold;
+}
+
+.PaymentMethods input, .PaymentMethods select {
   display: block;
-  width: calc(100% - 20px); /* Full width minus padding */
+  width: 90%;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
-/* Styling for buttons */
-.PaymentMethods  button {
+/* Add styles for buttons */
+.PaymentMethods button {
   padding: 10px 20px;
   margin-right: 10px;
+  margin-left: 10px;
   color: white;
   background-color: #5cb85c; /* Green background for the save button */
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
-/* Save/Add button styling */
-.PaymentMethods button.save, .PaymentMethods button.add {
-  background-color: #28a745; /* Green background for save/add button */
-}
 
-/* Cancel/Delete button styling */
-.PaymentMethods button.cancel, .PaymentMethods button.delete {
-  background-color: #dc3545; /* Red background for cancel/delete button */
-}
-
-/* Edit button styling */
-.PaymentMethods button.edit {
-  background-color: #ffc107; /* Yellow background for edit button */
-}
-
-/* Default payment method indicator */
-.PaymentMethods p.default {
-  color: #4CAF50;
-  font-weight: bold;
-}
-
-/* Styling for the add new card section */
+/* Adjustments for the add new card section */
 .new-card {
   border-top: 2px dashed #ddd;
   padding-top: 20px;
@@ -76,14 +65,14 @@
   margin-bottom: 15px;
 }
 
-/* Responsive design adjustments */
+/* Responsive Design */
 @media (max-width: 768px) {
   .PaymentMethods {
     max-width: 100%;
     padding: 10px;
   }
 
-  .PaymentMethods input, .PaymentMethods button {
+  .PaymentMethods input, .PaymentMethods select, .PaymentMethods button {
     width: 100%; /* Full width on smaller screens */
   }
 }
