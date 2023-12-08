@@ -17,7 +17,6 @@ function Delivery() {
         <SideBar/>
 
         <div className="MainContent">
-        <h1 className="welcomeSlogan">Welcome! Dear Driver</h1> 
 
           <Routes>
             <Route path="account-info" element={<AccountInfo />} />

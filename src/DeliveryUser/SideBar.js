@@ -10,6 +10,7 @@ function SideBar() {
   return (
     <div className="Sidebar">
       <ul>
+      <li>Driver Portal</li>
         <li>
           <NavLink to={"/delivery/"+ userId +"/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoMdInformationCircleOutline /> Account Info
