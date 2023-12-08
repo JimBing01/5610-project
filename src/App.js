@@ -11,7 +11,7 @@ import Restaurant from "./RestaurantUser";
 import Delivery from "./DeliveryUser";
 
 import RestaurantHome from "./RestaurantHome";
-
+import UserPublic from "./UserPublic";
 
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
           <Route path="/restaurant/:userId/*" element={<Restaurant />} />
           <Route path="/delivery/:userId/*" element={<Delivery />} />
           <Route path="/login/*" element={<Login />} />
+          <Route path="/user/public/:userId/*" element={<UserPublic />} />
         </Routes>
       </Router>
 
