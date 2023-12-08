@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import "./index.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import db from "../../../Database";
-import {useParams} from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import * as client from "./client";
+import { renderStars } from "../../../utils";
+
+
 
 
 
@@ -106,13 +109,19 @@ function SandwichModal({ sandwich, onClose }) {
 								key={index}
 								className="review">
 								<div className="review-header">
-									<img
-										src={`/images/customerIcon/${review.username}.png`}
-										alt={`${review.username}'s Profile Pic`}
-										className="reviewer-pic"
-									/>
+									<Link to={`/user/public/${review.userId}`} className="reviewer-link">
+										<img
+											src={`/images/customerIcon/${review.username}.png`}
+											alt={`${review.username}'s Profile Pic`}
+											className="reviewer-pic"
+										/>
+									</Link>
 									<div className="reviewer-info">
-										<span className="reviewer-name">{review.username}</span>
+										<Link
+											to={`/user/public/${review.userId}`}
+											className="reviewer-name">
+											{review.username}
+										</Link>
 										<div className="rating">{renderStars(review.rating)}</div>
 										<p className="review-date">
 											Reviewed on {new Date(review.date).toLocaleDateString()}
