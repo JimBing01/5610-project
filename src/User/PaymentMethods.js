@@ -64,7 +64,7 @@ function PaymentMethods() {
         <div key={index}>
           {editModeIndex === index ? (
             <div>
-                            <select name="type" value={tempCard.type || ''} onChange={handleInputChange}>
+              <select name="type" value={tempCard.type || ''} onChange={handleInputChange}>
                 {CARD_TYPES.map((type, idx) => (
                   <option key={idx} value={type}>{type}</option>
                 ))}
