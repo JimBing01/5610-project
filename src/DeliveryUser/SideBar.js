@@ -28,7 +28,7 @@ function SideBar() {
         </li>
         <li>
           <NavLink to={"/delivery/"+ userId +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
-            <MdOutlineHistory /> Orders
+            <MdOutlineHistory /> Delivery Orders
           </NavLink>
         </li>
         <li>
