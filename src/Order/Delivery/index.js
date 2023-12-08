@@ -70,14 +70,14 @@ function RestaurantOrder() {
                                     ))}
                                 </div>
 
-                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"50px",width:"250px"}}>
+                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"20px",width:"250px"}}>
                                     <span >Order Status:  {order.status}</span><br/><br/>
                                     <span style={{marginTop:"5px"}}>Order Address:<br/>{order.address}</span>
                                 </div>
 
                                 <button type="button" className="btn btn-warning"
                                         data-bs-toggle="modal" data-bs-target={'#modify'+new Date().getTime().toString()}
-                                        style={{marginLeft:"50px"}}
+                                        style={{marginLeft:"0px"}}
                                         onClick = {()=>setCustomerOrder({...order,status:"Pick up for delivering"})}
 
                                 >

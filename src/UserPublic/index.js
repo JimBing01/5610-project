@@ -4,9 +4,9 @@ import AccountInfo from './AccountInfo';
 import Header from './Header';
 import SideBar from './SideBar';
 import './index.css';
-import Customer from "../Order/Customer";
+
 import NavigationBar from "../Home/NavigationBar";
-import Restaurant from "../Order/Restaurant";
+import PublicCustomer from "../Order/PublicCustomer";
 
 function User() {
     const {userId} = useParams();
@@ -19,7 +19,7 @@ function User() {
         <div className="MainContent">
           <Routes>
             <Route path="account-info" element={<AccountInfo />} />
-            <Route path="orders" element={<Customer />} />
+            <Route path="orders" element={<PublicCustomer />} />
           </Routes>
         </div>
       </div>

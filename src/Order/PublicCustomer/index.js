@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import * as client from "./client";
 
 
-function Customer() {
+function PublicCustomer() {
     const {userId} = useParams()
     const [customerOrders, setCustomerOrders] = useState([]);
 
@@ -99,7 +99,7 @@ function Customer() {
                                                         setCustomerOrder(order);
                                                         setOrderDetails(order.food)
                                                     }}>
-                                                Rate and Comment
+                                                Check Rate and Comment
                                             </button>
 
 
@@ -110,52 +110,39 @@ function Customer() {
                                                 <div className="modal-dialog" role="document">
                                                     <div className="modal-content backgroundColor" >
                                                         <div className="modal-header">
-                                                            <h5 className="modal-title">Rate and Comment for your order</h5>
+                                                            <h5 className="modal-title">Rate and Comment</h5>
                                                             <button type="button" className="close" data-bs-dismiss="modal"
                                                                     aria-label="Close">
                                                                 <span aria-hidden="true">&times;</span>
                                                             </button>
                                                         </div>
                                                         <div className="modal-body">
-                                                            <span className="give_star">Give your stars!</span>
+                                                            <span className="give_star">Customer stars!</span>
                                                             <form>
                                                                 <div className="form-group rate">
                                                                     <input type="radio" name="rate" id="rate-5"
-                                                                           checked={orderDetail.star5}
-                                                                           onChange={(e) => setOrderDetail({
-                                                                               ...orderDetail,star1: false,star2: false,
-                                                                               star3: false,star4: false,star5: true })}/>
+                                                                           checked={orderDetail.star5} disabled
+                                                                           />
                                                                     <label htmlFor="rate-5" className="fas fa-star"></label>
 
                                                                     <input type="radio" name="rate" id="rate-4"
-                                                                           checked={orderDetail.star4}
-                                                                           onChange={(e) => setOrderDetail({
-                                                                               ...orderDetail,star1: false,star2: false,
-                                                                               star3: false,star4: true,star5: false })}/>
+                                                                           checked={orderDetail.star4} disabled
+                                                                           />
                                                                     <label htmlFor="rate-4" className="fas fa-star"></label>
 
                                                                     <input type="radio" name="rate" id="rate-3"
-                                                                           checked={orderDetail.star3}
-                                                                           onChange={(e) => setOrderDetail({
-                                                                               ...orderDetail,
-                                                                               star1: false,star2: false,
-                                                                               star3: true,star4: false,star5: false })}/>
+                                                                           checked={orderDetail.star3} disabled
+                                                                          />
                                                                     <label htmlFor="rate-3" className="fas fa-star"></label>
 
                                                                     <input type="radio" name="rate" id="rate-2"
-                                                                           checked={orderDetail.star2}
-                                                                           onChange={(e) => setOrderDetail({
-                                                                               ...orderDetail,
-                                                                               star1: false,star2: true,
-                                                                               star3: false,star4: false,star5: false })}/>
+                                                                           checked={orderDetail.star2} disabled
+                                                                          />
                                                                     <label htmlFor="rate-2" className="fas fa-star"></label>
 
                                                                     <input type="radio" name="rate" id="rate-1"
-                                                                           checked={orderDetail.star1}
-                                                                           onChange={(e) => setOrderDetail({
-                                                                               ...orderDetail,
-                                                                               star1: true,star2: false,
-                                                                               star3: false,star4: false,star5:false })}/>
+                                                                           checked={orderDetail.star1} disabled
+                                                                           />
                                                                     <label htmlFor="rate-1" className="fas fa-star"></label>
 
                                                                     <br/>
@@ -163,11 +150,8 @@ function Customer() {
                                                                 </div>
                                                                 <div className="form-group">
                                                                     <label htmlFor="message-text"
-                                                                           className="col-form-label">Comment:</label>
-                                                                    <textarea value={orderDetail.comment} className="form-control" id={"message-text"}
-                                                                              onChange={(e) => setOrderDetail({
-                                                                                  ...orderDetail,
-                                                                                  comment: e.target.value })}></textarea>
+                                                                           className="col-form-label">Comment:</label><br/>
+                                                                    <span id="message-text">{orderDetail.comment}</span>
                                                                 </div>
                                                             </form>
                                                         </div>
@@ -189,9 +173,7 @@ function Customer() {
                                     ))}
                                 </div>
 
-                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"40px"}}>
-                                    Order Status:<span style={{marginLeft:"5px"}}>{order.status}</span>
-                                </div>
+
 
                                 <hr className="hr-style"></hr>
 
@@ -206,4 +188,4 @@ function Customer() {
     );
 }
 
-export default Customer;
+export default PublicCustomer;
