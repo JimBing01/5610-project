@@ -83,8 +83,8 @@ function AccountInfo() {
   />
   <input
     type="tel"
-    name="phoneNumber"
-    value={tempUserInfo.phoneNumber}
+    name="phone"
+    value={tempUserInfo.phone}
     onChange={handleInputChange}
     placeholder="Phone Number"
   />
@@ -98,7 +98,7 @@ function AccountInfo() {
   <p><strong>First Name:</strong> {userInfo.firstName}</p>
   <p><strong>Last Name:</strong> {userInfo.lastName}</p>
   <p><strong>Email:</strong> {userInfo.email}</p>
-  <p><strong>Phone Number:</strong> {userInfo.phoneNumber}</p>
+  <p><strong>Phone Number:</strong> {userInfo.phone}</p>
   <button onClick={toggleEditMode}>Edit</button>
 </>
 
