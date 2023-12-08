@@ -6,7 +6,7 @@
     display: inline-block;
     vertical-align: top;
     margin-top: 50px;
-    /* Slight shadow to lift off the page */
+    border-right: black 1px solid;
   }
   
   .Sidebar ul {

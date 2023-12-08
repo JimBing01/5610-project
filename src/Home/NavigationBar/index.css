@@ -9,7 +9,7 @@
   justify-content: space-between; /* Distributes items evenly across the horizontal axis */
   background-color: rgb(244, 243, 231) ;
   padding: 5px; /* Adds padding around the navigation bar */
-  border-bottom: 3px solid #adc79a; /* Adds a 3-pixel border to the bottom of the navigation bar */
+  border-bottom: 1px solid black !important; /* Adds a 3-pixel border to the bottom of the navigation bar */
 }
 
 .logo {
