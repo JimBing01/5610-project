@@ -38,7 +38,7 @@ function SideBar({userId}) {
         </li>
         <li>
           <NavLink to={"/user/public/"+ userId +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
-            <MdOutlineHistory /> Orders
+            <MdOutlineHistory /> Past Orders
           </NavLink>
         </li>
       </ul>
