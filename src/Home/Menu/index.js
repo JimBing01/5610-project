@@ -1,17 +1,35 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import { TfiAlignJustify } from "react-icons/tfi";
-import bfSandwichesDatabase from "../../Database/Sandwiches/BreakfastSandwiches.json";
-import popularSandwichesDatabase from "../../Database/Sandwiches/PopularItems.json";
-import sandwichesAndSubsDatabase from "../../Database/Sandwiches/SandwichesAndSubs.json";
+// import bfSandwichesDatabase from "../../Database/Sandwiches/BreakfastSandwiches.json";
+// import popularSandwichesDatabase from "../../Database/Sandwiches/PopularItems.json";
+// import sandwichesAndSubsDatabase from "../../Database/Sandwiches/SandwichesAndSubs.json";
 import { IoAddOutline } from "react-icons/io5";
 import SandwichModal from "./sandwichModal/sandwichModal";
+import * as client from "./client";
+import {useParams} from "react-router-dom";
 
 function Menu() {
+	const [sandwiches, setSandwiches] = useState([]);
 	const [activeMenu, setActiveMenu] = useState("popular");
 	const [selectedSandwich, setSelectedSandwich] = useState(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
+	const fetchSandwiches = async () => {
+        let sandwichesData = [];
+        if (activeMenu === "breakfast") {
+            sandwichesData = await client.fetchBreakfastSandwiches();
+        } else if (activeMenu === "popular") {
+            sandwichesData = await client.fetchPopularItems();
+        } else if (activeMenu === "subs") {
+            sandwichesData = await client.fetchSandwichesAndSubs();
+        }
+        setSandwiches(sandwichesData);
+    };
+
+    useEffect(() => {
+        fetchSandwiches();
+    }, [activeMenu]);
 
 	const handleMenuClick = (menu) => {
 		setActiveMenu(menu);
@@ -76,9 +94,9 @@ function Menu() {
 
 			<div className="menu-content">
 				{activeMenu === "popular" &&
-					renderSandwiches(popularSandwichesDatabase)}
-				{activeMenu === "breakfast" && renderSandwiches(bfSandwichesDatabase)}
-				{activeMenu === "subs" && renderSandwiches(sandwichesAndSubsDatabase)}
+					renderSandwiches(sandwiches)}
+				{activeMenu === "breakfast" && renderSandwiches(sandwiches)}
+				{activeMenu === "subs" && renderSandwiches(sandwiches)}
 			</div>
 
 			{isModalOpen && (
