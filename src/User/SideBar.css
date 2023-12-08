@@ -16,13 +16,16 @@
   }
   
   .Sidebar li {
-    padding: 10px 0; /* Spacing for top and bottom */
+    padding: 100px 0; /* Spacing for top and bottom */
+    margin-top: 10px;
+    margin-bottom: 00px !important;
   }
   
   .Sidebar a {
     text-decoration: none; /* Removes underline from links */
     color: #333; /* Dark grey color for the text */
     font-weight: 500; /* Slightly bolder font */
+    font-size: 16px;
     display: block; /* Makes the link fill the li for easier click */
   }
   

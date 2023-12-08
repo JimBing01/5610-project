@@ -126,4 +126,5 @@ form .btn button:hover {
  .menu-section {
   padding-top: 70px; /* Height of the sticky navigation bar */
   margin-top: -60px; /* Negative margin to offset the padding */
+  background-color: rgb(244, 243, 231) !important;
 }
