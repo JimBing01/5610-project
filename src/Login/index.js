@@ -5,8 +5,11 @@ import LoginForm from './LoginForm';
 import HorizontalNavigation from '../Home/NavigationBar/index.js';
 import './index.css';
 import { registerUser, checkUserExists } from './client';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+
+    const navigate = useNavigate();
 
     const isValidEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,6 +60,22 @@ function Login() {
 
         if (user) {
             alert("Login successful!");
+
+            // Redirect based on user role
+            switch (user.role) {
+                case 'CUSTOMER':
+                    navigate(`/user/${user._id}/...`);
+                    break;
+                case 'MERCHANT':
+                    navigate(`/restaurant/${user._id}/...`); // Add the appropriate endpoint after the ID
+                    break;
+                case 'DELIVERY':
+                    navigate(`/delivery/${user._id}/...`); // Add the appropriate endpoint after the ID
+                    break;
+                default:
+                    // Handle unknown role or redirect to a general page
+                    navigate('/'); // Redirect to home or another default route
+            }
         } else {
             alert("Incorrect email or password. Please try again.");
         }
