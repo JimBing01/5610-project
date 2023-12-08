@@ -10,6 +10,7 @@ function SideBar() {
   return (
     <div className="Sidebar">
       <ul>
+        <li>Manager Portal</li>
         <li>
           <NavLink to={"/restaurant/"+ userId +"/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoMdInformationCircleOutline /> Account Info
