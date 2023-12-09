@@ -64,7 +64,7 @@ function Login() {
             // Redirect based on user role
             switch (user.role) {
                 case 'CUSTOMER':
-                    navigate(`/user/${user._id}/...`);
+                    navigate(`/user/${user._id}/home`);
                     break;
                 case 'MERCHANT':
                     navigate(`/restaurant/${user._id}/...`); // Add the appropriate endpoint after the ID

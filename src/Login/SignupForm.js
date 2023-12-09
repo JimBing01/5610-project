@@ -54,7 +54,7 @@ const SignupForm = ({ onSignup }) => {
                     <div className="role-options" onChange={(e) => setRole(e.target.value)}>
                         <input type="radio" value="customer" name="role" required /> Customer
                         <input type="radio" value="merchant" name="role" required /> Merchant
-                        <input type="radio" value="delivery" name="role" required /> Delivery Person
+                        <input type="radio" value="delivery" name="role" required /> Delivery
                     </div>
                 </div>
                 <button type="submit">Register me</button>

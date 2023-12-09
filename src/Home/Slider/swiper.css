@@ -1,11 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poiret', sans-serif;
-}
 .body {
   min-height: 100vh;
   display: flex;
@@ -14,19 +8,23 @@
   background-color: rgb(244, 243, 231);
 }
 .slide-container {
-  max-width: 1120px;
   width: 100%;
   /* background-color: #bababa; */
-  padding: 40px 0;
+  padding: 0px 0;
 }
 .slide-content {
-  margin: 0 40px;
+  margin: 40px 40px;
   /* background-color: red; */
   overflow: hidden;
   border-radius: 25px;
 }
 .card {
-  width: 300px; 
+  width: 400px; 
+  height: 400px;
+  /* margin: 50px 50px; */
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-bottom: 35px;
   border-radius: 25px;
   background-color: white;
 }
@@ -40,7 +38,7 @@
 .image-content {
   position: relative;
   row-gap: 5px;
-  padding: 25px 0;
+  padding: 50px 0;
 }
 .overlay {
   position: absolute;
@@ -67,15 +65,15 @@
 }
 .card-image {
   position: relative;
-  height: 150px;
-  width: 150px;
-  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+  border-radius: 20%;
 }
 .card-image .card-img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 20%;
 }
 .name {
   font-size: 18px;
@@ -123,10 +121,21 @@
 }
 .swiper-pagination-bullet {
   opacity: 1;
-  background-color: #f9b351 !important;
+  background-color: green !important;
 }
 .swiper-pagination-bullet-active {
-  background-color: #efc78c !important;
+  background-color: green !important;
+}
+
+.swiper-button-prev {
+  left: 20px !important; 
+  right: 20px !important;/* Adjust this value to create more or less gap */
+  padding: 10px !important; /* Optional, for additional spacing */
+  /* rest of your styles */
+}
+
+.swiper-slide {
+margin-left: 5px !important;
 }
 
 @media screen and (max-width: 768px) {
