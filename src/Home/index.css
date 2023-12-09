@@ -127,3 +127,14 @@ form .btn button:hover {
   padding-top: 70px; /* Height of the sticky navigation bar */
   margin-top: -60px; /* Negative margin to offset the padding */
 }
+
+/* index.css */
+.welcome-slogan {
+    font-size: 2em; /* Makes the text twice the size of the normal text */
+    color: #2a2a2a; /* A welcoming dark grey color, but you can choose any */
+    font-weight: bold; /* Makes the font bold */
+    text-align: center; /* Centers the text */
+    margin-top: 100px;
+    margin-bottom: -80px;
+  }
+  
