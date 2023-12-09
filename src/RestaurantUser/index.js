@@ -5,7 +5,7 @@ import PaymentMethods from './PaymentMethods';
 import Addresses from './Addresses';
 
 import SideBar from './SideBar';
-import ShoppingCart from './ShoppingCart/ShoppingCart';
+
 import './index.css';
 import Customer from "../Order/Customer";
 import NavigationBar from "../Home/NavigationBar";
@@ -23,7 +23,6 @@ function Restaurant() {
             <Route path="payment-methods" element={<PaymentMethods />} />
             <Route path="addresses" element={<Addresses />} />
             <Route path="orders" element={<RestaurantOrder />} />
-            <Route path="shopping-cart" element={<ShoppingCart />} />
           </Routes>
         </div>
       </div>

@@ -6,7 +6,7 @@
     display: inline-block;
     vertical-align: top;
     margin-top: 50px;
-    /* Slight shadow to lift off the page */
+    border-right: black 1px solid;
   }
   
   .Sidebar ul {
@@ -16,13 +16,16 @@
   }
   
   .Sidebar li {
-    padding: 10px 0; /* Spacing for top and bottom */
+    padding: 100px 0; /* Spacing for top and bottom */
+    margin-top: 10px;
+    margin-bottom: 00px !important;
   }
   
   .Sidebar a {
     text-decoration: none; /* Removes underline from links */
     color: #333; /* Dark grey color for the text */
     font-weight: 500; /* Slightly bolder font */
+    font-size: 16px;
     display: block; /* Makes the link fill the li for easier click */
   }
   
@@ -45,4 +48,14 @@
     width: 20px; 
     height: 20px; 
   }
+
+  .Sidebar ul li:first-child {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bold font */
+    color: #333; /* Dark color for text */
+    margin-bottom: 20px; /* Spacing below the title */
+    padding: 10px 0; /* Padding for the title */
+    border-bottom: 2px solid #ccc; /* Bottom border for an underlined effect */
+  }
+  
   

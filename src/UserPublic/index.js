@@ -8,6 +8,8 @@ import './index.css';
 import NavigationBar from "../Home/NavigationBar";
 import PublicCustomer from "../Order/PublicCustomer";
 
+import PastReviews from "./PastReviews";
+
 function User() {
     const {userId} = useParams();
     return (
@@ -20,6 +22,7 @@ function User() {
           <Routes>
             <Route path="account-info" element={<AccountInfo />} />
             <Route path="orders" element={<PublicCustomer />} />
+            <Route path="past-reviews" element={<PastReviews userId={userId} />} />
           </Routes>
         </div>
       </div>
