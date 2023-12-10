@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = process.env.REACT_APP_API_BASE || 'http://localhost:4000/api';
+const BASE_URL = process.env.REACT_APP_API_BASE;
 const ACCOUNT_URL = `${BASE_URL}/users`;
 
 
