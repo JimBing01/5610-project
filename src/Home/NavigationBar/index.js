@@ -63,12 +63,8 @@ function HorizontalNavigation({onSelectSandwich}) {
 
 			<div className="center-group">
 				<div className="logo">
-					<Link to="/home">
-						<img
-							src="/images/wollastons-logo.png"
-							alt="Logo"
-							className="logo-image"
-						/>
+					<Link to={temp == null ? '/home' : '/home/' + temp}>
+						<img src="/images/wollastons-logo.png" alt="Logo" className="logo-image" />
 					</Link>
 				</div>
 			</div>

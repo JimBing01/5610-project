@@ -3,6 +3,11 @@ import './SignupForm.css'; // Import the CSS file
 
 const SignupForm = ({ onSignup }) => {
     const [email, setEmail] = useState('');
+    const [username, setUsername] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [dob, setDob] = useState('');
+    const [phone, setPhone] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [role, setRole] = useState('');
@@ -13,12 +18,62 @@ const SignupForm = ({ onSignup }) => {
             alert("Passwords don't match");
             return;
         }
-        onSignup(email, password, role);
+        onSignup(username, firstName, lastName, email, dob, phone, password, role);
     };
 
     return (
         <div className="form-container"> {/* Apply the container class */}
             <form onSubmit={handleSubmit}>
+                <div>
+                    <label htmlFor="username">Username:</label>
+                    <input
+                        type="text"
+                        id="username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="firstName">First Name:</label>
+                    <input
+                        type="text"
+                        id="firstName"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="lastName">Last Name:</label>
+                    <input
+                        type="text"
+                        id="lastName"
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="dob">Date of Birth:</label>
+                    <input
+                        type="date"
+                        id="dob"
+                        value={dob}
+                        onChange={(e) => setDob(e.target.value)}
+                        required
+                    />
+                </div>
+                <div>
+                    <label htmlFor="phone">Phone Number:</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        required
+                    />
+                </div>
                 <div>
                     <label htmlFor="email">Email:</label>
                     <input

@@ -3,10 +3,12 @@ import axios from "axios";
 const API_BASE = process.env.REACT_APP_BASE_API_URL;
 const USER_URL = `${API_BASE}/home`;
 
+console.log('API_BASE:', process.env.REACT_APP_BASE_API_URL);
+console.log('USER_URL:', `${process.env.REACT_APP_BASE_API_URL}/home`);
+
 export const findSandwiches = async (sandwichKind) => {
     const response = await axios
         .get(`${USER_URL}`, { params: { sandwichKind:sandwichKind } });
-
     return response.data;
 };
 
