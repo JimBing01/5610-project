@@ -62,21 +62,9 @@ function Menu() {
 				/>
 				<h3>{sandwich.name}</h3>
 				<p>{sandwich.description || "Delicious sandwich"}</p>
-				<span>{sandwich.price}</span>
+				<span>${sandwich.price}</span>
 
-				<IoAddOutline
-					// className="add-icon"
-					// onClick={() => {
-					// 	// Check if the user is logged in (you can add your own condition here)
-					// 	if (userId) {
-					// 	// If logged in, perform the add-to-cart action
-					// 	// Add your add-to-cart logic here
-					// 	} else {
-					// 	// If not logged in, show the pop-up and suggest creating an account
-					// 		alert("Please sign in or join to add items to your cart.");
-					// 	}
-					// }}
-				/>
+				{/* <IoAddOutline/> */}
 			</div>
 		));
 	};

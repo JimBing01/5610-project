@@ -74,7 +74,7 @@ function Menu() {
 					<span>${sandwich.price}</span>
 				</div>
 
-				<IoAddOutline className="add-icon" />
+				{/* <IoAddOutline className="add-icon" /> */}
 
 				<button
 					className="btn btn-warning"

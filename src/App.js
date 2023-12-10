@@ -12,6 +12,8 @@ import Delivery from "./DeliveryUser";
 
 import RestaurantHome from "./RestaurantHome";
 import UserPublic from "./UserPublic";
+import ApiSearchBar from "./Home/NavigationBar/ApiSearchBar"
+import SearchResults from "./Home/NavigationBar/ApiSearchBar/SearchResults"
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
           <Route path="/delivery/:userId/*" element={<Delivery />} />
           <Route path="/login/*" element={<Login />} />
           <Route path="/user/public/:userId/*" element={<UserPublic />} />
+          <Route path="/search" element={<ApiSearchBar />} />
+          <Route path="/search/:criteria" element={<SearchResults />} />
         </Routes>
       </Router>
 

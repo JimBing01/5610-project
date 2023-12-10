@@ -66,7 +66,7 @@ function SandwichModal({ sandwich, onClose }) {
 			className="modal-overlay"
 			onClick={handleOverlayClick}>
 			<div className="modal-content">
-				{/* <button className="close-button" onClick={onClose}>Close</button> */}
+				<button className="close-button" onClick={onClose}>Close</button>
 				<div className="sandwich-details">
 					<img
 						src={sandwich.image}

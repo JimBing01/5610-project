@@ -44,13 +44,14 @@ function SandwichModal({ sandwich, onClose }) {
     return (
         <div className="modal-overlay" onClick={handleOverlayClick}>
             <div className="modal-content">
+                <button className="close-button" onClick={onClose}>Close</button>
                 <div className="sandwich-details">
                     <img src={sandwich.image} alt={sandwich.name} />
                     <div className="sandwich-info">
                         <h2>{sandwich.name}</h2>
                         <p>{sandwich.description || "Delicious sandwich"}</p>
                         <p>Price: {sandwich.price}</p>
-                        {/* <button onClick={onClose}>Close</button> */}
+                        
                         <AiOutlineShoppingCart className="cart-icon" onClick={()=>addCart()}/>
                     </div>
                 </div>
