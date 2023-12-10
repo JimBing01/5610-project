@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./index.css";
 import { TfiAlignJustify } from "react-icons/tfi";
-// import bfSandwichesDatabase from "../../Database/Sandwiches/BreakfastSandwiches.json";
-// import popularSandwichesDatabase from "../../Database/Sandwiches/PopularItems.json";
-// import sandwichesAndSubsDatabase from "../../Database/Sandwiches/SandwichesAndSubs.json";
 import { IoAddOutline } from "react-icons/io5";
 import SandwichModal from "./sandwichModal/sandwichModal";
 import * as client from "./client";
 import { useHistory, useParams } from "react-router-dom";
-
 
 function Menu() {
 	const [sandwiches, setSandwiches] = useState([]);
