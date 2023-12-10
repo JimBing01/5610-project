@@ -31,8 +31,13 @@ function SideBar() {
             <MdOutlineHistory /> Restaurant Orders
           </NavLink>
         </li>
+        {/*<li>*/}
+        {/*  <NavLink to={"/restaurant/"+ userId +"/sign-out"} className={({ isActive }) => isActive ? 'active' : ''}>*/}
+        {/*    <IoIosLogOut /> Sign Out*/}
+        {/*  </NavLink>*/}
+        {/*</li>*/}
         <li>
-          <NavLink to={"/restaurant/"+ userId +"/sign-out"} className={({ isActive }) => isActive ? 'active' : ''}>
+          <NavLink to={"/home"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoIosLogOut /> Sign Out
           </NavLink>
         </li>
