@@ -82,7 +82,7 @@ function Menu() {
 
 
 	return (
-		<div className="menu">
+		<div className="menu ">
 			<div className="menu-list">
 				<ul>
 					<TfiAlignJustify />
@@ -94,7 +94,8 @@ function Menu() {
 				</ul>
 			</div>
 
-			<div className="menu-content">
+			<div className="d-flex flex-row flex-wrap row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-3"
+				 style={{ gap: "100px"}}>
 				{activeMenu === "popular" &&
 					renderSandwiches(sandwiches)}
 				{activeMenu === "breakfast" && renderSandwiches(sandwiches)}

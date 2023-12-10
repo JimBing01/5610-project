@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import Home from "./Home";
 import User from "./User";
 import Login from "./Login";
@@ -14,6 +14,7 @@ import RestaurantHome from "./RestaurantHome";
 import UserPublic from "./UserPublic";
 import ApiSearchBar from "./Home/NavigationBar/ApiSearchBar"
 import SearchResults from "./Home/NavigationBar/ApiSearchBar/SearchResults"
+
 
 
 function App() {

@@ -83,7 +83,7 @@ function ShoppingCart() {
     }
 
     const checkCartEmpty = () =>{
-        if(items.length != 0) {
+        if(items.length != 0 && addresses.length != 0) {
             return  <div className="modal-dialog">
                 <div className="modal-content backgroundColor">
                     <div className="modal-header">
@@ -112,7 +112,7 @@ function ShoppingCart() {
                                 aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
-                        Please double check you cart is not empty !
+                        Check you cart and address is not empty !
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-secondary"
