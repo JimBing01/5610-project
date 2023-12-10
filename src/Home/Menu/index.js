@@ -7,13 +7,16 @@ import { TfiAlignJustify } from "react-icons/tfi";
 import { IoAddOutline } from "react-icons/io5";
 import SandwichModal from "./sandwichModal/sandwichModal";
 import * as client from "./client";
-import {useParams} from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+
 
 function Menu() {
 	const [sandwiches, setSandwiches] = useState([]);
 	const [activeMenu, setActiveMenu] = useState("popular");
 	const [selectedSandwich, setSelectedSandwich] = useState(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
+	// const { userId } = useParams();
+	// const history = useHistory();
 
 	const fetchSandwiches = async () => {
         let sandwichesData = [];
@@ -45,6 +48,11 @@ function Menu() {
 		setSelectedSandwich(null);
 	};
 
+	// const handleJoinClick = () => {
+	// 	// Redirect the user to the signup page
+	// 	history.push("/login/signup");
+	// };
+
 	
 	const renderSandwiches = (sandwiches) => {
 		return sandwiches.map((sandwich, index) => (
@@ -60,9 +68,19 @@ function Menu() {
 				<p>{sandwich.description || "Delicious sandwich"}</p>
 				<span>{sandwich.price}</span>
 
-				<IoAddOutline className="add-icon"/>
-
-
+				<IoAddOutline
+					// className="add-icon"
+					// onClick={() => {
+					// 	// Check if the user is logged in (you can add your own condition here)
+					// 	if (userId) {
+					// 	// If logged in, perform the add-to-cart action
+					// 	// Add your add-to-cart logic here
+					// 	} else {
+					// 	// If not logged in, show the pop-up and suggest creating an account
+					// 		alert("Please sign in or join to add items to your cart.");
+					// 	}
+					// }}
+				/>
 			</div>
 		));
 	};
