@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_BASE = process.env.REACT_APP_BASE_API_URL;
 const USER_URL = `${API_BASE}`;
-const SANDWICHES_URL = "http://localhost:4000/api/sandwiches";
+const SANDWICHES_URL = `${API_BASE}/api/sandwiches`;
 
 export const fetchReviewsBySandwichId = async (sandwichId) => {
     try {

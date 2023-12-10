@@ -1,6 +1,10 @@
 import axios from 'axios';
-const ACCOUNT_URL = 'http://localhost:4000/api/users';
-const PAYMENTS_URL = `http://localhost:4000/api/payments`;
+// Use the environment variable for the base URL
+const API_BASE = process.env.REACT_APP_BASE_API_URL;
+
+// Define the ACCOUNT_URL and PAYMENTS_URL using the base URL
+const ACCOUNT_URL = `${API_BASE}/api/users`;
+const PAYMENTS_URL = `${API_BASE}/api/payments`;
 
 export const getUserById = async (id) => {
     const { data } = await axios.get(`${ACCOUNT_URL}/${id}`);

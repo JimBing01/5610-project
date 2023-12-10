@@ -48,9 +48,10 @@ function Login() {
 
     const handleLogin = async (email, password) => {
         const normalizedEmail = email.trim().toLowerCase();
+        const API_BASE = process.env.REACT_APP_API_BASE || 'http://localhost:4000/api';
 
         // Fetch all users from the server (ideally, you would have a more secure endpoint for login)
-        const response = await fetch('http://localhost:4000/api/users');
+        const response = await fetch(`${API_BASE}/users`);
         const users = await response.json();
 
         // Find a user where the email and password match
