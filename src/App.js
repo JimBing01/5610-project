@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from "./Home";
 import User from "./User";
 import Login from "./Login";
@@ -12,6 +12,7 @@ import Delivery from "./DeliveryUser";
 
 import RestaurantHome from "./RestaurantHome";
 import UserPublic from "./UserPublic";
+import {Routes} from "react-router";
 
 
 function App() {
