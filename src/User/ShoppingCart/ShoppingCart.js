@@ -14,6 +14,14 @@ function ShoppingCart() {
   const[addresses,setAddresses] = useState([])
   const[address,setAddress] = useState({})
 
+  const[promotions,setPromotions] = useState(
+      [
+                    {_id:1,discount:Math.round(Math.random() * (40 - 10)) + 10},
+                    {_id:2,discount:Math.round(Math.random() * (40 - 10)) + 10},
+                    {_id:3,discount:Math.round(Math.random() * (40 - 10)) + 10},
+      ]
+  )
+  const[promotion,setPromotion] = useState({_id:4,discount:0})
 
   const removeItem = (itemId) => {
        client.deleteShoppingCart(userId,itemId).then((status) => {
@@ -28,7 +36,7 @@ function ShoppingCart() {
   };
 
   const calculateTotal = () => {
-    return items.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2);
+    return items.reduce((acc, item) => acc + item.price * (1-promotion.discount/100) * item.quantity, 0).toFixed(2);
   };
 
   const handleCheck = () => {
@@ -143,7 +151,7 @@ function ShoppingCart() {
           <div className="cart-item" key={item._id}>
             <div className="item-info">
               <h3>{item.name}</h3>
-              <p>${item.price}</p>
+              <p>${(item.price * (1-promotion.discount/100)).toFixed(2)}</p>
             </div>
             <div className="item-quantity">
               <input
@@ -197,7 +205,26 @@ function ShoppingCart() {
 
       </div>
         <div>
-            <span>Please select your address:</span>
+            <span style={{fontSize: "1.2em",
+                color: "#333"}}>Please choose your promotion:</span>
+
+            {promotions.map(item => (
+                <div key={item._id} style={{marginTop: "4px"}}>
+                    <input className="form-check-input" type="radio" value={item.discount}
+                           name="discount" id={"radio" + item._id}
+
+                           onClick={() => setPromotion(item)}/>
+
+                    <label htmlFor={"radio" + item._id} style={{marginLeft: "5px", marginTop: "5px"}}>
+                        {item.discount+'%off'}
+                    </label>
+                </div>
+            ))}
+        </div>
+
+        <div style={{marginTop:"20px"}}>
+            <span style={{fontSize: "1.2em",
+                color: "#333"}}>Please select your address:</span>
 
             {addresses.map(item => (
                 <div  key={item.addressId} style={{marginTop:"4px"}}>
@@ -214,8 +241,9 @@ function ShoppingCart() {
                     </label>
                 </div>
             ))}
-
         </div>
+
+
     </div>
   );
 }
