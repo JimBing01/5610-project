@@ -54,8 +54,8 @@ export const addUserPaymentMethod = async (userId, paymentDetails) => {
 }
 
 //yiming
-export const signout = async () => {
-    // Note: The URL should match the one you've set up on your server for the sign-out route
-    const response = await axios.post(`${ACCOUNT_URL}/signout`);
-    return response.data;
-};
+// export const signout = async () => {
+//     // Note: The URL should match the one you've set up on your server for the sign-out route
+//     const response = await axios.post(`${ACCOUNT_URL}/Home`);
+//     return response.data;
+// };

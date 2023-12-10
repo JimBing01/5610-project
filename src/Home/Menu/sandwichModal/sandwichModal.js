@@ -8,14 +8,10 @@ import { renderStars } from "../../../utils";
 
 
 
-
-
 function SandwichModal({ sandwich, onClose }) {
 	const { userId } = useParams();
 	const [reviews, setReviews] = useState([]);
-	const [shoppingCarts, setShoppingCarts] = useState(
-		db.shoppingCart.filter((user) => user.userId === userId)
-	);
+	const [shoppingCarts, setShoppingCarts] = useState([]);
 
 	const [currentItem, setCurrentItem] = useState({
 		_id: new Date() + sandwich.name,
@@ -39,8 +35,8 @@ function SandwichModal({ sandwich, onClose }) {
 					console.error("Failed to fetch reviews:", error);
 				});
 		}
-		// Fetch shopping cart data from the server
-		client.addShoppingCart(userId).then(setShoppingCarts);
+
+
 	}, [sandwich.name, userId]);
 
 	if (!sandwich) return null;
@@ -70,6 +66,7 @@ function SandwichModal({ sandwich, onClose }) {
 			className="modal-overlay"
 			onClick={handleOverlayClick}>
 			<div className="modal-content">
+				{/* <button className="close-button" onClick={onClose}>Close</button> */}
 				<div className="sandwich-details">
 					<img
 						src={sandwich.image}
@@ -79,7 +76,6 @@ function SandwichModal({ sandwich, onClose }) {
 						<h2>{sandwich.name}</h2>
 						<p>{sandwich.description || "Delicious sandwich"}</p>
 						<p>Price: {sandwich.price}</p>
-						<button onClick={onClose}>Close</button>
 						<AiOutlineShoppingCart
 							className="cart-icon"
 							onClick={addCart}
