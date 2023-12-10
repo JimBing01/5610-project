@@ -8,14 +8,10 @@ import { renderStars } from "../../../utils";
 
 
 
-
-
 function SandwichModal({ sandwich, onClose }) {
 	const { userId } = useParams();
 	const [reviews, setReviews] = useState([]);
-	const [shoppingCarts, setShoppingCarts] = useState(
-		db.shoppingCart.filter((user) => user.userId === userId)
-	);
+	const [shoppingCarts, setShoppingCarts] = useState([]);
 
 	const [currentItem, setCurrentItem] = useState({
 		_id: new Date() + sandwich.name,
@@ -39,8 +35,8 @@ function SandwichModal({ sandwich, onClose }) {
 					console.error("Failed to fetch reviews:", error);
 				});
 		}
-		// Fetch shopping cart data from the server
-		client.addShoppingCart(userId).then(setShoppingCarts);
+
+
 	}, [sandwich.name, userId]);
 
 	if (!sandwich) return null;
