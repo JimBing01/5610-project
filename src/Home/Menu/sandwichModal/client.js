@@ -34,6 +34,7 @@ export const addShoppingCart = async (userId, item) => {
         const url = `${API_BASE}/home/${userId}/sandwichModal`;
         console.log("Request URL:", url); // Log the URL to check it
         const response = await axios.post(url, item);
+        console.log(response.data)
         return response.data;
     } catch (error) {
         console.error("Error adding to shopping cart:", error.response);

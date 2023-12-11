@@ -211,11 +211,11 @@ function ShoppingCart() {
             {promotions.map(item => (
                 <div key={item._id} style={{marginTop: "4px"}}>
                     <input className="form-check-input" type="radio" value={item.discount}
-                           name="discount" id={"radio" + item._id}
+                           name="discount" id={"discount" + item._id}
 
                            onClick={() => setPromotion(item)}/>
 
-                    <label htmlFor={"radio" + item._id} style={{marginLeft: "5px", marginTop: "5px"}}>
+                    <label htmlFor={"discount" + item._id} style={{marginLeft: "5px", marginTop: "5px"}}>
                         {item.discount+'%off'}
                     </label>
                 </div>
@@ -226,18 +226,18 @@ function ShoppingCart() {
             <span style={{fontSize: "1.2em",
                 color: "#333"}}>Please select your address:</span>
 
-            {addresses.map(item => (
-                <div  key={item.addressId} style={{marginTop:"4px"}}>
-                    <input class="form-check-input" type="radio" value= {item.street+ " " + item.city+ " "
-                        + item.state + " " + item.zipCode}
-                           name="radio" id={"radio" + item.addressId}
+            {addresses.map(address => (
+                <div  key={address.addressId} style={{marginTop:"4px"}}>
+                    <input class="form-check-input" type="radio" value= {address.street+ " " + address.city+ " "
+                        + address.state + " " + address.zipCode}
+                           name="radio" id={"radio" + address.addressId}
 
-                    onClick={()=>setAddress(item.street+ " " + item.city+ " "
-                            + item.state + " " + item.zipCode)}/>
+                    onClick={()=>setAddress(address.street+ " " + address.city+ " "
+                            + address.state + " " + address.zipCode)}/>
 
-                    <label htmlFor={"radio" + item.addressId} style={{marginLeft:"5px",marginTop:"5px"}}>
-                        {item.street+ " " + item.city+ " "
-                        + item.state + " " + item.zipCode}
+                    <label htmlFor={"radio" + address.addressId} style={{marginLeft:"5px",marginTop:"5px"}}>
+                        {address.street+ " " + address.city+ " "
+                        + address.state + " " + address.zipCode}
                     </label>
                 </div>
             ))}

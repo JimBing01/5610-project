@@ -11,7 +11,6 @@ export const findShoppingCart = async (userId) => {
 };
 
 export const addPastOrders = async (userId,pastOrder) => {
-    console.log(pastOrder)
     const response = await axios
         .post(`${USER_URL}/${userId}/shopping-cart`,pastOrder);
 
