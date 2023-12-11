@@ -3,6 +3,7 @@ import axios from "axios";
 const API_BASE = process.env.REACT_APP_BASE_API_URL;
 const USER_URL = `${API_BASE}`;
 const SANDWICHES_URL = `${API_BASE}/api/sandwiches`;
+const FAV_URL = `${API_BASE}/user`;
 
 export const fetchReviewsBySandwichId = async (sandwichId) => {
     try {
@@ -38,25 +39,38 @@ export const addShoppingCart = async (userId, item) => {
         throw error;
     }
 };
+export const fetchFavorites = async (userId) => {
+    try {
+        const response = await axios.get(`${FAV_URL}/${userId}/favorites`);
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching favorites:", error.response);
+        return [];
+    }
+};
 
 export const addFavorite = async (userId, item) => {
-    // Check for required parameters
     if (!userId || !API_BASE) {
         console.error("Missing userId or API_BASE URL");
         return;
     }
 
-    // Correctly set the URL for adding a favorite
-    const url = `${API_BASE}/user/${userId}/favorites`;
-    console.log("Request URL:", url); // Log the URL to check it
-
     try {
-        // Make a POST request to the server
+        // Fetch the current favorites
+        const currentFavorites = await fetchFavorites(userId);
+
+        // Check if the item is already in favorites
+        if (currentFavorites.some(favorite => favorite.name === item.name)) {
+            console.log("Item already in favorites");
+            return { message: "Item is already a favorite." }; // or handle this case as needed
+        }
+
+        // If not in favorites, proceed to add
+        const url = `${FAV_URL}/${userId}/favorites`;
         const response = await axios.post(url, item);
         return response.data;
     } catch (error) {
         console.error("Error adding to favorites:", error.response);
-        // Rethrow the error for handling by the caller
         throw error;
     }
 };

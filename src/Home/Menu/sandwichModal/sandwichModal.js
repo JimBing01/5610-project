@@ -94,6 +94,7 @@ function SandwichModal({ sandwich, onClose }) {
 						<p>{sandwich.description || "Delicious sandwich"}</p>
 						<p>Price: {sandwich.price}</p>
 						
+						<div>
 						<button type="button" className="btn position-relative" style={{marginTop:"5px"}}>
 							<AiOutlineShoppingCart
 								className="cart-icon"
@@ -110,6 +111,7 @@ function SandwichModal({ sandwich, onClose }) {
                 className="favorite-icon"
                 onClick={addToFavorites}
             />
+			</div>
 
 					</div>
 				</div>
