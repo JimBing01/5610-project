@@ -30,25 +30,15 @@ function SideBar({userId}) {
 
 
   // yiming
-  // const handleSignOut = async () => {
-  //   try {
-  //     await client.signout(); // Calls the signout function in users/client.js
-  //     navigate("/home"); // Replace with the actual sign-in route
-  //   } catch (error) {
-  //     console.error('Error signing out:', error);
-  //     // Handle the error, maybe show a message to the user
-  //   }
-  // };
-
-  // const handleSignOut = async (event) => {
-  //   event.preventDefault(); // Prevent the default anchor behavior
-  //   try {
-  //     await client.signout(); // Calls the signout function in users/client.js
-  //     navigate("/Home"); // Navigate to the home page
-  //   } catch (error) {
-  //     console.error('Error signing out:', error);
-  //   }
-  // };
+  const handleSignOut = async () => {
+    try {
+      await client.signout(); // This should send a POST request to '/api/users/signout'
+      // Then you can navigate to the home page
+      window.location.href = "/Home"; // This will cause a full page refresh, which can help ensure that all user data is cleared
+    } catch (error) {
+      console.error('Error signing out:', error);
+    }
+  };
 
   return (
     <div className="Sidebar">

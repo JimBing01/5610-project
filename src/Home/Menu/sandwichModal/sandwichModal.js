@@ -5,6 +5,7 @@ import db from "../../../Database";
 import { useParams, Link } from "react-router-dom";
 import * as client from "./client";
 import { renderStars } from "../../../utils";
+import {findShoppingCart} from "../../../User/ShoppingCart/client";
 
 
 
@@ -36,7 +37,7 @@ function SandwichModal({ sandwich, onClose }) {
 				});
 		}
 
-
+		findShoppingCart(userId).then((item) => {setShoppingCarts(item)} )
 	}, [sandwich.name, userId]);
 
 	if (!sandwich) return null;
@@ -82,7 +83,7 @@ function SandwichModal({ sandwich, onClose }) {
 			className="modal-overlay"
 			onClick={handleOverlayClick}>
 			<div className="modal-content">
-				{/* <button className="close-button" onClick={onClose}>Close</button> */}
+				<button className="close-button" onClick={onClose}>Close</button>
 				<div className="sandwich-details">
 					<img
 						src={sandwich.image}
@@ -92,14 +93,24 @@ function SandwichModal({ sandwich, onClose }) {
 						<h2>{sandwich.name}</h2>
 						<p>{sandwich.description || "Delicious sandwich"}</p>
 						<p>Price: {sandwich.price}</p>
-						<AiOutlineShoppingCart
-							className="cart-icon"
-							onClick={addCart}
-						/>
-						            <AiOutlineHeart
+						
+						<button type="button" className="btn position-relative" style={{marginTop:"5px"}}>
+							<AiOutlineShoppingCart
+								className="cart-icon"
+								onClick={addCart}
+							/>
+							<span
+								className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+    							{shoppingCarts.length}
+    								<span className="visually-hidden">unread messages</span>
+  							</span>
+						</button>
+
+						<AiOutlineHeart
                 className="favorite-icon"
                 onClick={addToFavorites}
             />
+
 					</div>
 				</div>
 				{/* 

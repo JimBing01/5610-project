@@ -1,54 +1,49 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import {Routes, Route, Link, useNavigate} from 'react-router-dom';
 import SignupForm from './SignupForm';
 import LoginForm from './LoginForm';
 import HorizontalNavigation from '../Home/NavigationBar/index.js';
 import './index.css';
 import { registerUser, checkUserExists } from './client';
-import { useNavigate } from 'react-router-dom';
+
+
+const API_BASE = process.env.REACT_APP_API_BASE;
+
 
 function Login() {
 
     const navigate = useNavigate();
 
-    const isValidEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
+    // const isValidEmail = (email) => {
+    //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    //     return emailRegex.test(email);
+    // };
 
 
-    const handleSignup = async (email, password, confirmPassword, role) => {
-        if (!isValidEmail(email)) {
-            alert("Please enter a valid email address.");
-            return;
-        }
-
+    const onSignup = async (userData) => {
         try {
-            const emailExists = await checkUserExists(email);
-            // console.log(`Does email exist? ${emailExists}`);
+            // First, check if the email already exists
+            const emailExists = await checkUserExists(userData.email);
+            console.log(`Does email exist? ${emailExists}`);
             if (emailExists) {
                 alert("An account with this email already exists. Please log in.");
                 return;
             }
 
-            // console.log('Password:', password);
-            // console.log('Confirm Password:', confirmPassword);
-            if (password.trim() !== confirmPassword.trim()) {
-                alert("Passwords don't match.");
-                return;
+            // Register the user
+            const response = await registerUser(userData);
+            if (response._id) { // Assuming the response will contain the user's _id
+                alert("Signup successful!");
+                navigate(`/user/${response._id}/home`);
             }
-
-            await registerUser(email, password, role);
-            alert("Signup successful!");
         } catch (error) {
             alert("Signup failed: " + error.message);
         }
     };
 
-
     const handleLogin = async (email, password) => {
         const normalizedEmail = email.trim().toLowerCase();
-        const API_BASE = process.env.REACT_APP_API_BASE;
+        // const API_BASE = process.env.REACT_APP_API_BASE;
 
         // Fetch all users from the server (ideally, you would have a more secure endpoint for login)
         const response = await fetch(`${API_BASE}/users`);
@@ -92,8 +87,9 @@ function Login() {
                 <Link to="/login/signup" className="link-sign-up">Don't have an account? Register now</Link>
             </div>
             <Routes>
-                <Route path="/signup" element={<SignupForm onSignup={handleSignup} />} />
+                {/*<Route path="/signup" element={<SignupForm onSignup={handleSignup} />} />*/}
                 <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+                <Route path="/signup" element={<SignupForm onSignup={onSignup} />} />
             </Routes>
         </div>
     );

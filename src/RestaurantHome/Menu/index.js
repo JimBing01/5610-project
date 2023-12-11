@@ -74,7 +74,7 @@ function Menu() {
 					<span>${sandwich.price}</span>
 				</div>
 
-				<IoAddOutline className="add-icon" />
+				{/* <IoAddOutline className="add-icon" /> */}
 
 				<button
 					className="btn btn-warning"
@@ -249,11 +249,15 @@ function Menu() {
 					</li>
 				</ul>
 			</div>
-			<div className="menu-content">
-				{activeMenu === "popular" && renderSandwiches(sandwiches)}
-				{activeMenu === "breakfast" && renderSandwiches(sandwiches)}
-				{activeMenu === "subs" && renderSandwiches(sandwiches)}
+			<div className="flex-row">
+				<div className="d-flex flex-row flex-wrap row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-3"
+				style={{ gap: "100px"}}>
+					{activeMenu === "popular" && renderSandwiches(sandwiches)}
+					{activeMenu === "breakfast" && renderSandwiches(sandwiches)}
+					{activeMenu === "subs" && renderSandwiches(sandwiches)}
+				</div>
 			</div>
+
 			{isModalOpen && (
 				<SandwichModal
 					sandwich={selectedSandwich}

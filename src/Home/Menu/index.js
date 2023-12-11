@@ -62,21 +62,9 @@ function Menu() {
 				/>
 				<h3>{sandwich.name}</h3>
 				<p>{sandwich.description || "Delicious sandwich"}</p>
-				<span>{sandwich.price}</span>
+				<span>${sandwich.price}</span>
 
-				<IoAddOutline
-					// className="add-icon"
-					// onClick={() => {
-					// 	// Check if the user is logged in (you can add your own condition here)
-					// 	if (userId) {
-					// 	// If logged in, perform the add-to-cart action
-					// 	// Add your add-to-cart logic here
-					// 	} else {
-					// 	// If not logged in, show the pop-up and suggest creating an account
-					// 		alert("Please sign in or join to add items to your cart.");
-					// 	}
-					// }}
-				/>
+				{/* <IoAddOutline/> */}
 			</div>
 		));
 	};
@@ -94,7 +82,7 @@ function Menu() {
 
 
 	return (
-		<div className="menu">
+		<div className="menu ">
 			<div className="menu-list">
 				<ul>
 					<TfiAlignJustify />
@@ -106,7 +94,8 @@ function Menu() {
 				</ul>
 			</div>
 
-			<div className="menu-content">
+			<div className="d-flex flex-row flex-wrap row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-3"
+				 style={{ gap: "100px"}}>
 				{activeMenu === "popular" &&
 					renderSandwiches(sandwiches)}
 				{activeMenu === "breakfast" && renderSandwiches(sandwiches)}

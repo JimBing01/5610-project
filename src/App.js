@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Routes } from 'react-router-dom';
 import Home from "./Home";
 import User from "./User";
 import Login from "./Login";
@@ -12,6 +12,9 @@ import Delivery from "./DeliveryUser";
 
 import RestaurantHome from "./RestaurantHome";
 import UserPublic from "./UserPublic";
+import ApiSearchBar from "./Home/NavigationBar/ApiSearchBar"
+import SearchResults from "./Home/NavigationBar/ApiSearchBar/SearchResults"
+
 
 
 function App() {
@@ -31,6 +34,8 @@ function App() {
           <Route path="/delivery/:userId/*" element={<Delivery />} />
           <Route path="/login/*" element={<Login />} />
           <Route path="/user/public/:userId/*" element={<UserPublic />} />
+          <Route path="/search" element={<ApiSearchBar />} />
+          <Route path="/search/:criteria" element={<SearchResults />} />
         </Routes>
       </Router>
 

@@ -4,6 +4,7 @@ import { BiUserCircle, BiHome, BiMenu } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./index.css";
 import SearchBar from "../Menu/SearchBar"
+import ApiSearchBar from "./ApiSearchBar";
 
 function HorizontalNavigation({onSelectSandwich}) {
 	const {userId} = useParams();
@@ -59,6 +60,10 @@ function HorizontalNavigation({onSelectSandwich}) {
 					<BiMenu className="nav-icon" />
 					Menu
 				</a>
+				<div className="remote-api-search-bar">
+					<ApiSearchBar />
+				</div>
+				
 			</div>
 
 			<div className="center-group">
