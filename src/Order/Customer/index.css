@@ -55,13 +55,13 @@ ul {
 }
 input:not(:checked) ~ label:hover,
 input:not(:checked) ~ label:hover ~ label{
-    color: green !important;
+    color: #fd4;
 }
 input:checked ~ label{
-    color: green !important;
+    color: #fd4;
 }
 input#rate-5:checked ~ label {
-    color: green !important;
+    color: #fd4;
     text-shadow: 0 0 20px #952;
 }
 #rate-1:checked ~ span:before{

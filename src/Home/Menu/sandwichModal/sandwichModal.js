@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import "./index.css";
 import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import db from "../../../Database";
-import { useParams, Link } from "react-router-dom";
+import {useParams, Link, useLocation, useNavigate} from "react-router-dom";
 import * as client from "./client";
 import { renderStars } from "../../../utils";
 import {findShoppingCart} from "../../../User/ShoppingCart/client";
@@ -11,6 +11,17 @@ import {findShoppingCart} from "../../../User/ShoppingCart/client";
 
 function SandwichModal({ sandwich, onClose }) {
 	const { userId } = useParams();
+	const navigate = useNavigate();
+	const { pathname } = useLocation();
+	let temp = null;
+	if(pathname.includes('user')) {
+		temp = 'user/' + userId
+	} else if(pathname.includes('restaurant')) {
+		temp = 'restaurant/'+ userId
+	} else if(pathname.includes('delivery')) {
+		temp = 'delivery/'+ userId
+	}
+
 	const [reviews, setReviews] = useState([]);
 	const [shoppingCarts, setShoppingCarts] = useState([]);
 	const [favorites, setFavorites] = useState([]);
@@ -50,10 +61,15 @@ function SandwichModal({ sandwich, onClose }) {
 		}
 	};
 
+
 	const addCart = () => {
-		client.addShoppingCart(userId, currentItem).then((wholeShoppingCarts) => {
-			setShoppingCarts(wholeShoppingCarts);
-		});
+		if(temp == null) {
+			navigate('/login')
+		}else {
+			client.addShoppingCart(userId, currentItem).then((wholeShoppingCarts) => {
+				setShoppingCarts(wholeShoppingCarts);
+			});
+		}
 	};
 
 	const addToFavorites = () => {
