@@ -5,7 +5,7 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 
 export async function registerUser(userData) {
     try {
-        const response = await fetch(`${API_BASE}/users/signup`, {
+        const response = await fetch(`https://cosmic-horse-b86e88.netlify.app/users/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
