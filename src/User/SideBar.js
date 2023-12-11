@@ -71,6 +71,11 @@ function SideBar({userId}) {
           </NavLink>
         </li>
         <li>
+          <NavLink to={"/user/"+ userId +"/favorites"} className={({ isActive }) => isActive ? 'active' : ''}>
+            <MdOutlineLocationOn /> Favorites
+          </NavLink>
+        </li>
+        <li>
           <NavLink to={"/user/"+ userId +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
             <MdOutlineHistory /> Orders
           </NavLink>

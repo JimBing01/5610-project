@@ -4,6 +4,8 @@ const API_BASE = process.env.REACT_APP_API_BASE;
 const ACCOUNT_URL = `${API_BASE}/users`;
 const ADDRESSES_URL = `${API_BASE}/addresses`;
 const PAYMENTS_URL = `${API_BASE}/payments`;
+const BASE_FAVORITES = process.env.REACT_APP_BASE_API_URL;
+const USER_URL = `${BASE_FAVORITES}/user`;
 
 export const getUserById = async (id) => {
     const { data } = await axios.get(`${ACCOUNT_URL}/${id}`);
@@ -51,6 +53,16 @@ export const updateUserPaymentMethod = async (pid, paymentDetails) => {
 export const addUserPaymentMethod = async (userId, paymentDetails) => {
     const { data } = await axios.post(`${ACCOUNT_URL}/${userId}/payments`, paymentDetails);
     return data;
+}
+
+// Favorites Handling
+export const fetchFavorites = async (userId) => {
+    const { data } = await axios.get(`${USER_URL}/${userId}/favorites`);
+    return data;
+}
+
+export const deleteFavorite = async (userId, favoriteId) => {
+    await axios.delete(`${USER_URL}/${userId}/favorites/${favoriteId}`);
 }
 
 //yiming

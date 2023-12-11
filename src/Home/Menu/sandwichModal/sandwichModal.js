@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import "./index.css";
-import { AiOutlineShoppingCart } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
 import db from "../../../Database";
 import { useParams, Link } from "react-router-dom";
 import * as client from "./client";
@@ -12,16 +12,16 @@ function SandwichModal({ sandwich, onClose }) {
 	const { userId } = useParams();
 	const [reviews, setReviews] = useState([]);
 	const [shoppingCarts, setShoppingCarts] = useState([]);
+	const [favorites, setFavorites] = useState([]);
 
 	const [currentItem, setCurrentItem] = useState({
-		_id: new Date() + sandwich.name,
+		favoriteId: new Date().getTime(),
 		userId: userId,
 		name: sandwich.name,
 		description: sandwich.description,
-		price: sandwich.price,
 		image: sandwich.image,
-		quantity: 1,
 	});
+
 
 	useEffect(() => {
 		console.log("UserID:", userId); // Log to check if userId is defined
@@ -53,6 +53,22 @@ function SandwichModal({ sandwich, onClose }) {
 		});
 	};
 
+	const addToFavorites = () => {
+		console.log('addToFavorites called with item:', currentItem);
+	
+		client.addFavorite(userId, currentItem)
+		  .then((wholeFavorites) => {
+			console.log('Favorites after adding:', wholeFavorites); 
+			setFavorites(wholeFavorites);
+		  })
+		  .catch((error) => {
+			console.error('Failed to add to favorites:', error);
+		  });
+	};
+	
+	  
+
+
 	const renderStars = (rating) => {
 		let stars = [];
 		for (let i = 0; i < rating; i++) {
@@ -80,6 +96,10 @@ function SandwichModal({ sandwich, onClose }) {
 							className="cart-icon"
 							onClick={addCart}
 						/>
+						            <AiOutlineHeart
+                className="favorite-icon"
+                onClick={addToFavorites}
+            />
 					</div>
 				</div>
 				{/* 

@@ -39,5 +39,28 @@ export const addShoppingCart = async (userId, item) => {
     }
 };
 
+export const addFavorite = async (userId, item) => {
+    // Check for required parameters
+    if (!userId || !API_BASE) {
+        console.error("Missing userId or API_BASE URL");
+        return;
+    }
+
+    // Correctly set the URL for adding a favorite
+    const url = `${API_BASE}/user/${userId}/favorites`;
+    console.log("Request URL:", url); // Log the URL to check it
+
+    try {
+        // Make a POST request to the server
+        const response = await axios.post(url, item);
+        return response.data;
+    } catch (error) {
+        console.error("Error adding to favorites:", error.response);
+        // Rethrow the error for handling by the caller
+        throw error;
+    }
+};
+
+
 // export const fetchReviews 
 
