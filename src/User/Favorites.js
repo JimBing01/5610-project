@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 // import db from "../../Database";
 // import './ShoppingCart.css';
+import './Favorites.css';
 import {useParams} from "react-router-dom";
 import * as client from "./client";
 
@@ -27,7 +28,7 @@ function Favorites() {
 
     return (
         <div className="shopping-cart">
-            <h2>Favorites</h2>
+            <h2 className="favorites-title">Your Favorites</h2>
             <div className="items">
                 {items.map((item) => (
                     <div className="item" key={item._id}>
@@ -37,7 +38,7 @@ function Favorites() {
                         <div className="item-info">
                             <div className="item-name">{item.name}</div>
                         </div>
-                        <button className="item-remove" onClick={() => removeItem(item.favoriteId)}>Remove</button>
+                        <button className="item-remove btn btn-success" onClick={() => removeItem(item.favoriteId)}>Remove</button>
                     </div>
                 ))}
             </div>
