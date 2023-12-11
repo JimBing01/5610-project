@@ -29,7 +29,7 @@ function SandwichModal({ sandwich, onClose }) {
 		console.log("Sandwich ID:", sandwich._id); // Log to check sandwich ID
 		if (sandwich && sandwich._id) {
 			client
-				.fetchReviewsBySandwichId(sandwich._id)
+				.fetchReviewsBySandwichId(sandwich._id, sandwich)
 				.then(setReviews)
 				.catch((error) => {
 					// Handle or log the error if needed
