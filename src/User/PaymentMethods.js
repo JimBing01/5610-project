@@ -8,7 +8,7 @@ function PaymentMethods() {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [editModeIndex, setEditModeIndex] = useState(null);
   const [tempCard, setTempCard] = useState({});
-  const [newCard, setNewCard] = useState({ type: '', cardNumber: '', expirationDate: '', securityCode: '', isDefault: false });
+  const [newCard, setNewCard] = useState({ type: 'Visa', cardNumber: '', expirationDate: '', securityCode: '', isDefault: false });
 
   const fetchUserPaymentMethods = async () => {
     const data = await client.getUserPaymentMethods(userId);
@@ -52,8 +52,9 @@ function PaymentMethods() {
 
   const handleNewCardChange = (e) => {
     const { name, value } = e.target;
+    console.log(`Field ${name} updated to ${value}`); // Log the change
     setNewCard({ ...newCard, [name]: value });
-  };
+};
 
   const CARD_TYPES = ["Visa", "MasterCard", "American Express", "Discover"];
 
