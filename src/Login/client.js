@@ -5,7 +5,7 @@ const API_BASE_URL = process.env.REACT_APP_BASE_API_URL;
 
 export async function registerUser(userData) {
     try {
-        const response = await fetch(`${API_BASE_URL}/users/signup`, {
+        const response = await fetch(`${API_BASE_URL}/api/users/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ export async function registerUser(userData) {
 
 export async function checkUserExists(email) {
     try {
-        const response = await fetch(`${API_BASE_URL}/users?email=${encodeURIComponent(email)}`, {
+        const response = await fetch(`${API_BASE_URL}/api/users?email=${encodeURIComponent(email)}`, {
             credentials: 'include'
         });
         console.log('Response from checkUserExists:', response);
