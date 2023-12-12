@@ -6,38 +6,45 @@ function SearchResults() {
     const location = useLocation();
     const [results, setResults] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
     useEffect(() => {
-        const fetchResults = async () => {
-            // Determine if criteria is in URL or query parameters
-            let searchCriteria = criteria;
-            if (!searchCriteria) {
-                const searchParams = new URLSearchParams(location.search);
-                searchCriteria = searchParams.get('criteria');
-            }
+        if (location.state && location.state.error) {
+            setError(location.state.error);
+            return;
+        }
 
-            if (searchCriteria) {
-                setIsLoading(true);
-                try {
-                    // Replace this URL with your actual API endpoint
-                    const response = await fetch(`https://api.api-ninjas.com/v1/jokes?limit=${searchCriteria}`, {
-                        method: 'GET',
-                        headers: { 'X-Api-Key': 'YOUR_API_KEY' },
-                        contentType: 'application/json',
-                    });
-                    const data = await response.json();
-                    setResults(data);
-                } catch (error) {
-                    console.error('Error fetching search results:', error);
-                }
-                setIsLoading(false);
-            }
-        };
+        if (!criteria) {
+            setError('No search criteria provided.');
+            return;
+        }
+
+        const fetchResults = async () => {
+    setIsLoading(true);
+    try {
+        const response = await fetch(`https://api.api-ninjas.com/v1/jokes?limit=${criteria}`, {
+            method: 'GET',
+            headers: { 'X-Api-Key': '9sZqJjIclxuWHmvN+omW6w==zDckrpQWFlQhoGjA' }
+        });
+
+        if (!response.ok) {
+            throw new Error(`API call failed with status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setResults(data);
+    } catch (error) {
+        console.error('Error fetching search results:', error);
+    }
+    setIsLoading(false);
+};
+
 
         fetchResults();
-    }, [criteria, location.search]);
+    }, [criteria, location.state]);
 
     if (isLoading) return <div>Loading...</div>;
+    if (error) return <div>{error}</div>;
     if (!results.length) return <div>No results found. Try searching for jokes!</div>;
 
     return (

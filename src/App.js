@@ -24,6 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+
           <Route path="/home/user/:userId" element={<Home />} />
           <Route path="/home/restaurant/:userId" element={<RestaurantHome />} />
           <Route path="/home/delivery/:userId" element={<Home />} />
@@ -34,8 +35,9 @@ function App() {
           <Route path="/delivery/:userId/*" element={<Delivery />} />
           <Route path="/login/*" element={<Login />} />
           <Route path="/user/public/:userId/*" element={<UserPublic />} />
-          <Route path="/search" element={<ApiSearchBar />} />
-          <Route path="/search/:criteria" element={<SearchResults />} />
+
+          <Route path="/search" element={<><ApiSearchBar /><SearchResults /></>} />
+          <Route path="/search/:criteria" element={<><ApiSearchBar /><SearchResults /></>} />
         </Routes>
       </Router>
 
