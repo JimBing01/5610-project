@@ -9,7 +9,7 @@ function PaymentMethods() {
   const [paymentMethods, setPaymentMethods] = useState([]);
   const [editModeIndex, setEditModeIndex] = useState(null);
   const [tempCard, setTempCard] = useState({});
-  const [newCard, setNewCard] = useState({ type: '', cardNumber: '', expirationDate: '', securityCode: '', isDefault: false });
+  const [newCard, setNewCard] = useState({ type: 'Visa', cardNumber: '', expirationDate: '', securityCode: '', isDefault: false });
 
   const fetchUserPaymentMethods = async () => {
     const data = await client.getUserPaymentMethods(userId);
