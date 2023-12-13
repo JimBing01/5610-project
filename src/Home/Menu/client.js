@@ -2,11 +2,11 @@ import axios from "axios";
 
 const request = axios.create({
     withCredentials: true,
-  });
+});
   
 
 const API_BASE = process.env.REACT_APP_API_BASE;
-
+// with api in middle
 const SANDWICHES_URL = `${API_BASE}/sandwiches`;
 
 
