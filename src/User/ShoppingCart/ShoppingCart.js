@@ -41,7 +41,7 @@ function ShoppingCart() {
 
   const handleCheck = () => {
       setPastOrder(
-        { "_id": new Date().getTime().toString(),
+        {
         "userId":userId,
         "date": getTime(),
         "price": calculateTotal(),

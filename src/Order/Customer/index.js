@@ -191,7 +191,7 @@ function Customer() {
                                     ))}
                                 </div>
 
-                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"40px"}}>
+                                <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"30px"}}>
                                     Order Status:<span style={{marginLeft:"5px"}}>{order.status}</span>
                                 </div>
 
