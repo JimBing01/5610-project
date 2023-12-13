@@ -15,16 +15,18 @@ function Menu() {
 	// const history = useHistory();
 
 	const fetchSandwiches = async () => {
-        let sandwichesData = [];
-        if (activeMenu === "breakfast") {
-            sandwichesData = await client.fetchBreakfastSandwiches();
-        } else if (activeMenu === "popular") {
-            sandwichesData = await client.fetchPopularItems();
-        } else if (activeMenu === "subs") {
-            sandwichesData = await client.fetchSandwichesAndSubs();
-        }
-        setSandwiches(sandwichesData);
-    };
+		let sandwichesData = [];
+		if (activeMenu === "breakfast") {
+			sandwichesData = await client.fetchBreakfastSandwiches();
+		} else if (activeMenu === "popular") {
+			sandwichesData = await client.fetchPopularItems();
+		} else if (activeMenu === "subs") {
+			sandwichesData = await client.fetchSandwichesAndSubs();
+		}
+		console.log("Fetched sandwiches data: ", sandwichesData); // Debugging log
+		setSandwiches(sandwichesData);
+	};
+	
 
     useEffect(() => {
         fetchSandwiches();

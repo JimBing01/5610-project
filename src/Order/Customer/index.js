@@ -55,6 +55,8 @@ function Customer() {
         updateCustomerOrder();
     };
 
+    
+
     useEffect(() => {
         client.findPastOrders(userId)
             .then((items) =>
