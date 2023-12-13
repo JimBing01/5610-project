@@ -1,11 +1,11 @@
 // src/Login/client.js
 
-// const API_BASE_URL = process.env.REACT_APP_BASE_API_URL;
-const API_BASE = process.env.REACT_APP_API_BASE;
+const API_BASE_URL = process.env.REACT_APP_BASE_API_URL;
+// const API_BASE = process.env.REACT_APP_API_BASE;
 
 export async function registerUser(userData) {
     try {
-        const response = await fetch(`https://cosmic-horse-b86e88.netlify.app/users/signup`, {
+        const response = await fetch(`${API_BASE_URL}/api/users/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -28,7 +28,7 @@ export async function registerUser(userData) {
 
 export async function checkUserExists(email) {
     try {
-        const response = await fetch(`${API_BASE}/users?email=${encodeURIComponent(email)}`, {
+        const response = await fetch(`${API_BASE_URL}/api/users?email=${encodeURIComponent(email)}`, {
             credentials: 'include'
         });
         console.log('Response from checkUserExists:', response);
