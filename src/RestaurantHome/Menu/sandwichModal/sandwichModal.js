@@ -15,7 +15,6 @@ function SandwichModal({ sandwich, onClose }) {
         db.shoppingCart.filter((user) => user.userId == userId));
 
     const [currentItem, setCurrentItem] = useState({
-        "_id":new Date() + sandwich.name,
         "userId": userId,
         "name": sandwich.name,
         "description": sandwich.description,
