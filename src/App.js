@@ -35,6 +35,8 @@ function App() {
           <Route path="/delivery/:userId/*" element={<Delivery />} />
           <Route path="/login/*" element={<Login />} />
           <Route path="/user/public/:userId/:pre/*" element={<UserPublic />} />
+          <Route path="/restaurant/public/:userId/:pre/*" element={<UserPublic />} />
+          <Route path="/delivery/public/:userId/:pre/*" element={<UserPublic />} />
 
           <Route path="/search" element={<><ApiSearchBar /><SearchResults /></>} />
           <Route path="/search/:criteria" element={<><ApiSearchBar /><SearchResults /></>} />

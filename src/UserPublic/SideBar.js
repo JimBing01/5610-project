@@ -1,5 +1,5 @@
 
-import { NavLink } from 'react-router-dom';
+import {NavLink, useLocation} from 'react-router-dom';
 import { IoMdInformationCircleOutline, IoIosLogOut } from 'react-icons/io';
 import { MdPayment, MdOutlineLocationOn, MdOutlineHistory, MdShoppingCart } from 'react-icons/md';
 import './SideBar.css';
@@ -11,6 +11,17 @@ function SideBar({userId}) {
   const [userInfo, setUserInfo] = useState({});
   const {userId: id} = useParams();
   const {pre} = useParams();
+  const { pathname } = useLocation();
+
+  let temp = null;
+  if(pathname.includes('user')) {
+    temp = 'user'
+  } else if(pathname.includes('restaurant')) {
+    temp = 'restaurant'
+  } else if(pathname.includes('delivery')) {
+    temp = 'delivery'
+  }
+
   useEffect(() => {
     async function fetchUserInfo() {
       try {
@@ -33,12 +44,12 @@ function SideBar({userId}) {
       <ul>
       <li>{userInfo.firstName}' Profile</li>
         <li>
-          <NavLink to={"/user/public/"+ userId + '/' + pre + "/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
+          <NavLink to={"/"+ temp +"/public/"+ userId + '/' + pre + "/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoMdInformationCircleOutline /> Account Info
           </NavLink>
         </li>
         <li>
-          <NavLink to={"/user/public/"+ userId + '/' + pre +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
+          <NavLink to={"/"+ temp + "/public/"+ userId + '/' + pre +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
             <MdOutlineHistory /> Past Orders
           </NavLink>
         </li>

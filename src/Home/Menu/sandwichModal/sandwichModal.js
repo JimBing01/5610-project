@@ -14,13 +14,17 @@ function SandwichModal({ sandwich, onClose }) {
 	const { userId } = useParams();
 	const navigate = useNavigate();
 	const { pathname } = useLocation();
+	let name = 'user';
 	let temp = null;
 	if(pathname.includes('user')) {
 		temp = 'user/' + userId
+		name = 'user'
 	} else if(pathname.includes('restaurant')) {
 		temp = 'restaurant/'+ userId
+		name = 'restaurant'
 	} else if(pathname.includes('delivery')) {
 		temp = 'delivery/'+ userId
+		name = 'delivery'
 	}
 
 	const [reviews, setReviews] = useState([]);
@@ -162,7 +166,7 @@ function SandwichModal({ sandwich, onClose }) {
 								key={index}
 								className="review">
 								<div className="review-header">
-									<Link to={`/user/public/${review.userId}/${userId}`} className="reviewer-link">
+									<Link to={`/${name}/public/${review.userId}/${userId}`} className="reviewer-link">
 										<img
 											src={`/images/customerIcon/${review.username}.png`}
 											alt={`${review.username}'s Profile Pic`}
@@ -171,7 +175,7 @@ function SandwichModal({ sandwich, onClose }) {
 									</Link>
 									<div className="reviewer-info">
 										<Link
-											to={`/user/public/${review.userId}/${userId}`}
+											to={`/${name}/public/${review.userId}/${userId}`}
 											className="reviewer-name">
 											{review.username}
 										</Link>
