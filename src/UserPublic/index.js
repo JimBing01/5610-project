@@ -5,7 +5,7 @@ import Header from './Header';
 import SideBar from './SideBar';
 import './index.css';
 
-import NavigationBar from "../Home/NavigationBar";
+import NavigationBar from "./NavigationBar";
 import PublicCustomer from "../Order/PublicCustomer";
 
 import PastReviews from "./PastReviews";

@@ -49,7 +49,7 @@ function RestaurantOrder() {
                             <li style={{width:"95%",marginTop:"30px"}}>
 
                                 <div style={{display:"inline-block",verticalAlign:"middle"}}>
-                                    <img src={'../..'+order.image} style={{width:"300px",height:"150px"}}></img>
+                                    <img src={order.image} style={{width:"300px",height:"150px"}}></img>
                                 </div>
                                 <div style={{display:"inline-block",verticalAlign:"middle",marginLeft:"60px"}}>
                                     <b>Order Date</b>: <span className="font-color">{order.date}</span><br/><br/>

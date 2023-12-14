@@ -7,8 +7,9 @@ import SearchBar from "../Menu/SearchBar"
 
 function HorizontalNavigation({onSelectSandwich}) {
 	const {userId} = useParams();
-	const { pathname } = useLocation();
+	const {preUseId} = useParams();
 
+	const { pathname } = useLocation();
 	let temp = null;
 	if(pathname.includes('user')) {
 		temp = 'user/' + userId
@@ -17,6 +18,8 @@ function HorizontalNavigation({onSelectSandwich}) {
 	} else if(pathname.includes('delivery')) {
 		temp = 'delivery/'+ userId
 	}
+
+
 	
 	const leftLinks = [
 		{ name: "Home", icon: <BiHome className="nav-icon" />,

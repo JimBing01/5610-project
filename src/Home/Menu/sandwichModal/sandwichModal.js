@@ -64,7 +64,7 @@ function SandwichModal({ sandwich, onClose }) {
 		if (e.target.classList.contains("modal-overlay")) {
 			onClose();
 		}
-		client.updateSandwichDataBase(sandwich._id,{name:sandwich.name,sandwichId:sandwich._id,reviews:reviews})
+		//client.updateSandwichDataBase(sandwich._id,{name:sandwich.name,sandwichId:sandwich._id,reviews:reviews})
 	};
 
 
@@ -162,7 +162,7 @@ function SandwichModal({ sandwich, onClose }) {
 								key={index}
 								className="review">
 								<div className="review-header">
-									<Link to={`/user/public/${review.userId}`} className="reviewer-link">
+									<Link to={`/user/public/${review.userId}/${userId}`} className="reviewer-link">
 										<img
 											src={`/images/customerIcon/${review.username}.png`}
 											alt={`${review.username}'s Profile Pic`}
@@ -171,7 +171,7 @@ function SandwichModal({ sandwich, onClose }) {
 									</Link>
 									<div className="reviewer-info">
 										<Link
-											to={`/user/public/${review.userId}`}
+											to={`/user/public/${review.userId}/${userId}`}
 											className="reviewer-name">
 											{review.username}
 										</Link>

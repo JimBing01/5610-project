@@ -10,6 +10,7 @@ import * as client from './client';
 function SideBar({userId}) {
   const [userInfo, setUserInfo] = useState({});
   const {userId: id} = useParams();
+  const {pre} = useParams();
   useEffect(() => {
     async function fetchUserInfo() {
       try {
@@ -32,12 +33,12 @@ function SideBar({userId}) {
       <ul>
       <li>{userInfo.firstName}' Profile</li>
         <li>
-          <NavLink to={"/user/public/"+ userId +"/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
+          <NavLink to={"/user/public/"+ userId + '/' + pre + "/account-info"} className={({ isActive }) => isActive ? 'active' : ''}>
             <IoMdInformationCircleOutline /> Account Info
           </NavLink>
         </li>
         <li>
-          <NavLink to={"/user/public/"+ userId +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
+          <NavLink to={"/user/public/"+ userId + '/' + pre +"/orders"} className={({ isActive }) => isActive ? 'active' : ''}>
             <MdOutlineHistory /> Past Orders
           </NavLink>
         </li>

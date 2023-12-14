@@ -34,7 +34,7 @@ function App() {
           <Route path="/restaurant/:userId/*" element={<Restaurant />} />
           <Route path="/delivery/:userId/*" element={<Delivery />} />
           <Route path="/login/*" element={<Login />} />
-          <Route path="/user/public/:userId/*" element={<UserPublic />} />
+          <Route path="/user/public/:userId/:pre/*" element={<UserPublic />} />
 
           <Route path="/search" element={<><ApiSearchBar /><SearchResults /></>} />
           <Route path="/search/:criteria" element={<><ApiSearchBar /><SearchResults /></>} />
