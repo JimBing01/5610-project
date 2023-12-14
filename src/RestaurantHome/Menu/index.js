@@ -176,6 +176,7 @@ function Menu() {
 			/>
 			<br />
 			<br />
+
 			<span style={{ marginRight: "5px" }}>Sandwich price:</span>
 			<input
 				value={sandwich.price.toString()}
@@ -183,14 +184,35 @@ function Menu() {
 			/>
 			<br />
 			<br />
+
 			<span style={{ marginRight: "5px" }}>Sandwich image:</span>
-			<input
+			<select className="form-select" aria-label="Default select example"
+					onChange={(e) => setSandwich({ ...sandwich, image: e.target.value })}>
+
+				<option value="/images/sandwiches/Chicken_Salad.jpg">Chicken Salad</option>
+				<option value="/images/sandwiches/example.jpg">Salad</option>
+				<option value="/images/sandwiches/Game_of_Thrones.jpg">Game of Thrones</option>
+				<option value="/images/sandwiches/George_Likes_his_Chicken_Spicy.jpg">George Likes his Chicken Spicy</option>
+				<option value="/images/sandwiches/Lighten_Up_Francis.jpg">Lighten Up Francis</option>
+				<option value="/images/sandwiches/Marino_Fitness.jpg">Marino Fitness</option>
+				<option value="/images/sandwiches/Meatball_Sub.jpg">Meatball Sub</option>
+				<option value="/images/sandwiches/Notorious_DTD.jpg">Notorious DTD</option>
+				<option value="/images/sandwiches/Phi_Gamma_Melta.jpg">Phi Gamma Melta</option>
+				<option value="/images/sandwiches/The_Boston_Connection.jpg">The Boston Connection</option>
+				<option value="/images/sandwiches/The_Fenway.jpg">The Fenway</option>
+				<option value="/images/sandwiches/The_Hemenway.jpg">The Hemenway</option>
+				<option value="/images/sandwiches/The_Huntington.jpg">The Huntington</option>
+				<option value="/images/sandwiches/The_Huskies.jpg">The Huskies</option>
+				<option value="/images/sandwiches/The_Northeastern.jpg">The Northeastern</option>
+				<option value="/images/sandwiches/Tuna_Salad.jpg">Tuna Salad</option>
+			</select>
+			{/*<input
 				type="file"
 				accept="image/*"
 				style={{ display: "none" }}
 				id="image-upload"
 				onChange={handleImageChange}
-			/>
+			/>*/}
 			{/* 
 			{imageURL && (
 				<img
@@ -199,7 +221,7 @@ function Menu() {
 					style={{ width: "100px", height: "auto", marginLeft: "10px" }}
 				/>
 			)} */}
-			<input
+			{/*<input
 				type="text"
 				value={imageName}
 				readOnly
@@ -216,7 +238,7 @@ function Menu() {
 				style={{ marginLeft: "20px" }}
 				onClick={handleImageUpload}>
 				Upload
-			</button>
+			</button>*/}
 			<div className="menu-list">
 				<ul>
 					<TfiAlignJustify />
