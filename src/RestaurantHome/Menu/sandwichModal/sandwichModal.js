@@ -162,7 +162,11 @@ function SandwichModal({ sandwich, onClose }) {
 								key={index}
 								className="review">
 								<div className="review-header">
-									<Link to={`/restaurant/public/${review.userId}/${userId}`} className="reviewer-link">
+									<Link to={
+										review.userId != userId ?
+											`/restaurant/public/${review.userId}/${userId}` :`/restaurant/${userId}`
+
+									} className="reviewer-link">
 										<img
 											src={`/images/customerIcon/${review.username}.png`}
 											alt={`${review.username}'s Profile Pic`}
@@ -171,7 +175,8 @@ function SandwichModal({ sandwich, onClose }) {
 									</Link>
 									<div className="reviewer-info">
 										<Link
-											to={`/restaurant/public/${review.userId}/${userId}`}
+											to={review.userId != userId ?
+												`/restaurant/public/${review.userId}/${userId}` :`/restaurant/${userId}`}
 											className="reviewer-name">
 											{review.username}
 										</Link>
