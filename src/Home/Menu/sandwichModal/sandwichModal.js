@@ -28,7 +28,6 @@ function SandwichModal({ sandwich, onClose }) {
 
 	const [currentItem, setCurrentItem] = useState({
 		favoriteId: new Date().getTime(),
-		_id: new Date() + sandwich.name,
 		userId: userId,
 		name: sandwich.name,
 		description: sandwich.description,
