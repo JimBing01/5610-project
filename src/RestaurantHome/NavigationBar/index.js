@@ -3,7 +3,7 @@ import {Link, useLocation, useParams} from "react-router-dom";
 import { BiUserCircle, BiHome, BiMenu } from "react-icons/bi";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import "./index.css";
-import SearchBar from "../Menu/SearchBar"
+//import SearchBar from "../Menu/SearchBar"
 
 function HorizontalNavigation({onSelectSandwich}) {
 	const {userId} = useParams();
@@ -73,9 +73,9 @@ function HorizontalNavigation({onSelectSandwich}) {
 			</div>
 
 			<div className="nav-group right">
-				<div className="search-bar">
+				{/* <div className="search-bar">
 					<SearchBar onSelectSandwich={onSelectSandwich} />
-				</div>
+				</div> */}
 				{rightLinks.map((link, index) => (
 					<Link
 						key={index}
