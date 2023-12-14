@@ -6,6 +6,7 @@ import {useParams, Link, useLocation, useNavigate} from "react-router-dom";
 import * as client from "./client";
 import { renderStars } from "../../../utils";
 import {findShoppingCart} from "../../../User/ShoppingCart/client";
+import {updateSandwich} from "../../../RestaurantHome/Menu/client";
 
 
 
@@ -42,7 +43,10 @@ function SandwichModal({ sandwich, onClose }) {
 		if (sandwich && sandwich._id) {
 			client
 				.fetchReviewsBySandwichId(sandwich._id, sandwich)
-				.then(setReviews)
+				.then((items)=>{
+					setReviews(items)
+
+				})
 				.catch((error) => {
 					// Handle or log the error if needed
 					console.error("Failed to fetch reviews:", error);
@@ -50,6 +54,8 @@ function SandwichModal({ sandwich, onClose }) {
 		}
 
 		findShoppingCart(userId).then((item) => {setShoppingCarts(item)} )
+
+
 	}, [sandwich.name, userId]);
 
 	if (!sandwich) return null;
@@ -58,6 +64,7 @@ function SandwichModal({ sandwich, onClose }) {
 		if (e.target.classList.contains("modal-overlay")) {
 			onClose();
 		}
+		client.updateSandwichDataBase(sandwich._id,{name:sandwich.name,sandwichId:sandwich._id,reviews:reviews})
 	};
 
 

@@ -17,6 +17,18 @@ export const fetchReviewsBySandwichId = async (sandwichId,frontSandwich) => {
     }
 };
 
+export const updateSandwichDataBase =  (sandwichId,sandwich) => {
+    try {
+        axios.put(`${SANDWICHES_URL}/${sandwichId}/reviews`,
+            sandwich);
+
+    } catch (error) {
+        console.error("Error fetching reviews:", error.response);
+        // Depending on how you want to handle the error, you might return an empty array or rethrow the error
+        return []; // Return an empty array if reviews can't be fetched
+    }
+};
+
 
 // export const addShoppingCart = async (userId,item) => {
 //     const response = await axios
