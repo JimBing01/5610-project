@@ -22,7 +22,8 @@ function SandwichModal({ sandwich, onClose }) {
 	} else if(pathname.includes('delivery')) {
 		temp = 'delivery/'+ userId
 	}
-
+	let icons = ['black_widow','capt_america','dark_knight','hulk_smash','iron_man',
+		'ring_bearer','smith','strider','thor_odinson']
 	const [reviews, setReviews] = useState([]);
 	const [shoppingCarts, setShoppingCarts] = useState([]);
 	const [favorites, setFavorites] = useState([]);
@@ -168,7 +169,8 @@ function SandwichModal({ sandwich, onClose }) {
 
 									} className="reviewer-link">
 										<img
-											src={`/images/customerIcon/${review.username}.png`}
+											src={icons.includes(review.username) ? `/images/customerIcon/${review.username}.png`
+												: `/images/customerIcon/capt_america.png`}
 											alt={`${review.username}'s Profile Pic`}
 											className="reviewer-pic"
 										/>
