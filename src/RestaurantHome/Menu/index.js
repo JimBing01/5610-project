@@ -76,20 +76,23 @@ function Menu() {
 
 				{/* <IoAddOutline className="add-icon" /> */}
 
-				<button
-					className="btn btn-warning"
-					onClick={() => {
+				<div className="button-container">
+					<button
+						className="btn btn-custom"
+						onClick={() => {
 						setSandwich(sandwich);
-					}}>
-					Edit
-				</button>
-				<button
-					className="btn btn-danger"
-					onClick={() => {
+						}}>
+						Edit
+					</button>
+					<button
+						className="btn btn-custom"
+						onClick={() => {
 						handleDeleteSandwich(sandwich._id);
-					}}>
-					Delete
-				</button>
+						}}>
+						Delete
+					</button>
+				</div>
+
 			</div>
 		));
 	};
@@ -149,17 +152,18 @@ function Menu() {
 		<div className="menu">
 			<span style={{ marginRight: "5px" }}>Sandwich Name:</span>
 			<input
+				className="input-field"
 				value={sandwich.name}
 				onChange={(e) => setSandwich({ ...sandwich, name: e.target.value })}
 			/>
 			<button
-				className="btn btn-success"
+				className="btn btn-custom"
 				style={{ marginLeft: "20px" }}
 				onClick={handleAddSandwich}>
 				Add
 			</button>
 			<button
-				className="btn btn-primary"
+				className="btn btn-custom"
 				style={{ marginLeft: "20px" }}
 				onClick={() => handleUpdateSandwich()}>
 				Update
@@ -168,6 +172,7 @@ function Menu() {
 			<br />
 			Description:
 			<textarea
+				className="input-field"
 				value={sandwich.description}
 				cols="50"
 				onChange={(e) =>
@@ -179,6 +184,7 @@ function Menu() {
 
 			<span style={{ marginRight: "5px" }}>Sandwich price:</span>
 			<input
+				className="input-field"	
 				value={sandwich.price.toString()}
 				onChange={(e) => setSandwich({ ...sandwich, price: e.target.value })}
 			/>

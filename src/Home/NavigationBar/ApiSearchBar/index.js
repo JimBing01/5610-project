@@ -28,12 +28,12 @@ function ApiSearchBar() {
                     type="text"
                     value={searchTerm}
                     onChange={handleChange}
-                    placeholder="How many jokes do you want?"
+                    placeholder="Input a number < 10"
                     className="form-control"
                 />
-                <button type="submit" className="search-button">
+                {/* <button type="submit" className="search-button">
                     <CgSearch size={20}/> 
-                </button>
+                </button> */}
             </form>
         </div>
     );

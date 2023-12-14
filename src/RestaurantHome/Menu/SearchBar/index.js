@@ -39,7 +39,7 @@ function SearchBar({ onSelectSandwich }) {
 
 	return (
 		<div>
-			<CiSearch />
+			{/* <CiSearch /> */}
 			<input
 				type="search"
 				className="form-control"
